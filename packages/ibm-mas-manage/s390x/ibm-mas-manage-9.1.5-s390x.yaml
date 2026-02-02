@@ -1,0 +1,47 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-primary-entity:9.1.5-s390x@sha256:1a4776752d4d3718c8dd40196c933e71fb415d09497b2ef02c43bb35f662a7fc
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-acc:9.1.5-s390x@sha256:828379eac50a57e30a119e759caa3778ed23bfa511d6e7d3a6cec5ea12069da0
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-appstatus:9.1.5-s390x@sha256:fca5026a5fef8dc8211940aae62350881c855706f057d41f3a89511dd0eb0ea7
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-bdi:9.1.5-s390x@sha256:beca6ca8ffb5ae751a39e94e3e7920c25d7d886b30fd2b5eaaf5296312c0c258
+  - name: cp.icr.io/cp/manage/manage-groupsyncagent:1.2.21-s390x@sha256:52dafd75da4c2f6959418f15f72e5a44873318243cc1187dd0ebbd33b4da747b
+  - name: cp.icr.io/cp/manage/manage-usersyncagent:3.0.15-s390x@sha256:0b578554bfb3065b3a9e8cf7d44b5224e77fafabbe85ff21f515287157d9f1a4
+  - name: cp.icr.io/cp/manage/ibm-mas-aipoptimizationext:1.0.3-s390x@sha256:7515f75b26555aaa835cea15011f1b9d5f19fe1ab74af24a18d81aa3097c2ee5
+  - name: cp.icr.io/cp/manage/ibm-mas-healthext-ws:2.1.22-s390x@sha256:9c562847465b26b202f7166eec2c7cfbb2fd6d42d7723006538a08c725b09ac1
+  - name: cp.icr.io/cp/manage/ibm-mas-imagestitching:1.1.12-s390x@sha256:33f6f32baeb342dd4a731e867db625bb02adcda96fa696291606f2b704cfa9f0
+  - name: cp.icr.io/cp/manage/ibm-mas-slackproxy:9.1.15-s390x@sha256:0172826b17af01e35949460e388fa2386a91b6c2fb6327a4ee2de8dbae45b588
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-ws:9.1.5-s390x@sha256:9ecf45007f0912119ecc1293000b8331f12205f4712a632baa2bb21f61c201e9
+  - name: cp.icr.io/cp/manage/bdi:9.2.7-s390x@sha256:16a2825a0777b6e2c03bf9268a084abf119273fd853dad75df85dfc267d91333
+  - name: cp.icr.io/cp/mas/ltpakeys-generator:3.2.7-s390x@sha256:9561aef6e0587395a106b3c890cd7bd491d67ab88646f8687903bfff6fa9994d
+  - name: cp.icr.io/cp/manage/manageadminfoundation:9.1.266-s390x@sha256:99d2603e24b55e97ec675ca891a5f9a708402ce5d1352193877b25ff43b60e3d
+  - name: cp.icr.io/cp/manage/ubi-wlp-manage-foundation:9.1.266-s390x@sha256:1d0c831a1ccf2cbdf0e6a929f64fa2ff4546def51ab089a77b37923aee66ee9a
+  - name: cp.icr.io/cp/manage/ubi-wlp-jms-manage:3.0.11-s390x@sha256:341cbeb039da28916f23f997416f60e6ce1b4bebe5b610bfc0b20af7285e10c3
+  - name: cp.icr.io/cp/manage/extension-acm:9.1.83-s390x@sha256:376db2a5163e56ca669791a14a75aa20f245f694f0fa7773dc22f9dc6a96680d
+  - name: cp.icr.io/cp/manage/extension-aip:9.1.13-s390x@sha256:1d8523d0fa987f814be6b1dddd3e86a4b3a75b92febe7efd4a63a41d8fda9da1
+  - name: cp.icr.io/cp/manage/extension-aviation:9.1.31-s390x@sha256:1507743ce316eef0dd3613a7aba4b70336ba28451f308d6037d050994ebb9f22
+  - name: cp.icr.io/cp/manage/extension-civil:9.1.63-s390x@sha256:526f613c5d0fe060f058bdeecee21e4df64d80b5990f5a931e661e22111d9d03
+  - name: cp.icr.io/cp/manage/extension-envizi:9.1.6-s390x@sha256:eb4cf966d9bfffc6045a6e474f48b3c23e9a3e0edc85d0ad45377886a8debb79
+  - name: cp.icr.io/cp/manage/extension-health:9.1.30-s390x@sha256:b627f26375679e27810d57037b0661ae381365c56035b7ad40b81f747f14b57c
+  - name: cp.icr.io/cp/manage/extension-hse:9.1.59-s390x@sha256:10cc0e1d10e981717398c8c6a0bbe96dd6b0dc7c8d422c92864bff4d4916fc33
+  - name: cp.icr.io/cp/manage/manageadmin:9.1.266-s390x@sha256:10a946b178afdcd92272af8c1dbb06f2e7b215b8230faec52796016dddf1e0b5
+  - name: cp.icr.io/cp/manage/ubi-wlp-manage:4.0.19-s390x@sha256:8c82b32b2e3f041a58c74cc2f1da4d7fadbf75a72af491e77e38413f4f617ba7
+  - name: cp.icr.io/cp/manage/extension-nuclear:9.1.16-s390x@sha256:dbc5fb5b823471cdd3cbdff2e05692784b3c3406818d7f1a2bf685caa4e9731f
+  - name: cp.icr.io/cp/manage/extension-oilandgas:9.1.59-s390x@sha256:7989d9d097ed21d16e6fb9b921412257530085a3ca958e0249a8df50be343671
+  - name: cp.icr.io/cp/manage/extension-oracleadapter:9.1.7-s390x@sha256:e611a22e7c833d1be5b776e74131c3b3e377506eb5737a65be67c05559823888
+  - name: cp.icr.io/cp/manage/extension-sapadapter:9.1.6-s390x@sha256:f993eaf78098edf4b8974cd6e5c2279abea8c9240c2b4de97d5c5c02b914eb2e
+  - name: cp.icr.io/cp/manage/extension-serviceprovider:9.1.17-s390x@sha256:e690ae560065a11877336f188cd93fe0cbee6fd7bc649bedda735d5c6e41a191
+  - name: cp.icr.io/cp/manage/extension-spatial:9.1.32-s390x@sha256:6850e9e9f2616a50ab157d76af24968a5776b6bf444da5af410860816e6e13f9
+  - name: cp.icr.io/cp/manage/extension-strategize:9.1.149-s390x@sha256:dc104fea78d91966ee5e00dbad32da4f1d6fa49e2b490efcc9e35386a7293e7b
+  - name: cp.icr.io/cp/manage/extension-transportation:9.1.19-s390x@sha256:4bdc001a8e141375473abe83d66d576cc311b0f286e6d41ce3320d85100e0334
+  - name: cp.icr.io/cp/manage/extension-tririga:9.1.7-s390x@sha256:ee7c53ab7b459252d25edfe7bda4d3033c7cb189bbf2740892ce547a5fd4e1c2
+  - name: cp.icr.io/cp/manage/extension-utilities:9.1.16-s390x@sha256:b5300ff39ff241254c4e1c484a0cc2a6a4c8264141c866062cc1ea05d7ce31d5
+  - name: cp.icr.io/cp/manage/extension-vegm:9.1.7-s390x@sha256:0f63a0af0842b7326e4a6a4d6cbc550e79ac47eee2642770fba8b431daaa7691
+  - name: cp.icr.io/cp/manage/extension-workday:9.1.19-s390x@sha256:806d622aa6fadc23ea6cf840d6eb0c5674f962ae2660c86123341256069c854e
+  - name: cp.icr.io/cp/manage/monitoragent:5.0.17-s390x@sha256:61429d4254a0da631419e017ac78599604a7baf2a960403afcc58803805c782d
+  - name: cp.icr.io/cp/manage/maxloader:9.0.12-s390x@sha256:bc4090fe5c2d4b158ce8748aa607cf8f19d48fd42dadb6ce4b85b15d8d9fce50
+  - name: icr.io/cpopen/ibm-mas-manage:9.1.5-s390x@sha256:9d0a7b415d0e2909622d43837b1b4d452c6c31095d8d6653ce8c6655755fada3
+  - name: icr.io/cpopen/ibm-mas-manage-webhook:9.1.5-s390x@sha256:8025a0f29638e873b25b02fab491ba02c51b3ac0802c480853d135647d2bc941
+  - name: icr.io/cpopen/ibm-mas-manage-operator-bundle:9.1.5-s390x@sha256:1d0c1fae5904b4d4afc0a99039055cc97d77635b7a090ac2db1cbf00c6f465de

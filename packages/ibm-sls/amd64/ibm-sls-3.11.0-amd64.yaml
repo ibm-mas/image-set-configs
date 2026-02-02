@@ -1,0 +1,8 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/ibm-sls/api-licensing:7.3.8-amd64@sha256:4386e76404c4c04a3cda7b58d4b9c9492dd34e55412be324b43d8d730ab74653
+  - name: icr.io/cpopen/ibm-sls:3.11.0-amd64@sha256:b291880e19689e09db12929f7127cd6034bd9d01c077fc7405ae4e5245e7eec7
+  - name: icr.io/cpopen/ibm-sls-operator-bundle:3.11.0-amd64@sha256:2f4f4ae8ad0cae978716218fe3b372d6eab02696a8e3042d40d52290e8fa9918

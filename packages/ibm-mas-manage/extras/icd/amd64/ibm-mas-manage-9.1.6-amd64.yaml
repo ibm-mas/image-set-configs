@@ -1,0 +1,6 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/manage/extension-icd:9.1.39-amd64@sha256:d04719a11f4dc971b9456000e6d5a955dadf36c078fda03e04da7d8b7b669992
