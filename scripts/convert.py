@@ -66,9 +66,13 @@ def generate_iscs(case_name, case_versions, architectures=["amd64", "ppc64le", "
 def generate_isc(case_name, case_version, arch="amd64", include_group=None, exclude_group=None, child_name=None) -> None:
     """Generate image set configuration by executing oc ibm-pak commands."""
 
-    output_path = f"packages/{case_name}/{arch}/{case_name}-{case_version}-{arch}.yaml"
+    # Extract major.minor version (first two components)
+    version_parts = case_version.split('.')
+    major_minor = f"{version_parts[0]}.{version_parts[1]}"
+
+    output_path = f"packages/{case_name}/{major_minor}/{arch}/{case_name}-{case_version}-{arch}.yaml"
     if child_name is not None:
-        output_path = f"packages/{case_name}/extras/{child_name}/{arch}/{case_name}-{case_version}-{arch}.yaml"
+        output_path = f"packages/{case_name}/extras/{child_name}/{major_minor}/{arch}/{case_name}-{case_version}-{arch}.yaml"
 
     images_csv_path = os.path.expanduser(
         f"~/.ibm-pak/data/cases/{case_name}/{case_version}/{case_name}-{case_version}-images.csv"
@@ -112,9 +116,9 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
 
     if len(isc["mirror"]["additionalImages"]) > 0:  # pyright: ignore
         if child_name is not None:
-            os.makedirs(os.path.join("packages", case_name, "extras", child_name, arch), exist_ok=True)
+            os.makedirs(os.path.join("packages", case_name, "extras", child_name, major_minor, arch), exist_ok=True)
         else:
-            os.makedirs(os.path.join("packages", case_name, arch), exist_ok=True)
+            os.makedirs(os.path.join("packages", case_name, major_minor, arch), exist_ok=True)
 
         with open(output_path, 'w') as file:
             yaml.dump(isc, file, indent=2)
