@@ -1,0 +1,8 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/ibm-truststore-mgr/worker:1.5.0@sha256:93bd14d29c0c58300a416992bb30a7bd0f6dfc186c1ef7577d0155670e26fdc4
+  - name: icr.io/cpopen/ibm-truststore-mgr:1.5.0@sha256:b39806e15d98a496271a256c004a8c6c39e6251b72b7ee9a563311972ecd5b17
+  - name: icr.io/cpopen/ibm-truststore-mgr-operator-bundle:1.5.0@sha256:1b1ec844be59e65c0f451edec48a9e43943779114c00fd9260a3588e7456e7de
