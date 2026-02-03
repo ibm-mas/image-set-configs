@@ -9,8 +9,10 @@ import sys
 import yaml
 from typing import List, Dict, Optional
 from dataclasses import dataclass
+from datetime import datetime
 from alive_progress import alive_bar
 from prompt_toolkit import print_formatted_text, HTML
+from itertools import groupby
 
 from mas.devops.data import getCatalog
 
@@ -254,75 +256,59 @@ def run_command(cmd: List[str], progress_bar=None) -> tuple[int, Dict]:
         return 1, {}
 
 
-def mirror_package(package: str, version: str, arch: str, mode: str, target_registry: str="", flag: bool=True) -> MirrorResult:
+def _execute_mirror(config_path: str, display_name: str, workspace_path: str, mode: str, target_registry: str="") -> MirrorResult:
     """
-    Mirror a package and return the result.
+    Execute the mirror operation for a given configuration.
+
+    This is a common function used by both mirror_package and mirror_catalog.
 
     Args:
-        package: Package name (e.g., "ibm-mas")
-        version: Package version (e.g., "9.0.5")
-        arch: Architecture (e.g., "amd64")
+        config_path: Path to the YAML configuration file
+        display_name: Display name for progress bar (e.g., "ibm-mas v9.0.5 (amd64)" or "catalog v9-260129-amd64")
+        workspace_path: Workspace path for the mirror operation (e.g., "package/arch/version" or "catalog/version")
+        mode: Mirror mode ("m2m", "m2d", or "d2m")
+        target_registry: Target registry for m2m and d2m modes
 
     Returns:
         MirrorResult object with images, mirrored, and success status.
         Returns images=0, mirrored=0, success=False if operation failed or results couldn't be parsed.
     """
-    # Extract major.minor version (first two components)
-    version_parts = version.split('.')
-
-    # Validate version format
-    if len(version_parts) < 2:
-        logger.error(f"Invalid version format: '{version}'. Expected format: 'major.minor.patch' (e.g., '9.0.5')")
-        return MirrorResult(images=0, mirrored=0)
-
-    major_minor = f"{version_parts[0]}.{version_parts[1]}"
-
-    path = f"packages/{package}/{major_minor}/{arch}/{package}-{version}-{arch}.yaml"
-
-    if not flag:
-        logger.info(f"Skipping {package} version {version} for {arch} architecture")
-        # Add empty progress bar to align with other status messages
-        empty_bar = "|" + " " * 20 + "|"
-        print(f"{package} v{version} ({arch})".ljust(50) + f" ⏭️  {empty_bar} Mirroring disabled by user")
-        return MirrorResult(images=0, mirrored=0)
-
-    logger.info(f"Mirroring {package} version {version} for {arch} architecture")
-    logger.info(f"Using configuration: {path}")
+    logger.info(f"Using configuration: {config_path}")
 
     # Count images in config file
-    total_images = count_images_in_config(path)
+    total_images = count_images_in_config(config_path)
     if total_images == 0:
-        logger.error(f"No images found in config or failed to parse: {path}")
-        print(f"❌ {package} v{version} ({arch}) - No images found in config")
+        logger.error(f"No images found in config or failed to parse: {config_path}")
+        print(f"❌ {display_name} - No images found in config")
         return MirrorResult(images=0, mirrored=0)
 
     logger.info(f"Found {total_images} images to mirror")
 
     if mode == "m2m":
         cmd = [
-            "./oc-mirror", "--v2", "--config", path, "--authfile", "/home/david/.ibm-mas/auth.json",
-            "--workspace", f"file://workspace/{package}/{arch}/{version}",
+            "./oc-mirror", "--v2", "--config", config_path, "--authfile", "/home/david/.ibm-mas/auth.json",
+            "--workspace", f"file://workspace/{workspace_path}",
             f"docker://{target_registry}"
         ]
     elif mode == "m2d":
         cmd = [
-            "./oc-mirror", "--v2", "--config", path, "--authfile", "/home/david/.ibm-mas/auth.json",
-            f"file://output-dir/{package}/{arch}/{version}",
+            "./oc-mirror", "--v2", "--config", config_path, "--authfile", "/home/david/.ibm-mas/auth.json",
+            f"file://output-dir/{workspace_path}",
         ]
     elif mode == "d2m":
         cmd = [
-            "./oc-mirror", "--v2", "--config", path, "--authfile", "/home/david/.ibm-mas/auth.json",
-            "--from", f"file://output-dir/{package}/{arch}/{version}",
+            "./oc-mirror", "--v2", "--config", config_path, "--authfile", "/home/david/.ibm-mas/auth.json",
+            "--from", f"file://output-dir/{workspace_path}",
             f"docker://{target_registry}"
         ]
     else:
         logger.error(f"Unsupported mirror mode: {mode}")
-        print(f"❌ {package} v{version} ({arch}) - Unsupported mirror mode: {mode}")
+        print(f"❌ {display_name} - Unsupported mirror mode: {mode}")
         return MirrorResult(images=0, mirrored=0)
 
     # Execute command with progress bar
     # Use fixed-width title (50 chars) for alignment, with in-progress icon
-    bar_title_base = f"{package} v{version} ({arch})".ljust(50)
+    bar_title_base = display_name.ljust(50)
     bar_title = f"{bar_title_base} ⏳"
     with alive_bar(total_images, title=bar_title, length=20, enrich_print=False) as bar:
         exit_code, result_data = run_command(cmd, progress_bar=bar)
@@ -353,6 +339,72 @@ def mirror_package(package: str, version: str, arch: str, mode: str, target_regi
             return MirrorResult(images=0, mirrored=0)
 
 
+def mirror_package(package: str, version: str, arch: str, mode: str, target_registry: str="", flag: bool=True) -> MirrorResult:
+    """
+    Mirror a package and return the result.
+
+    Args:
+        package: Package name (e.g., "ibm-mas")
+        version: Package version (e.g., "9.0.5")
+        arch: Architecture (e.g., "amd64")
+        mode: Mirror mode ("m2m", "m2d", or "d2m")
+        target_registry: Target registry for m2m and d2m modes
+        flag: Whether to actually perform the mirror operation
+
+    Returns:
+        MirrorResult object with images, mirrored, and success status.
+        Returns images=0, mirrored=0, success=False if operation failed or results couldn't be parsed.
+    """
+    # Extract major.minor version (first two components)
+    version_parts = version.split('.')
+
+    # Validate version format
+    if len(version_parts) < 2:
+        logger.error(f"Invalid version format: '{version}'. Expected format: 'major.minor.patch' (e.g., '9.0.5')")
+        return MirrorResult(images=0, mirrored=0)
+
+    major_minor = f"{version_parts[0]}.{version_parts[1]}"
+
+    config_path = f"packages/{package}/{major_minor}/{arch}/{package}-{version}-{arch}.yaml"
+
+    if not flag:
+        logger.info(f"Skipping {package} version {version} for {arch} architecture")
+        # Add empty progress bar to align with other status messages
+        empty_bar = "|" + " " * 20 + "|"
+        print(f"{package} v{version} ({arch})".ljust(50) + f" ⏭️  {empty_bar} Mirroring disabled by user")
+        return MirrorResult(images=0, mirrored=0)
+
+    logger.info(f"Mirroring {package} version {version} for {arch} architecture")
+
+    display_name = f"{package} v{version} ({arch})"
+    workspace_path = f"{package}/{arch}/{version}"
+
+    return _execute_mirror(config_path, display_name, workspace_path, mode, target_registry)
+
+
+def mirror_catalog(version: str, mode: str, target_registry: str="") -> MirrorResult:
+    """
+    Mirror a catalog and return the result.
+
+    Args:
+        version: Catalog version (e.g., "v9-260129-amd64")
+        mode: Mirror mode ("m2m", "m2d", or "d2m")
+        target_registry: Target registry for m2m and d2m modes
+
+    Returns:
+        MirrorResult object with images, mirrored, and success status.
+        Returns images=0, mirrored=0, success=False if operation failed or results couldn't be parsed.
+    """
+    config_path = f"catalogs/{version}.yaml"
+
+    logger.info(f"Mirroring catalog {version}")
+
+    display_name = f"catalog {version}"
+    workspace_path = f"catalog/{version}"
+
+    return _execute_mirror(config_path, display_name, workspace_path, mode, target_registry)
+
+
 # Package configuration: (group, arg_name, package_name, catalog_key, description)
 PACKAGE_CONFIGS = [
     ("Required Dependencies", "sls", "ibm-sls", "sls_version", "IBM Suite License Service"),
@@ -366,14 +418,13 @@ PACKAGE_CONFIGS = [
     ("Optional Dependencies", "db2u-s11", "ibm-db2uoperator-s11", "db2u_version", "IBM Db2 Universal Operator (s11)"),
     ("Optional Dependencies", "db2u-s12", "ibm-db2uoperator-s12", "db2u_version", "IBM Db2 Universal Operator (s12)"),
 
+    ("Optional Dependencies", "mongodb-ce", "mongodb-ce", "mongo_extras_version_default", "MongoDb (CE)"),
 
     # TODO: Support CP4D ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
     # TODO: Support CP4D - WSL ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
     # TODO: Support CP4D - WML ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
     # TODO: Support CP4D - Spark ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
     # TODO: Support CP4D - Cognos ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
-
-    # TODO: Support MongoDb ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
 
     # TODO: Support catalog ("MAS", "catalog", "ibm-mas-operator-catalog", "mas_catalog_version", "Operator Catalog"),
     ("MAS", "core", "ibm-mas", "mas_core_version", "Core"),
@@ -424,9 +475,6 @@ Examples:
     )
 
     # Add package-specific arguments dynamically, organized by group
-    from itertools import groupby
-
-    # Group packages by their group field
     for group_name, group_items in groupby(PACKAGE_CONFIGS, key=lambda x: x[0]):
         arg_group = parser.add_argument_group(group_name)
         for group, arg_name, package_name, _, description in group_items:
@@ -447,7 +495,6 @@ Examples:
         parser.error(f"--target-registry is required when mode is '{mode}'")
 
     # Configure logging to file
-    from datetime import datetime
     log_filename = f"mirror-{catalog_version}-{release.replace('.', '')}-{mode}-{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
     logging.basicConfig(
         level=logging.DEBUG,
@@ -466,12 +513,16 @@ Examples:
     logger.info(f"Mode: {mode}")
     logger.info(f"Log file: {log_filename}")
 
-    print(f"Mirroring Images for {catalog_version} ({mode})")
+    print_formatted_text(HTML(f"<B>Mirroring Images for {catalog_version} ({mode})</B>"))
+
+    print_formatted_text(HTML(f"\n<U>IBM Maximo Operator Catalog</U>"))
+    mirror_catalog(
+        version=catalog_version,
+        mode=mode,
+        target_registry=args.target_registry or ""
+    )
 
     # Mirror each package with common parameters using shared configuration
-    # Group packages and display section headers
-    from itertools import groupby
-
     current_group = None
     for group, arg_name, package_name, catalog_key, description in PACKAGE_CONFIGS:
         # Print section header when group changes
@@ -482,7 +533,7 @@ Examples:
         # Get version from catalog - handle both direct keys and release-specific keys
         if catalog_key in ["db2u_version"]:
             version = catalog[catalog_key].split("+")[0]
-        elif catalog_key in ["sls_version", "tsm_version", "amlen_extras_version", "dd_version"]:
+        elif catalog_key in ["sls_version", "tsm_version", "amlen_extras_version", "dd_version", "mongo_extras_version_default"]:
             version = catalog[catalog_key]
         else:
             version = catalog[catalog_key][release]
