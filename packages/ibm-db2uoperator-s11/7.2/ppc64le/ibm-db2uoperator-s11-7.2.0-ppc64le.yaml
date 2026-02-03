@@ -1,0 +1,18 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/db2u/db2u.auxiliary.auth:s11.5.9.0-cn5-149-ppc64le@sha256:77fd31e5d06b66b1a15650caa1ea9e9c16a1d57f58a061675541669e29157ef5
+  - name: icr.io/db2u/db2u.instdb.restricted:s11.5.9.0-cn5-149-ppc64le@sha256:41a94155f16c680902cd9582e639e733410df7b3555cb568d1f5e7a2ee1b5b2e
+  - name: icr.io/db2u/db2u.instdb:s11.5.9.0-cn5-149-ppc64le@sha256:547e06b8feca4141f12b35b5b50eb65a1038b85c8ff3eb9cdb566b26d0b405f5
+  - name: icr.io/db2u/db2u.logstreaming.fluentd:s11.5.9.0-cn5-149-ppc64le@sha256:9b12d4081eab0578e487802242e4e8edbe1a2853c19388d0162d840d01a50e3d
+  - name: icr.io/db2u/db2u.mustgather:s11.5.9.0-cn5-149-ppc64le@sha256:804c03a0eccecbe84bfe78467c37bf5eb5c3f21c65a7473f8f827eb73b45fa17
+  - name: icr.io/db2u/db2u.qrep:s11.5.9.0-cn5-149-ppc64le@sha256:e09882cea0dbc1e79eeb85faec25f19566ba66725e17b334949227493b961e96
+  - name: icr.io/db2u/db2u.rest:s11.5.9.0-cn5-149-ppc64le@sha256:6b23b7de0a0cf61c6ab486e29885e00a0559feb0e6074a0b0ed9461e76a80e6c
+  - name: icr.io/db2u/db2u.restricted:s11.5.9.0-cn5-149-ppc64le@sha256:464915d2888c887bee392188c72a2efee8493af67ba94235ae11a6d305994b77
+  - name: icr.io/db2u/db2u.tools:s11.5.9.0-cn5-149-ppc64le@sha256:8af3bb48dbfb7c824a168b76f8fc9609741b6dd48385b6bcba0254c2092bd9af
+  - name: icr.io/db2u/db2u.update.image:s11.5.9.0-cn5-149-ppc64le@sha256:e1d35539b99e05b88c440d0a889d903d41443dcfed326516f648d8dd92d5948c
+  - name: icr.io/db2u/db2u.veleroplugin:s11.5.9.0-cn5-149-ppc64le@sha256:49efc0e46bab8f8a65204878a5ce2e1902424b67fe9fa1236a4c458a91ff2b40
+  - name: icr.io/db2u/db2u:s11.5.9.0-cn5-149-ppc64le@sha256:7c81248ee12ff12407b9580ff8d2469907eb323fbdaf0e5b792932c8ca1975a2
+  - name: icr.io/db2u/etcd:s11.5.9.0-cn5-149-ppc64le@sha256:95bf8a13b3a721a3db3f6d2b03cab487d703eb961cd23e0635607d487344cb65

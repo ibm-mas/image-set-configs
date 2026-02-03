@@ -355,10 +355,11 @@ def mirror_package(package: str, version: str, arch: str, mode: str, target_regi
 
 # Package configuration: (group, arg_name, package_name, catalog_key, description)
 PACKAGE_CONFIGS = [
-    ("Dependencies", "sls", "ibm-sls", "sls_version", "Suite License Service"),
-    ("Dependencies", "tsm", "ibm-truststore-mgr", "tsm_version", "Trust Store Manager"),
+    ("Required Dependencies", "sls", "ibm-sls", "sls_version", "Suite License Service"),
+    ("Required Dependencies", "tsm", "ibm-truststore-mgr", "tsm_version", "Trust Store Manager"),
 
-    # TODO: Support Db2U ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+    ("Optional Dependencies", "db2u-s11", "ibm-db2uoperator-s11", "db2u_version", "Db2 Universal Operator (s11)"),
+    ("Optional Dependencies", "db2u-s12", "ibm-db2uoperator-s12", "db2u_version", "Db2 Universal Operator (s12)"),
 
     # TODO: Support CP4D ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
     # TODO: Support CP4D - WSL ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
@@ -388,8 +389,8 @@ if __name__ == "__main__":
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s --catalog v9-240625-amd64 --release 9.0.x
-  %(prog)s --catalog v9-260129-amd64 --release 9.1.x
+  %(prog)s --catalog v9-240625-amd64 --release 9.0.x --core --tsm --sls
+  %(prog)s --catalog v9-260129-amd64 --release 9.1.x --core --tsm --sls
         """
     )
     parser.add_argument(
@@ -426,7 +427,7 @@ Examples:
             arg_group.add_argument(
                 f"--{arg_name}",
                 required=False,
-                help=f"Mirror {package_name} images",
+                help=f"Mirror images for the {package_name} package",
                 action="store_true"
             )
     args = parser.parse_args()
@@ -473,13 +474,15 @@ Examples:
             current_group = group
 
         # Get version from catalog - handle both direct keys and release-specific keys
-        if catalog_key in ["sls_version", "tsm_version"]:
+        if catalog_key in ["db2u_version"]:
+            version = catalog[catalog_key].split("+")[0]
+        elif catalog_key in ["sls_version", "tsm_version"]:
             version = catalog[catalog_key]
         else:
             version = catalog[catalog_key][release]
 
         # Get the flag value from args
-        flag = getattr(args, arg_name)
+        flag = getattr(args, arg_name.replace("-", "_"))
 
         mirror_package(
             package=package_name,
