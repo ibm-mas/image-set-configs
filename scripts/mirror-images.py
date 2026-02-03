@@ -10,6 +10,7 @@ import yaml
 from typing import List, Dict, Optional
 from dataclasses import dataclass
 from alive_progress import alive_bar
+from prompt_toolkit import print_formatted_text, HTML
 
 from mas.devops.data import getCatalog
 
@@ -352,22 +353,32 @@ def mirror_package(package: str, version: str, arch: str, mode: str, target_regi
             return MirrorResult(images=0, mirrored=0)
 
 
-# Package configuration: (arg_name, package_name, catalog_key, description)
+# Package configuration: (group, arg_name, package_name, catalog_key, description)
 PACKAGE_CONFIGS = [
-    # Dependencies
-    ("sls", "ibm-sls", "sls_version", "Suite License Service"),
-    ("tsm", "ibm-truststore-mgr", "tsm_version", "Trust Store Manager"),
+    ("Dependencies", "sls", "ibm-sls", "sls_version", "Suite License Service"),
+    ("Dependencies", "tsm", "ibm-truststore-mgr", "tsm_version", "Trust Store Manager"),
 
-    # Maximo Application Suite
-    ("core", "ibm-mas", "mas_core_version", "Core"),
-    ("assist", "ibm-mas-assist", "mas_assist_version", "Assist"),
-    ("iot", "ibm-mas-iot", "mas_iot_version", "IoT"),
-    ("facilities", "ibm-mas-facilities", "mas_facilities_version", "Facilities"),
-    ("manage", "ibm-mas-manage", "mas_manage_version", "Manage"),
-    ("monitor", "ibm-mas-monitor", "mas_monitor_version", "Monitor"),
-    ("predict", "ibm-mas-predict", "mas_predict_version", "Predict"),
-    ("optimizer", "ibm-mas-optimizer", "mas_optimizer_version", "Optimizer"),
-    ("visualinspection", "ibm-mas-visualinspection", "mas_visualinspection_version", "Visual Inspection"),
+    # TODO: Support Db2U ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+
+    # TODO: Support CP4D ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+    # TODO: Support CP4D - WSL ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+    # TODO: Support CP4D - WML ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+    # TODO: Support CP4D - Spark ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+    # TODO: Support CP4D - Cognos ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+
+    # TODO: Support MongoDb ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
+
+    # TODO: Support catalog ("MAS", "catalog", "ibm-mas-operator-catalog", "mas_catalog_version", "Operator Catalog"),
+    ("MAS", "core", "ibm-mas", "mas_core_version", "Core"),
+    ("MAS", "assist", "ibm-mas-assist", "mas_assist_version", "Assist"),
+    ("MAS", "iot", "ibm-mas-iot", "mas_iot_version", "IoT"),
+    ("MAS", "facilities", "ibm-mas-facilities", "mas_facilities_version", "Facilities"),
+    ("MAS", "manage", "ibm-mas-manage", "mas_manage_version", "Manage"),
+    # TODO: Support ICD ("MAS", "manage", "ibm-mas-manage", "mas_manage_version", "Manage"),
+    ("MAS", "monitor", "ibm-mas-monitor", "mas_monitor_version", "Monitor"),
+    ("MAS", "predict", "ibm-mas-predict", "mas_predict_version", "Predict"),
+    ("MAS", "optimizer", "ibm-mas-optimizer", "mas_optimizer_version", "Optimizer"),
+    ("MAS", "visualinspection", "ibm-mas-visualinspection", "mas_visualinspection_version", "Visual Inspection"),
 ]
 
 
@@ -405,14 +416,19 @@ Examples:
         help="Target registry for m2m and d2m modes (e.g., registry.example.com/namespace)"
     )
 
-    # Add package-specific arguments dynamically
-    for arg_name, package_name, _, description in PACKAGE_CONFIGS:
-        parser.add_argument(
-            f"--{arg_name}",
-            required=False,
-            help=f"Mirror {package_name} images",
-            action="store_true"
-        )
+    # Add package-specific arguments dynamically, organized by group
+    from itertools import groupby
+
+    # Group packages by their group field
+    for group_name, group_items in groupby(PACKAGE_CONFIGS, key=lambda x: x[0]):
+        arg_group = parser.add_argument_group(group_name)
+        for group, arg_name, package_name, _, description in group_items:
+            arg_group.add_argument(
+                f"--{arg_name}",
+                required=False,
+                help=f"Mirror {package_name} images",
+                action="store_true"
+            )
     args = parser.parse_args()
 
     catalog_version = args.catalog
@@ -446,7 +462,16 @@ Examples:
     print(f"Mirroring Images for {catalog_version} ({mode})")
 
     # Mirror each package with common parameters using shared configuration
-    for arg_name, package_name, catalog_key, description in PACKAGE_CONFIGS:
+    # Group packages and display section headers
+    from itertools import groupby
+
+    current_group = None
+    for group, arg_name, package_name, catalog_key, description in PACKAGE_CONFIGS:
+        # Print section header when group changes
+        if group != current_group:
+            print_formatted_text(HTML(f"\n<U>{group}</U>"))
+            current_group = group
+
         # Get version from catalog - handle both direct keys and release-specific keys
         if catalog_key in ["sls_version", "tsm_version"]:
             version = catalog[catalog_key]
