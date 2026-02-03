@@ -1,3 +1,4 @@
 /output-dir
 oc-mirror
 .oc-mirror.log
+*.log

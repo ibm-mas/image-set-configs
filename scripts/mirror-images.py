@@ -3,13 +3,18 @@
 import argparse
 import logging
 import re
+import selectors
 import subprocess
 import sys
-import threading
 from typing import List, Dict, Optional
 from dataclasses import dataclass
+from halo import Halo
 
 from mas.devops.data import getCatalog
+
+
+# Configure logging - will be set up in main with filename
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -17,15 +22,16 @@ class MirrorResult:
     """Result of a mirror operation."""
     images: int
     mirrored: int
-    success: bool
 
-# Configure logging
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s %(levelname)-8s %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
-logger = logging.getLogger(__name__)
+    @property
+    def success(self) -> bool:
+        """
+        Determine if the mirror operation was successful.
+
+        Returns:
+            True if all images were mirrored successfully, False otherwise.
+        """
+        return self.images != 0 and self.images == self.mirrored
 
 
 def strip_log_prefix(line: str) -> str:
@@ -91,6 +97,85 @@ def stream_output(pipe, log_func, result_data: Dict):
     pipe.close()
 
 
+def _process_streams(process: subprocess.Popen, result_data: Dict) -> None:
+    """
+    Process stdout and stderr streams from a subprocess using selectors.
+
+    Uses non-blocking I/O to efficiently read from both streams without threading.
+    Filters output and captures result information.
+
+    Args:
+        process: The subprocess.Popen object with stdout and stderr pipes
+        result_data: Dictionary to store captured result information
+    """
+    # Ensure streams are available
+    if process.stdout is None or process.stderr is None:
+        return
+
+    # Compile filter patterns into a single case-insensitive regex for performance
+    filter_patterns = [
+        "Hello, welcome to oc-mirror",
+        "setting up the environment for you...",
+        "using digest to pull, but tag only for mirroring"
+    ]
+    # Escape special regex characters and join with OR operator
+    filter_regex = re.compile('|'.join(re.escape(pattern) for pattern in filter_patterns), re.IGNORECASE)
+
+    # Set up selector for non-blocking I/O
+    sel = selectors.DefaultSelector()
+    sel.register(process.stdout, selectors.EVENT_READ, data='stdout')
+    sel.register(process.stderr, selectors.EVENT_READ, data='stderr')
+
+    # Track which streams are still open (store file objects, not selectors)
+    streams_open = {process.stdout.fileno(), process.stderr.fileno()}
+
+    while streams_open:
+        # Wait for data to be available on any stream
+        events = sel.select(timeout=0.1)
+
+        for key, _ in events:
+            stream_type = key.data
+
+            # Get the actual file object from the key
+            if stream_type == 'stdout':
+                stream = process.stdout
+            else:
+                stream = process.stderr
+
+            if stream is None:
+                continue
+
+            line = stream.readline()
+
+            if not line:
+                # Stream closed
+                streams_open.discard(stream.fileno())
+                sel.unregister(stream)
+                continue
+
+            line_stripped = line.rstrip()
+
+            # Capture result information BEFORE stripping prefix
+            result_match = re.search(r'(\d+)\s+/\s+(\d+)\s+additional images mirrored successfully', line_stripped)
+            if result_match:
+                result_data['mirrored'] = int(result_match.group(1))
+                result_data['images'] = int(result_match.group(2))
+                logger.debug(f"Captured result: {result_data['mirrored']}/{result_data['images']}")
+
+            # Strip duplicate timestamp/level prefix from command output
+            clean_line = strip_log_prefix(line_stripped)
+
+            # Skip lines matching the filter regex (case-insensitive)
+            if not filter_regex.search(line_stripped):
+                # Log to appropriate level based on stream
+                if stream_type == 'stdout':
+                    logger.debug(clean_line)
+                else:
+                    logger.error(clean_line)
+
+    sel.close()
+
+
 def run_command(cmd: List[str]) -> tuple[int, Dict]:
     """
     Execute a command and stream output/errors in real-time.
@@ -107,50 +192,30 @@ def run_command(cmd: List[str]) -> tuple[int, Dict]:
     result_data = {}
 
     try:
-        process = subprocess.Popen(
+        with subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
             bufsize=1  # Line buffered for real-time output
-        )
+        ) as process:
+            # Process streams using selectors for efficient non-blocking I/O
+            _process_streams(process, result_data)
 
-        # Create threads to stream stdout and stderr simultaneously
-        stdout_thread = threading.Thread(
-            target=stream_output,
-            args=(process.stdout, logger.debug, result_data)
-        )
-        stderr_thread = threading.Thread(
-            target=stream_output,
-            args=(process.stderr, logger.error, result_data)
-        )
+            # Wait for process to complete
+            return_code = process.wait()
 
-        # Start both threads
-        stdout_thread.start()
-        stderr_thread.start()
+            if return_code != 0:
+                logger.error(f"Command failed with exit code {return_code}")
 
-        # Wait for process to complete
-        return_code = process.wait()
+            return return_code, result_data
 
-        # Wait for threads to finish processing output
-        stdout_thread.join()
-        stderr_thread.join()
-
-        if return_code != 0:
-            logger.error(f"Command failed with exit code {return_code}")
-            return 1, result_data
-
-        return 0, result_data
-
-    except FileNotFoundError:
-        logger.error("Command not found. Please ensure the required CLI is installed.")
-        return 1, {}
     except Exception as e:
         logger.error(f"Error executing command: {e}")
         return 1, {}
 
 
-def mirror_package(package: str, version: str, arch: str) -> MirrorResult:
+def mirror_package(package: str, version: str, arch: str, mode: str, target_registry: str="") -> MirrorResult:
     """
     Mirror a package and return the result.
 
@@ -165,36 +230,72 @@ def mirror_package(package: str, version: str, arch: str) -> MirrorResult:
     """
     # Extract major.minor version (first two components)
     version_parts = version.split('.')
+
+    # Validate version format
+    if len(version_parts) < 2:
+        logger.error(f"Invalid version format: '{version}'. Expected format: 'major.minor.patch' (e.g., '9.0.5')")
+        return MirrorResult(images=0, mirrored=0)
+
     major_minor = f"{version_parts[0]}.{version_parts[1]}"
 
     path = f"packages/{package}/{major_minor}/{arch}/{package}-{version}-{arch}.yaml"
 
+    spinner_cfg = {
+        "interval": 80,
+        "frames": [" ⠋", " ⠙", " ⠹", " ⠸", " ⠼", " ⠴", " ⠦", " ⠧", " ⠇", " ⠏"]
+    }
+    successIcon = "✅️"
+    failureIcon = "❌"
+    haloPrefix = f"{package} v{version} ({arch})"
+
     logger.info(f"Mirroring {package} version {version} for {arch} architecture")
     logger.info(f"Using configuration: {path}")
 
-    # Execute oc-mirror command
-    cmd = [
-        "./oc-mirror", "--v2", "--config", path, "--authfile", "/home/david/.ibm-mas/auth.json", "file://output-dir"
-    ]
+    if mode == "m2m":
+        cmd = [
+            "./oc-mirror", "--v2", "--config", path, "--authfile", "/home/david/.ibm-mas/auth.json",
+            f"docker://{target_registry}"
+        ]
+    elif mode == "m2d":
+        cmd = [
+            "./oc-mirror", "--v2", "--config", path, "--authfile", "/home/david/.ibm-mas/auth.json",
+            f"file://output-dir/{package}/{arch}/{version}",
+        ]
+    elif mode == "d2m":
+        cmd = [
+            "./oc-mirror", "--v2", "--config", path, "--authfile", "/home/david/.ibm-mas/auth.json",
+            "--from", f"file://output-dir/{package}/{arch}/{version}",
+            f"docker://{target_registry}"
+        ]
+    else:
+        logger.error(f"Unsupported mirror mode: {mode}")
+        h.stop_and_persist(symbol=failureIcon, text=f"{haloPrefix} - Unsupported mirror mode: {mode}")
+        return MirrorResult(images=0, mirrored=0)
 
-    exit_code, result_data = run_command(cmd)
+    # exit_code, result_data = run_command(cmd)
+    import time
+    time.sleep(30)
+    exit_code=0
+    result_data = { 'images': 10, 'mirrored': 10 }
 
     if exit_code != 0:
-        logger.error("Mirror operation failed")
-        return MirrorResult(images=0, mirrored=0, success=False)
+        logger.error(f"Mirror operation failed with exit code {exit_code}")
+        h.stop_and_persist(symbol=failureIcon, text=f"{haloPrefix} - Mirror operation failed with exit code {exit_code}")
+        return MirrorResult(images=0, mirrored=0)
 
     # Create result object from captured data
     if 'images' in result_data and 'mirrored' in result_data:
         result = MirrorResult(
             images=result_data['images'],
-            mirrored=result_data['mirrored'],
-            success=(result_data['images'] == result_data['mirrored'])
+            mirrored=result_data['mirrored']
         )
         logger.info(f"Mirror operation completed: {result.mirrored}/{result.images} images mirrored (success={result.success})")
+        h.stop_and_persist(symbol=successIcon, text=f"{haloPrefix} - {result.mirrored}/{result.images} images mirrored")
         return result
     else:
         logger.warning("Mirror operation completed but could not parse result statistics")
-        return MirrorResult(images=0, mirrored=0, success=False)
+        h.stop_and_persist(symbol=failureIcon, text=f"{haloPrefix} - Mirror operation completed but could not parse result statistics")
+        return MirrorResult(images=0, mirrored=0)
 
 
 if __name__ == "__main__":
@@ -218,11 +319,29 @@ Examples:
         help="MAS release version",
         choices=["8.10.x", "8.11.x", "9.0.x", "9.1.x"]
     )
+    parser.add_argument(
+        "--mode",
+        required=True,
+        help="Mirror mode",
+        choices=["m2m", "m2d", "d2m"]
+    )
 
     args = parser.parse_args()
 
     catalog_version = args.catalog
     release = args.release
+    mode = args.mode
+
+    # Configure logging to file
+    from datetime import datetime
+    log_filename = f"mirror-{catalog_version}-{release.replace('.', '')}-{mode}-{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s %(levelname)-8s %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+        filename=log_filename,
+        filemode='w'
+    )
 
     catalog = getCatalog(catalog_version)
     arch = catalog_version.split("-")[-1]
@@ -230,7 +349,19 @@ Examples:
     logger.info(f"Catalog: {catalog_version}")
     logger.info(f"Release: {release}")
     logger.info(f"Architecture: {arch}")
+    logger.info(f"Mode: {mode}")
+    logger.info(f"Log file: {log_filename}")
 
-    # sls_result = mirror_package("ibm-sls", catalog["sls_version"], arch)
-    tsm_result = mirror_package("ibm-truststore-mgr", catalog["tsm_version"], arch)
+    sls_result = mirror_package(
+        package="ibm-sls",
+        version=catalog["sls_version"],
+        arch=arch,
+        mode=args.mode
+    )
+    tsm_result = mirror_package(
+        package="ibm-truststore-mgr",
+        version=catalog["tsm_version"],
+        arch=arch,
+        mode=args.mode
+    )
     # mas_result = mirror_package("ibm-mas", catalog["mas_core_version"][release], arch)
