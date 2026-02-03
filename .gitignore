@@ -2,3 +2,4 @@
 oc-mirror
 .oc-mirror.log
 *.log
+/workspace
