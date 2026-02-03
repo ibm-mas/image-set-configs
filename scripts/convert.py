@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Convert script for IBM MAS CASE package operations.
-Equivalent to convert.sh bash script.
 """
 
 import csv
