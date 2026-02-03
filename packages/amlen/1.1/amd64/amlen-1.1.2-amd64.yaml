@@ -1,0 +1,8 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: quay.io/amlen/operator-bundle:1.1.2@sha256:9242f268798e522e5be5035f5f68dba1677560939d7464896fe71e8bc32be612
+  - name: quay.io/amlen/operator:1.1.3@sha256:bba8f0fa2767f2aa3a308e1d045b9dcfd1a87418471de9a59140d14593428d98
+  - name: gcr.io/kubebuilder/kube-rbac-proxy:1.1.2@sha256:0df4ae70e3bd0feffcec8f5cdb428f4abe666b667af991269ec5cb0bbda65869

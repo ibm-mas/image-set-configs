@@ -355,11 +355,17 @@ def mirror_package(package: str, version: str, arch: str, mode: str, target_regi
 
 # Package configuration: (group, arg_name, package_name, catalog_key, description)
 PACKAGE_CONFIGS = [
-    ("Required Dependencies", "sls", "ibm-sls", "sls_version", "Suite License Service"),
-    ("Required Dependencies", "tsm", "ibm-truststore-mgr", "tsm_version", "Trust Store Manager"),
+    ("Required Dependencies", "sls", "ibm-sls", "sls_version", "IBM Suite License Service"),
+    ("Required Dependencies", "tsm", "ibm-truststore-mgr", "tsm_version", "IBM Truststore Manager"),
 
-    ("Optional Dependencies", "db2u-s11", "ibm-db2uoperator-s11", "db2u_version", "Db2 Universal Operator (s11)"),
-    ("Optional Dependencies", "db2u-s12", "ibm-db2uoperator-s12", "db2u_version", "Db2 Universal Operator (s12)"),
+    ("Optional Dependencies", "amlen", "amlen", "amlen_extras_version", "Eclipse Amlen"),
+
+    ("Optional Dependencies", "aiservice", "ibm-aiservice", "aiservice_version", "IBM Maximo AI Service"),
+    ("Optional Dependencies", "data-dictionary", "ibm-data-dictionary", "dd_version", "IBM Data Dictionary"),
+
+    ("Optional Dependencies", "db2u-s11", "ibm-db2uoperator-s11", "db2u_version", "IBM Db2 Universal Operator (s11)"),
+    ("Optional Dependencies", "db2u-s12", "ibm-db2uoperator-s12", "db2u_version", "IBM Db2 Universal Operator (s12)"),
+
 
     # TODO: Support CP4D ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
     # TODO: Support CP4D - WSL ("MAS", "manage", "mongodb-ce", "mas_manage_version", "MongoDb (CE)"),
@@ -375,7 +381,7 @@ PACKAGE_CONFIGS = [
     ("MAS", "iot", "ibm-mas-iot", "mas_iot_version", "IoT"),
     ("MAS", "facilities", "ibm-mas-facilities", "mas_facilities_version", "Facilities"),
     ("MAS", "manage", "ibm-mas-manage", "mas_manage_version", "Manage"),
-    # TODO: Support ICD ("MAS", "manage", "ibm-mas-manage", "mas_manage_version", "Manage"),
+    ("MAS", "manage-icd", "ibm-mas-manage-icd", "mas_manage_version", "Manage (ICD)"),
     ("MAS", "monitor", "ibm-mas-monitor", "mas_monitor_version", "Monitor"),
     ("MAS", "predict", "ibm-mas-predict", "mas_predict_version", "Predict"),
     ("MAS", "optimizer", "ibm-mas-optimizer", "mas_optimizer_version", "Optimizer"),
@@ -476,7 +482,7 @@ Examples:
         # Get version from catalog - handle both direct keys and release-specific keys
         if catalog_key in ["db2u_version"]:
             version = catalog[catalog_key].split("+")[0]
-        elif catalog_key in ["sls_version", "tsm_version"]:
+        elif catalog_key in ["sls_version", "tsm_version", "amlen_extras_version", "dd_version"]:
             version = catalog[catalog_key]
         else:
             version = catalog[catalog_key][release]
