@@ -1,0 +1,17 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/db2u/db2u.auxiliary.auth:s12.1.2.0-350-s390x@sha256:6b136fed8f99821e9ed619ea976ca7d0d77119993c86eb797eabd46b43a8ea47
+  - name: icr.io/db2u/db2u.instdb.restricted:s12.1.2.0-350-s390x@sha256:6817c2898b776f3fc9144eaa55a6b7997841b4b346c61d944b785184d2a1896a
+  - name: icr.io/db2u/db2u.instdb:s12.1.2.0-350-s390x@sha256:17faa1b0f40d6b4b637338e18efc16998b12c310c60abcb4ca6d718bc1a9ceb7
+  - name: icr.io/db2u/db2u.logstreaming.fluentd:s12.1.2.0-350-s390x@sha256:6704864ce261166b447805b339fb6df1f31e16c5c1ff5673d95ac8763f3f8de8
+  - name: icr.io/db2u/db2u.mustgather:s12.1.2.0-350-s390x@sha256:2fc0f68990ab6d2787bdbff4e491970da7bbaeed04656d209365c244ced3364b
+  - name: icr.io/db2u/db2u.rest:s12.1.2.0-350-s390x@sha256:f6fd114e37af8a2aef05a8290e009b963995805e3a33e05c678a92d4fc1b952a
+  - name: icr.io/db2u/db2u.restricted:s12.1.2.0-350-s390x@sha256:5ebfee01970174aa22cedf6ec70e602a75348686b7226b40c3e5e497ac0e2cc2
+  - name: icr.io/db2u/db2u.tools:s12.1.2.0-350-s390x@sha256:100a5379a85492411d5583cb786cb6d1c6371f87cab879f5358a459507810ec4
+  - name: icr.io/db2u/db2u.update.image:s12.1.2.0-350-s390x@sha256:b10a54bff3a89323f11a033495dc26f7e3ed31b20b0723f4524b7aef53087052
+  - name: icr.io/db2u/db2u.veleroplugin:s12.1.2.0-350-s390x@sha256:7e89f93fe5b4567e69fa0f66ea5a8651c8a66f011f01a28950b2723665250eff
+  - name: icr.io/db2u/db2u:s12.1.2.0-350-s390x@sha256:422c51fa4708b066ec074421d8159d4a190c0da68e386828e023abd7e9ed9938
+  - name: icr.io/db2u/etcd:s12.1.2.0-350-s390x@sha256:8ee07cf7da4bf3b2b18d2ba6943a60989bb33557419775b7a61b05367373ebc7

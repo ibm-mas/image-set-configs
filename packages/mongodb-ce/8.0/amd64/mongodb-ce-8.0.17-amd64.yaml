@@ -1,0 +1,12 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: quay.io/mongodb/mongodb-kubernetes-operator:0.12.0@sha256:c98909f8c5e0871b9b166180e1f932c2e33a79e495e4005946109fd731386a25
+  - name: quay.io/mongodb/mongodb-kubernetes-operator-version-upgrade-post-start-hook:1.0.9@sha256:71aa85ff8cc45c245fef869d6027db47d047d29eac3e5e2a5802e36ed5a97196
+  - name: quay.io/mongodb/mongodb-agent:108.0.2.8729-1@sha256:a7d1ec1850ebe4e8c3428247aaf2a41e4f2c05d6f79e3cbcbf7fb5662bafb038
+  - name: quay.io/mongodb/mongodb-kubernetes-readinessprobe:1.0.22@sha256:a02a605c3e07b660650458034b059423c6dacf89f57b839fe78005d3ea547c30
+  - name: quay.io/ibmmas/mongo:8.0.17-ubi8-20251228T080804Z@sha256:79a7518a5670f7ecf994556c3579b0e8405795c9d56a32da1f95ba2454f9aecf
+
+# Made with Bob

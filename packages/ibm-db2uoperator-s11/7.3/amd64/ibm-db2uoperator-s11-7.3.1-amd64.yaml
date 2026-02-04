@@ -1,0 +1,27 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/ibm-db2uoperator-bundle:7.3.1-16790-dev@sha256:af71d42913870c57fbf604f1bbece7423c2052107b5f01f0501716be1194f0ec
+  - name: icr.io/cpopen/ibm-db2uoperator-bundle:7.3.1-16793-dev@sha256:c60ff5795d4e2c399a46fcd6b14a6ea1fd81b78de4615af4ffc8e4c9e8aeb299
+  - name: icr.io/db2u/db2u.auxiliary.auth:11.5.9.0-365-amd64@sha256:71ec90648bd6dbb7b88da1f3af595240eab469822d9f732f336cd23b299625c2
+  - name: icr.io/db2u/db2u.db2wh.restricted.v2:11.5.9.0-365-amd64@sha256:8b003f10b0140a46350aacbc5c9b56a70af208b54204997222d8e8cd309cd3a1
+  - name: icr.io/db2u/db2u.db2wh:11.5.9.0-365-amd64@sha256:b250f59b87417a70b326a3efc1f965133294c7e0ad51e0c8abd724e27c63e93c
+  - name: icr.io/db2u/db2u.instdb.restricted.v2:11.5.9.0-365-amd64@sha256:88524f6a4c81af829a37e71ea96123c7dddff299cc23a6b1fd97748db2a770fd
+  - name: icr.io/db2u/db2u.instdb.restricted:11.5.9.0-365-amd64@sha256:0546057aac0801129c71e208190fbf1abaa7ed92812a4f738286e158a68bfb85
+  - name: icr.io/db2u/db2u.instdb:11.5.9.0-365-amd64@sha256:1a23baa20222b1f7bcbe8be17be4d98f1f5bc99c078babe1656569108c1c8f9a
+  - name: icr.io/db2u/db2u.logstreaming.fluentd:11.5.9.0-365-amd64@sha256:cd5a3a6d0a5e0420bccdeb1153f33ac07f7e99e5b4215cc79a5e59d3384c0b65
+  - name: icr.io/db2u/db2u.mustgather:11.5.9.0-365-amd64@sha256:9349af38aab9ba04a4e4255526ddf7cd4836b0b75503a6c1f324388f65382d59
+  - name: icr.io/db2u/db2u.qrep:standalone-11.5.9.0-365-amd64@sha256:009fd80fbbba4de745ab8404a98f992abc2163dacf5e43e65ed6ddded1e442e5
+  - name: icr.io/db2u/db2u.rest:11.5.9.0-365-amd64@sha256:c3bd73e4bed631ccbea6a3922ba2b660386ca41d3e9dcd0101329a94de398711
+  - name: icr.io/db2u/db2u.restricted.v2:11.5.9.0-365-amd64@sha256:eb813fc799750768b60da5cf555f444365db9a7aef73207bb7a56f4fc3605365
+  - name: icr.io/db2u/db2u.restricted:11.5.9.0-365-amd64@sha256:4253bf8d53b24db7a897afc5db32aa8e0d87eb6956f738e4e13460a85b9eafac
+  - name: icr.io/db2u/db2u.tools.restricted.v2:11.5.9.0-365-amd64@sha256:9fe09169920878135f79b0c728eb65a58f75baa58413de11e71835ca3f460af6
+  - name: icr.io/db2u/db2u.tools:11.5.9.0-365-amd64@sha256:69c799d75094c0112363b545bcf66622e63d630c01067342f70d1cf03fe850ea
+  - name: icr.io/db2u/db2u.update.image:11.5.9.0-365-amd64@sha256:0baf1b88ced9d38e4c28a77b5a00355e8acb9d01d34f50ad1da3b64f3f0a952d
+  - name: icr.io/db2u/db2u.veleroplugin:11.5.9.0-365-amd64@sha256:4208cc432d68c713d7a68efd5ec7ec8327f2bf0fe37d5192099b65f819d4743c
+  - name: icr.io/db2u/db2u:11.5.9.0-365-amd64@sha256:aa7bc14234d8a84c0f6888517dabfc1f1d230972ab9258bbccf6545afd9b756c
+  - name: icr.io/db2u/etcd:11.5.9.0-365-amd64@sha256:4ac788b6fb1a7cd4d96c8c4d730c105e26c1d21da43d2c197618235b254c814c
+  # The norootsquash image is primarily used to support ibmc storageclasses in IBMCloud
+  - name: cp.icr.io/cp/cpd/norootsquash:3.0-amd64@sha256:5dbe9310d15cbe452f6099017defd411eeb6eebb2fecea5d99463227e2518574

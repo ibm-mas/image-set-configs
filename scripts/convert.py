@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Convert script for IBM MAS CASE package operations.
-Equivalent to convert.sh bash script.
 """
 
 import csv
@@ -63,16 +62,23 @@ def generate_iscs(case_name, case_versions, architectures=["amd64", "ppc64le", "
             generate_isc(case_name, case_version, arch, include_group, exclude_group, child_name)
 
 
-def generate_isc(case_name, case_version, arch="amd64", include_group=None, exclude_group=None, child_name=None) -> None:
+def generate_isc(case_name, case_version, arch="amd64", include_group=None, exclude_group=None, child_name=None, db2_variant=None) -> None:
     """Generate image set configuration by executing oc ibm-pak commands."""
 
     # Extract major.minor version (first two components)
     version_parts = case_version.split('.')
     major_minor = f"{version_parts[0]}.{version_parts[1]}"
 
-    output_path = f"packages/{case_name}/{major_minor}/{arch}/{case_name}-{case_version}-{arch}.yaml"
-    if child_name is not None:
-        output_path = f"packages/{case_name}/extras/{child_name}/{major_minor}/{arch}/{case_name}-{case_version}-{arch}.yaml"
+    # Strip extended semver (everything after '+') for file naming
+    file_version = case_version.split('+')[0]
+
+    # Handle DB2 operator variants (s11/s12) and ICD
+    effective_case_name = case_name
+    if db2_variant:
+        effective_case_name = f"{case_name}-{db2_variant}"
+    if child_name:
+        effective_case_name = f"{case_name}-{child_name}"
+    output_path = f"packages/{effective_case_name}/{major_minor}/{arch}/{effective_case_name}-{file_version}-{arch}.yaml"
 
     images_csv_path = os.path.expanduser(
         f"~/.ibm-pak/data/cases/{case_name}/{case_version}/{case_name}-{case_version}-images.csv"
@@ -108,6 +114,19 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
             digest = row[3]
             architecture = row[6]
             groups=row[11]
+
+            # Apply DB2 variant filtering if specified
+            if db2_variant:
+                # Filter based on tag prefix (handles "s11.", "11.", "standalone-11." formats)
+                if db2_variant == "s11":
+                    # For s11 variant: exclude images with s12, 12, or standalone-12 prefix
+                    if tag.startswith("s12.") or tag.startswith("12.") or tag.startswith("standalone-12."):
+                        continue
+                elif db2_variant == "s12":
+                    # For s12 variant: exclude images with s11, 11, or standalone-11 prefix
+                    if tag.startswith("s11.") or tag.startswith("11.") or tag.startswith("standalone-11."):
+                        continue
+
             image_fqn = dict(
                 name=f"{registry}/{name}:{tag}@{digest}"
             )
@@ -115,13 +134,23 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
                 isc["mirror"]["additionalImages"].append(image_fqn)  # pyright: ignore
 
     if len(isc["mirror"]["additionalImages"]) > 0:  # pyright: ignore
-        if child_name is not None:
-            os.makedirs(os.path.join("packages", case_name, "extras", child_name, major_minor, arch), exist_ok=True)
-        else:
-            os.makedirs(os.path.join("packages", case_name, major_minor, arch), exist_ok=True)
+        # Sort additionalImages by the name field
+        isc["mirror"]["additionalImages"].sort(key=lambda x: x["name"])  # pyright: ignore
+
+        os.makedirs(os.path.join("packages", effective_case_name, major_minor, arch), exist_ok=True)
 
         with open(output_path, 'w') as file:
             yaml.dump(isc, file, indent=2)
+
+
+def generate_db2_iscs(case_versions, architectures=["amd64", "ppc64le", "s390x"], include_group=None) -> None:
+    """Generate separate ISCs for DB2 operator s11 and s12 variants."""
+    for case_version in case_versions:
+        for arch in architectures:
+            # Generate s11 variant (excludes s12 images)
+            generate_isc("ibm-db2uoperator", case_version, arch, include_group, None, None, "s11")
+            # Generate s12 variant (excludes s11 images)
+            generate_isc("ibm-db2uoperator", case_version, arch, include_group, None, None, "s12")
 
 if __name__ == "__main__":
     # Truststore Mgr
@@ -205,17 +234,22 @@ if __name__ == "__main__":
     # ], include_group="ibmmasMaximoIT", child_name="icd")
 
     # Maximo Visual Inspection
-    generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
-        "8.8.0", "8.8.1", "8.8.2", "8.8.3", "8.8.4"
-    ])
-    generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
-        "8.9.0", "8.9.1", "8.9.2", "8.9.3", "8.9.4", "8.9.5", "8.9.6", "8.9.7", "8.9.8", "8.9.9", "8.9.10",
-        "8.9.11", "8.9.12", "8.9.13", "8.9.14", "8.9.15", "8.9.16", "8.9.17", "8.9.18", "8.9.19"
-    ])
-    generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
-        "9.0.0", "9.0.1", "9.0.2", "9.0.3", "9.0.4", "9.0.5", "9.0.6", "9.0.7", "9.0.8", "9.0.9", "9.0.10",
-        "9.0.11", "9.0.12", "9.0.13", "9.0.14", "9.0.15", "9.0.16"
-    ])
-    generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
-        "9.1.0", "9.1.1", "9.1.2", "9.1.3", "9.1.4", "9.1.5", "9.1.6", "9.1.7"
-    ])
+    # generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
+    #     "8.8.0", "8.8.1", "8.8.2", "8.8.3", "8.8.4"
+    # ])
+    # generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
+    #     "8.9.0", "8.9.1", "8.9.2", "8.9.3", "8.9.4", "8.9.5", "8.9.6", "8.9.7", "8.9.8", "8.9.9", "8.9.10",
+    #     "8.9.11", "8.9.12", "8.9.13", "8.9.14", "8.9.15", "8.9.16", "8.9.17", "8.9.18", "8.9.19"
+    # ])
+    # generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
+    #     "9.0.0", "9.0.1", "9.0.2", "9.0.3", "9.0.4", "9.0.5", "9.0.6", "9.0.7", "9.0.8", "9.0.9", "9.0.10",
+    #     "9.0.11", "9.0.12", "9.0.13", "9.0.14", "9.0.15", "9.0.16"
+    # ])
+    # generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
+    #     "9.1.0", "9.1.1", "9.1.2", "9.1.3", "9.1.4", "9.1.5", "9.1.6", "9.1.7"
+    # ])
+
+    # DB2 Operator - Generate separate s11 and s12 variants
+    # generate_db2_iscs(case_versions=[
+    #     "7.3.1+20250821.161005.16793", "7.2.0+20250522.212407.15144"
+    # ], include_group="ibmdb2u-standalone")
