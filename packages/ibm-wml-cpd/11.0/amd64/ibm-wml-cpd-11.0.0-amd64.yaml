@@ -1,0 +1,36 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/cpd/etcd-ubi:5.2.0.20@sha256:847222f708b87ecfe34c5be90b315487a4e456fcce5ef20dd0a546de911b0196
+  - name: cp.icr.io/cp/cpd/kubectlclient:5.2.0.23@sha256:ff2ed91df89c5c34aa7e9d731d95627fe8875fdea2ef1c6803ccd39b061ce897
+  - name: cp.icr.io/cp/cpd/serving-runtime-sidecar:5.2.0.60@sha256:4da9f4ca5e8bfe601fb14c85dfba292d50d7e9c378e141c2ec0cd0598a9cbba7
+  - name: cp.icr.io/cp/cpd/wml-autoai-kb:5.2.0.29@sha256:a7e79a7e920835e7acbc1453a342c4a6f25bad5a59ed17c55c92e9885b1b7a01
+  - name: cp.icr.io/cp/cpd/wml-autoai-rag:5.2.0.9@sha256:9a765e9343727bf0b74159c38ef5c49289bf1fb169509cecfac5cc82e7e7e64a
+  - name: cp.icr.io/cp/cpd/wml-autoai-ts:5.2.0.35@sha256:084a60f9a7645ce41c3133cb15edc0b4ed09e9547ea677646ffb86ccf531292a
+  - name: cp.icr.io/cp/cpd/wml-dep-init-utils:5.2.0.43@sha256:2099c96a723db183edac4fed23f045ad7987d0dfea04acd501c1224260ff00da
+  - name: cp.icr.io/cp/cpd/wml-dep-rshiny-24.1-r4.3-ms:5.2.0.61@sha256:2eb9988d68a214765a2cc5b2075f1ab22f343127c4c62c1005b74ffc7cabcc27
+  - name: cp.icr.io/cp/cpd/wml-dep-rt-241-py:5.2.0.215@sha256:b283395f4867bdf729b402a8ed278b2ddc36f11dfb61e9ce6acf2400a789a981
+  - name: cp.icr.io/cp/cpd/wml-dep-rt-241-pygpu:5.2.0.215@sha256:72a00cdd40c4f9a66e75474bcc8bd9e27e768448fd433e91bb67bdaf6f416375
+  - name: cp.icr.io/cp/cpd/wml-dep-rt-241-r43:5.2.0.219@sha256:b016a8e4eaee0f5237f0f7a88a8e7bc83684fe9393cb1be82670ea45a17daaa2
+  - name: cp.icr.io/cp/cpd/wml-dep-rt-251-py:5.2.0.220@sha256:12f0f79c9068b6aea167c32f52fcedcdeb2ca09618be04242de2e607d19a8196
+  - name: cp.icr.io/cp/cpd/wml-dep-rt-251-r44:5.2.0.219@sha256:c3560268d83ff9a9d15abb6ac06eef3b4a0386e8f563928164c9f667b931c98a
+  - name: cp.icr.io/cp/cpd/wml-deployment-agent:5.2.0.10@sha256:1f87911d80b871a7db4baa0fc90ad2086d34fabe03c61f11ca07e9e537acea88
+  - name: cp.icr.io/cp/cpd/wml-deployment-envoy:5.2.0.27@sha256:73b887c118c45bd4af1cd039eeefb61c86e390ae58c953d835060267e9d0ace9
+  - name: cp.icr.io/cp/cpd/wml-deployment-manager:5.2.0.238@sha256:a774190dbb9169838c4e23f76ebea99eee5bbdd7773c4863727058a5333e028d
+  - name: cp.icr.io/cp/cpd/wml-dl-coordinator:5.2.0.5@sha256:8715237a767051339aeda74d336e31bd0637f07c0e0c8de8e9f26358cc8bf928
+  - name: cp.icr.io/cp/cpd/wml-dl-hyperopt:5.2.0.3@sha256:c9b8669aa1b879623d767384dbb2584327689decc753738193dba31e42ccc667
+  - name: cp.icr.io/cp/cpd/wml-dl-job-monitor:5.2.0.5@sha256:93add2dac77651757db332568c610390c33d13a278ccbfccfe45d4706364d007
+  - name: cp.icr.io/cp/cpd/wml-os-runtimes-do:1.0_cp4d_v5.2_b35@sha256:012f5d111f80768c77ac92684706bcb8d1932d0d243c52226679c91f719c40d3
+  - name: cp.icr.io/cp/cpd/wml-post-upgrade-cleanup-deployments:5.2.0.23@sha256:60b579a597677b123b93766591cf5e318e25e3e6c7a963dcf4d7795e29b433d5
+  - name: cp.icr.io/cp/cpd/wml-preinstall-secret:5.2.0.16@sha256:e30745bd45196306bef157fd7a199f804dd28131aa337118dfed4da2a1f06fd2
+  - name: cp.icr.io/cp/cpd/wml-rt-bd-spss18.1:5.2.0.25@sha256:cbecfd496569b243fefd7f9d803fdd8c450e662677bc4cce951a11f6a08054e8
+  - name: cp.icr.io/cp/cpd/wml-rt-mllib3.4:5.2.0.46@sha256:1ef5f29ddfe8b7860dafe992bdf3af57281125430adbdeb57e93c3170823166e
+  - name: cp.icr.io/cp/cpd/wml-rt-mllib3.5:5.2.0.49@sha256:f44fcd2a173dc4552849b869de879e4bcb3bd69877e35347715e3942758b2ccb
+  - name: cp.icr.io/cp/cpd/wml-rt-od-spss18.1:5.2.0.25@sha256:7a517a3a8ce162fa94cc6799edced770618b98979d3e5464ac03626efc8a0084
+  - name: cp.icr.io/cp/cpd/wmlrepositoryv4go:5.2.0.109@sha256:baf26d9c328d4087b567707575420ee2035060be388e36f4c26e4da0532e175f
+  - name: cp.icr.io/cp/cpd/wmltrainingservicehydra:5.2.0.23@sha256:c168c5ec23eea05b9792e45127b750cc13ff241e60da9819122bb2bbfe364e5e
+  - name: icr.io/cpopen/ibm-cpd-wml-operator-bundle:11.0.0-20250530.193146@sha256:1f756292cfd2c4349040e18ff67042f8a23797c7c0ff1bf377f5759aaf438eac
+  - name: icr.io/cpopen/ibm-cpd-wml-operator-catalog:11.0-20250530.193146@sha256:ae38775f1c40528609a34d86ea664ffd4bdc2e7afd320786a0353d8f553577c8
+  - name: icr.io/cpopen/ibm-cpd-wml-operator:11.0.0-20250530.193146@sha256:cab28e4c0a4387e013e68ded35960495d2c03ea8f4e9d7af2374c3725206082c
