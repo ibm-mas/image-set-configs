@@ -1,0 +1,16 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/cpd/artifacts:2.2.197@sha256:54013e618dee02daff24c0de8602e26a094bf162a57da032e7ad2ce48de7fdae
+  - name: cp.icr.io/cp/cpd/ca-cpd-addon-translation:v28.0.0-10054@sha256:6135e0320af3099d8c63362f50ad8640b9604f1a2c0e25e62c46ccd4a9def0ca
+  - name: cp.icr.io/cp/cpd/ca-cpd-cm:12.1.0-2505071624@sha256:0477cd08fad70c2e71e3421ac86b6685757211bcb9ae7616f58b7b20a9d74514
+  - name: cp.icr.io/cp/cpd/ca-cpd-reporting:12.1.0-2505071743@sha256:a24bc09c7a85956d7b41c27a681b27ce612ffadf676b97b6adac81daa63edd85
+  - name: cp.icr.io/cp/cpd/ca-cpd-rest:12.1.0-2505071624@sha256:658110f661af05c8e8150f9c34ad60516b921ac85447b2d49b7c8854e22a947e
+  - name: cp.icr.io/cp/cpd/ca-cpd-smarts:12.1.0-2505071624@sha256:b2ceb5e8033a092081c52eabe6e167cc97bbbea3f58ee92d5d68a54c1174682a
+  - name: cp.icr.io/cp/cpd/ca-cpd-ubi-lite:12.1.0-2505051005@sha256:58df16c67272701b39b047e4ced6301dd672943a093404928ed8122aaa3853a3
+  - name: cp.icr.io/cp/cpd/ibm-cognos-addon-sp:2.0.200@sha256:7ade2f4f916e1332b8e51783b707d28bbb9a6644720bd05cdf5cf1a8ad7ee6d9
+  - name: icr.io/cpopen/ibm-ca-operator-bundle:v28.0.0-10054@sha256:a5902d5c0dbbd254cef0f6905a3ec69dbcc398acfbb674097aa74a97bd060f24
+  - name: icr.io/cpopen/ibm-ca-operator-catalog:v28.0.0-10054@sha256:3586532566066d036066634ab04855414b17524e0ed8753de644e306e1787226
+  - name: icr.io/cpopen/ibm-ca-operator:v28.0.0-10054@sha256:e665665133a853b391ecc7f585ad67d0289010cffd1e214eba41ed0c8a4c0f32
