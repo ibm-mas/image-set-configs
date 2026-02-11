@@ -130,7 +130,9 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
             image_fqn = dict(
                 name=f"{registry}/{name}:{tag}@{digest}"
             )
-            if architecture == arch and groups != exclude_group and (include_group is None or groups == include_group):
+
+            # Note: not all IBM products properly define the architecture field so we need to also match "" as amd64
+            if (architecture == arch or (arch == "amd64" and architecture == "")) and groups != exclude_group and (include_group is None or groups == include_group):
                 isc["mirror"]["additionalImages"].append(image_fqn)  # pyright: ignore
 
     if len(isc["mirror"]["additionalImages"]) > 0:  # pyright: ignore
@@ -253,3 +255,28 @@ if __name__ == "__main__":
     # generate_db2_iscs(case_versions=[
     #     "7.3.1+20250821.161005.16793", "7.2.0+20250522.212407.15144"
     # ], include_group="ibmdb2u-standalone")
+
+    # generate_iscs(case_name="ibm-aiservice", case_versions=[
+    #     "9.1.6", "9.1.7", "9.1.9", "9.1.10"
+    # ])
+
+    generate_iscs(case_name="ibm-cp-common-services", case_versions=[
+        "4.11.0", "4.13.0"
+    ])
+
+    generate_iscs(case_name="ibm-zen", case_versions=[
+        "6.2.0+20250530.152516.232"
+    ])
+
+    generate_iscs(case_name="ibm-cp-datacore", case_versions=[
+        "5.2.0+20250709.170324"
+    ])
+
+    generate_iscs(case_name="ibm-licensing", case_versions=[
+        "4.2.17"
+    ])
+
+    generate_iscs(case_name="ibm-ccs", case_versions=[
+        "11.0.0+20250605.130237.468"
+    ])
+
