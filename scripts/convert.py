@@ -169,6 +169,10 @@ if __name__ == "__main__":
         "3.10.2", "3.10.3", "3.11.0", "3.11.1", "3.12.0", "3.12.1", "3.12.2", "3.12.3", "3.12.4", "3.12.5"
     ])
 
+    # Data Dictionary
+    # -------------------------------------------------------------------------
+    generate_iscs(case_name="ibm-data-dictionary", case_versions=[ "1.1.21" ])
+
     # Maximo Application Suite Core Platform
     # -------------------------------------------------------------------------
     generate_iscs(case_name="ibm-mas", architectures=["amd64"], case_versions=[
@@ -259,7 +263,7 @@ if __name__ == "__main__":
     ], include_group="ibmdb2u-standalone")
 
     generate_iscs(case_name="ibm-aiservice", case_versions=[
-        "9.1.6", "9.1.7", "9.1.9", "9.1.10"
+        "9.1.6", "9.1.7", "9.1.9", "9.1.10", "9.1.11"
     ])
 
     # Cloud Pak for Data
