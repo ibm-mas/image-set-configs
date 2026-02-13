@@ -215,7 +215,6 @@ if __name__ == "__main__":
         "9.1.0", "9.1.1", "9.1.2", "9.1.3", "9.1.4", "9.1.5", "9.1.6", "9.1.7", "9.1.8"
     ], exclude_group="ibmmasMaximoIT")
 
-
     # Maximo Manage - ICD
     # -------------------------------------------------------------------------
     generate_iscs(case_name="ibm-mas-manage", case_versions=[
@@ -254,6 +253,48 @@ if __name__ == "__main__":
     ])
     generate_iscs(case_name="ibm-mas-visualinspection", case_versions=[
         "9.1.0", "9.1.1", "9.1.2", "9.1.3", "9.1.4", "9.1.5", "9.1.6", "9.1.7"
+    ])
+
+    # Maximo Assist
+    # -------------------------------------------------------------------------
+    # TODO: Add other assist releases and version
+    generate_iscs(case_name="ibm-mas-assist", architectures=["amd64"], case_versions=[
+        "9.1.7"
+    ])
+
+    # Maximo IoT
+    # -------------------------------------------------------------------------
+    # TODO: Add other iot releases and version
+    generate_iscs(case_name="ibm-mas-iot", architectures=["amd64"], case_versions=[
+        "9.1.7"
+    ])
+
+    # Maximo Monitor
+    # -------------------------------------------------------------------------
+    # TODO: Add other monitor releases and version
+    generate_iscs(case_name="ibm-mas-monitor", architectures=["amd64"], case_versions=[
+        "9.1.7"
+    ])
+
+    # Maximo Optimizer
+    # -------------------------------------------------------------------------
+    # TODO: Add other optimizer releases and version
+    generate_iscs(case_name="ibm-mas-optimizer", architectures=["amd64"], case_versions=[
+        "9.1.8"
+    ])
+
+    # Maximo Predict
+    # -------------------------------------------------------------------------
+    # TODO: Add other predict releases and version
+    generate_iscs(case_name="ibm-mas-predict", architectures=["amd64"], case_versions=[
+        "9.1.4"
+    ])
+
+    # Maximo Facilities
+    # -------------------------------------------------------------------------
+    # TODO: Add other facilities releases and version
+    generate_iscs(case_name="ibm-mas-facilities", architectures=["amd64"], case_versions=[
+        "9.1.7"
     ])
 
     # DB2 Operator - Generate separate s11 and s12 variants
