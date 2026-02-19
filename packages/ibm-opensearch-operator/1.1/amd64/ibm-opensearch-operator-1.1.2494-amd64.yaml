@@ -12,3 +12,6 @@ mirror:
   - name: cp.icr.io/cp/opencontent-ibm-opensearch-plugins-2.19.1:1.1.2494@sha256:aba2b48fc177b3998d300f06808d250fbbe4c8b0137551c5bd52a3f7fb8ffd89
   - name: icr.io/cpopen/opencontent-ibm-opensearch-operator-bundle:1.1.2494@sha256:b025014332d7004b5000d1770dc1e4268a5142903b98eca22285bdf5e2d73206
   - name: icr.io/cpopen/opencontent-ibm-opensearch-operator-catalog:1.1.2494@sha256:346366a807c366ea8b66a977ea5cbe917078eff9c1f6d6a5c6cd39de3668f1fb
+
+  # For some reason the operator image isn't listed in the CASE
+  - name: icr.io/cpopen/opencontent-ibm-opensearch-operator@sha256:4f8663b52da01f4c6077578b27328f7976e3fbadda1adeb4b81c41f8ebfe1599

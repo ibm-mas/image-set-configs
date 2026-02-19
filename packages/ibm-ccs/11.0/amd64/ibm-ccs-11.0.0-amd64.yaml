@@ -48,3 +48,8 @@ mirror:
   - name: icr.io/cpopen/ibm-cpd-ccs-operator-bundle:11.0.0-20250605.130237@sha256:5f1f63292f890f940d99245f28a0e3951fe003877c449e7fd063c0ad1ebc99b3
   - name: icr.io/cpopen/ibm-cpd-ccs-operator-catalog:11.0-20250605.130237@sha256:8577a8c9bc0c7cfcb44e6c4539380313e769e98cf4f860a066526e6397fb0fee
   - name: icr.io/cpopen/ibm-cpd-ccs-operator:11.0.0-20250605.130237@sha256:897a9a0e238669448e4b8128d12b9403eaeb820e353f0c63bde127f30ac1f1a1
+
+  # We seem to have the wrong version of the wdp-connect images, these are what are actually used:
+  - name: cp.icr.io/cp/cpd/wdp-connect-connection@sha256:18991b832353516349e123ecdfb0149e59e131000a9aed319946efa337a2fad7
+  - name: cp.icr.io/cp/cpd/wdp-connect-flight-svc@sha256:2b7ed88915d69ec8bef7333ba86fd9b4dbbacea3c1ffaabdfc90865aeb784568
+  - name: cp.icr.io/cp/cpd/wdp-connect-connector@sha256:438fcdce3ede772fdf46a2598c1f802f30e7391ffced5a3223cba9ae1a947545
