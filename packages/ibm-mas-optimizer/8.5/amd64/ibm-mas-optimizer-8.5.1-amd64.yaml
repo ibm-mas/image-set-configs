@@ -1,0 +1,15 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/optimizer/admin-ui:8.5.1@sha256:6cc1ad443daa534a3dcfc2336f68f4b23b6f55cc6626427d271aa1587c76c11c
+  - name: cp.icr.io/cp/optimizer/api:8.5.1@sha256:8e84fd1dec8ad6318244782f1a062d66c85684afbab8749644eb9c2070fca84e
+  - name: cp.icr.io/cp/optimizer/execution-service:8.5.1@sha256:714fd11d9fcf03d249d3b4b323c38bb31d1d41594efc5c9a9e44abd15fe76297
+  - name: cp.icr.io/cp/optimizer/ibm-mas-optimizer-appstatus:8.5.1@sha256:d476735c308547fc3fbdaddfd018bec28e688b3779e789d4ea07db08f6ad0b02
+  - name: cp.icr.io/cp/optimizer/ibm-mas-optimizer-ws:8.5.1@sha256:124a42771b88e56077436c44cbb9356671c20149e9d067becf5e6b0b9a1bb512
+  - name: cp.icr.io/cp/optimizer/usersyncagent:8.3.1@sha256:ca18e71e7201fee68b14319c64e50892cb2034d7b2ef5364a5cce753faa8beba
+  - name: cp.icr.io/cp/optimizer/workspace-init:8.5.1@sha256:2763b18dde33cf0fb967c983a339c120e0a7bc5d6f1085c8b984a0ff81ccfa4a
+  - name: icr.io/cpopen/ibm-mas-optimizer-operator-bundle:8.5.1@sha256:773f366fe386477ef2b70dafc6b8c7320bb27fb87d775890b34130cbf5174e75
+  - name: icr.io/cpopen/ibm-mas-optimizer-webhook:8.5.1@sha256:1b233579ba650b81344a8ed37442e99c44404d9f157abee6c82340ff2c701b7b
+  - name: icr.io/cpopen/ibm-mas-optimizer:8.5.1@sha256:d7ae8e3c0ed7d0b1c3f22ec0d36d671fca4c8641dad5bbb92ad9ada92e520b2c

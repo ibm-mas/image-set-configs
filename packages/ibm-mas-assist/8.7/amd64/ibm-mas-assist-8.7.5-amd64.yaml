@@ -1,0 +1,28 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/assist/assist-db-job:1.2.34@sha256:cc5043533daf80764c0f4fd7513ea9d5030228af5e16f2066b0c9fb6c3eb0d6d
+  - name: cp.icr.io/cp/assist/assist-useragent:1.3.38@sha256:2b8b11814bf02b09ec36dd11bd51bc9bedc8f9f4b498926b10b4925b6f8e6311
+  - name: cp.icr.io/cp/assist/assist-voice-gateway:1.2.28@sha256:fa6baf3be9fdaffbe7719aa1056b95411635c49b162797aafa7648d6fd3ad3d1
+  - name: cp.icr.io/cp/assist/assist-voice-management:1.2.34@sha256:462c7d6d98463f7d912f3e392ad7d276310e43690b85051974ac86a372c14089
+  - name: cp.icr.io/cp/assist/assist-voice-session-mxinspect:1.2.36@sha256:29688edd0d69ab89708fd3f3e08e1a6b24bff7f5599279d7cc26d79c9e9dc901
+  - name: cp.icr.io/cp/assist/ema-admin-console:1.3.34@sha256:2cceecafbee7d0e451b5a5af4055de23acf0e85ffb5878528e0ac6c7ca9ce562
+  - name: cp.icr.io/cp/assist/ema-anti-virus:1.3.34@sha256:5b29842fee35601a22217b2e66b58565123a7670ee359ba05343137cc0084749
+  - name: cp.icr.io/cp/assist/ema-api:1.3.48@sha256:f01435c2fc5489a04d0f8e2c0a082ec1f926d1865b873c627e7f1b1bb65300dc
+  - name: cp.icr.io/cp/assist/ema-common-util:1.3.32@sha256:e292f7d7b8ea4475c484b47f4546f99f5fe2e9646d9e99fccf8a3bcc0cb90fad
+  - name: cp.icr.io/cp/assist/ema-crawler:1.3.34@sha256:ed82627045b2ab2a62c750fb2144558205e3e9a3de8bf801bad4b8a2fc0b4a3d
+  - name: cp.icr.io/cp/assist/ema-diagnosis-engine-bn:1.3.43@sha256:a26e5b76341dcad8c9c62c778aecd57b752cdf9e9045be55b823e39d6a1eb91a
+  - name: cp.icr.io/cp/assist/ema-diagnosis-engine-dt:1.3.43@sha256:fbabb429338a6cb888d03dff362d17ff4f76f8b8798558b3d52402413887421b
+  - name: cp.icr.io/cp/assist/ema-diagnosis-engine:1.3.43@sha256:1032516a293d56db953612b57c43da5eb808cbf4fe0b41ca0d2b6726c3bd7db6
+  - name: cp.icr.io/cp/assist/ema-haproxy:1.3.32@sha256:022e6facf07468bd5d8abb8141bea43d39e579547f3fe208782de83faf860282
+  - name: cp.icr.io/cp/assist/ema-monitor:1.3.33@sha256:93439200a04ba9beb20ca81b114a9f2105c7e6329724179d3c5c9019884739d9
+  - name: cp.icr.io/cp/assist/ema-multi-tenant:1.3.31@sha256:7eceee1b940fe280d16507dd90b5a00b755608808789c71b447b0467f1abeb82
+  - name: cp.icr.io/cp/assist/ema-pg-cronjob:1.3.30@sha256:485ac2d15fd0a1cbb12743aefadb729d08985ad9447323cd04739de0c26e5391
+  - name: cp.icr.io/cp/assist/ema-redis:1.3.32@sha256:41a66afc85f1a1cf73c32fc787b03a57f61c59797195a416295a141413908bbc
+  - name: cp.icr.io/cp/assist/ema-studio:1.3.28@sha256:f8a3c75ac743a3a8fa75eb66ac1a73ad52926a719caa2a25c01fdf23a8df8728
+  - name: cp.icr.io/cp/assist/ema-technician:1.3.28@sha256:5b827777b8cd692b80548228e8a38a5722a9603e0be2d4ebc60fc1fc06d49ddd
+  - name: cp.icr.io/cp/assist/ibm-mas-assist-ws:8.7.5@sha256:d44b4dfbf67e2ff891e398b0b8d0ef839109fb4f1e47ae34103f89ee4fd1acb3
+  - name: icr.io/cpopen/ibm-mas-assist-operator-bundle:8.7.5@sha256:66956e7f382faf655cbbdc25783aef5025826c970bf98270022eeb7a3e4170ba
+  - name: icr.io/cpopen/ibm-mas-assist:8.7.5@sha256:edaa26095aaafb78287eeb0c01d3d145ea9fca03b5c497e55339db3b3f13210a

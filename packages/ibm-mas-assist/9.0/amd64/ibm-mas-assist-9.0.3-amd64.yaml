@@ -1,0 +1,21 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/assist/assist-db-job:2.0.56@sha256:384843c771d31117999885383f93bf6c8930f4e9912afb92b768cdee53a9319a
+  - name: cp.icr.io/cp/assist/assist-useragent:2.0.56@sha256:ec426f6cd97690291cb1de42cca48071d6bfe3af6f681992cb95619fe36f994d
+  - name: cp.icr.io/cp/assist/ema-admin-console:2.0.59@sha256:502d078b27269ae77c647e3a10d198341bba4837b7f46e1a13da0274eb6bce17
+  - name: cp.icr.io/cp/assist/ema-api:2.0.70@sha256:cbb4b9c398cd54e7608fe28f17271ca57eaa03186569b80ccb0e9e6bf01c734c
+  - name: cp.icr.io/cp/assist/ema-common-util:2.0.59@sha256:c8117a065cd493bae4638668728eadcc3d245395b512627c36ac5a78f41da13b
+  - name: cp.icr.io/cp/assist/ema-haproxy:2.0.59@sha256:f9c2191840e802b503b2084cd0459b558d68e783d9ddba7bd2dc2eb084127acf
+  - name: cp.icr.io/cp/assist/ema-monitor:2.0.58@sha256:d0452356015ce2fb810d462886224c3afc1b97400426bbec3f9ac21a2b291fde
+  - name: cp.icr.io/cp/assist/ema-multi-tenant:2.0.55@sha256:43dc821f98c678d39b6a9f036533189dfa93f5e1621647eb46b395782fa3db5e
+  - name: cp.icr.io/cp/assist/ema-pg-cronjob:2.0.49@sha256:afa263f33235172ecd1c034cec7539b0bcdc08943c8a46b6423e6efff4cf9065
+  - name: cp.icr.io/cp/assist/ema-redis:2.0.59@sha256:566ee9b0c91ca23d48386fb42e1e629b9c62edcbe97d4bf3570a3e048b8347d8
+  - name: cp.icr.io/cp/assist/ema-studio:2.0.56@sha256:ece283484f38ec4305c86931ca842011bc2741393527fe6611917d951a3bb6cf
+  - name: cp.icr.io/cp/assist/ema-technician:2.0.52@sha256:9eb5e2bfd91f49d50b7d3b8f7fd3c31d748aab73f44827e2e908920d732dea4b
+  - name: cp.icr.io/cp/assist/ibm-mas-assist-primary-entity:9.0.3@sha256:bf5111274e4a72a0277c48cb1fdfa8a3f8a4a63c5a439738f36023c5c74fd524
+  - name: cp.icr.io/cp/assist/ibm-mas-assist-ws:9.0.3@sha256:7ff4d5da33f2506e0fe7f25d9de9bda66e5f5ce6960ef3beb23605de46c5f97d
+  - name: icr.io/cpopen/ibm-mas-assist-operator-bundle:9.0.3@sha256:fba86c4f0e45b2a368f201bb5cfc7679064c64e22db7155908ad61f13b67ace1
+  - name: icr.io/cpopen/ibm-mas-assist:9.0.3@sha256:396a27945e245183c79502dea6633e62d97ad75dfaceb9a1499c9869360de0ec
