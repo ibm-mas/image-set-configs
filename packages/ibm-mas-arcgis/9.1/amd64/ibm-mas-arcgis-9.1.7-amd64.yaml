@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-arcgis-operator-bundle@sha256:2ff278d2b81d45ff204263e9425409eb1c8596519c38351d98ef006defc57a74
+  - name: icr.io/cpopen/ibm-mas-arcgis-operator-bundle@sha256:37352f525f375440c2db1fcdcc2dfa816bda5a284dce3b470a5d404e0c1931d7
   - name: cp.icr.io/cp/arcgis/enterprise-admin:11.5.0.6745@sha256:80c32812b076d1d5535742f2004457fe52a50b73b60bd65b900f51d5d28a54e1
   - name: cp.icr.io/cp/arcgis/enterprise-admin-tools:11.5.0.6745@sha256:488d00c9e3933d2cc37e30874ecac41221617942fcbf68724339957b826caf84
   - name: cp.icr.io/cp/arcgis/arcgis-busybox:11.5.0.6745@sha256:019aa549a779798be5efe914f7718a31bb6e11101ea0bff1ca3153c936255ce1
@@ -49,5 +49,5 @@ mirror:
   - name: cp.icr.io/cp/arcgis/tile-server:11.5.0.6745@sha256:630794e87d5ff210a07bfda7135a156389693fdc4b4b36456a113d8bf84ddaec
   - name: cp.icr.io/cp/arcgis/arcgis-nginx-web:11.5.0.6745@sha256:5f986fbbd83cad35e046e633be677e8a0adca317aba17cc9b9feff23efea94f8
   - name: cp.icr.io/cp/arcgis/webhook-processor:11.5.0.6745@sha256:a3c14a3522698efed2c46c2da635dc6d798ada4b7b34799f7e644699597ed5f7
-  - name: cp.icr.io/cp/arcgis/ibm-mas-arcgis-ws:9.1.7@sha256:94eacc2bc7fae0a024155694903ddd379c8ce77c9286062e01201fda03803b69
-  - name: icr.io/cpopen/ibm-mas-arcgis:9.1.7@sha256:a86e6bb28b935bd75d8bf2e219bb5ebda956033aa80198620545ed7b3bcdaf62
+  - name: cp.icr.io/cp/arcgis/ibm-mas-arcgis-ws:9.1.7@sha256:a1cc0f16b28cb09dc4327dd73b48846b6190918abb0fd8d4635a03efd20106c0
+  - name: icr.io/cpopen/ibm-mas-arcgis:9.1.7@sha256:d63fc84d8ce01d387b28713e5d33935d3ca465f3360243cb9252f15357d7a3e0
