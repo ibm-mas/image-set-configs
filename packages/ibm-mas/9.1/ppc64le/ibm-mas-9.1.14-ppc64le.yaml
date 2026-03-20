@@ -2,8 +2,8 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-operator-bundle@sha256:f55926033606a3ce9133c6f8474a2d1e2c245ef10f2967da01884ade37be3e91
-  - name: cp.icr.io/cp/mas/ibm-mas-suite:9.1.14-ppc64le@sha256:861e9910b4351b371c29fd6cda862cb38136f5a21fd976080b58ad83fbf13578
+  - name: icr.io/cpopen/ibm-mas-operator-bundle@sha256:ea95c7f36f3b9ac64079c3dea711b1b6cd3937634515b193c7417fea9d4f8f94
+  - name: cp.icr.io/cp/mas/ibm-mas-suite:9.1.14-ppc64le@sha256:ef425e0c0a4c485276083ac7b6ace4b2752d75672f725244e762d54c3e06b51d
   - name: cp.icr.io/cp/mas/kubectl:5.0.31-ppc64le@sha256:70c7b5d199be35b6e786a56bd511d66944cb889bd976c621e7b10044fea44005
   - name: cp.icr.io/cp/mas/ltpakeys-generator:3.3.25-ppc64le@sha256:a674ae26e4f6767f9db7b056737b519655f520bc124a8d7c180fd20d3fdd9775
   - name: cp.icr.io/cp/mas/coreapi:25.23.26-ppc64le@sha256:4c81a6a7654ce927f966ae68e76c8051a8f6b71e04615ed4e9b85e06557e8cd8
@@ -20,7 +20,7 @@ mirror:
   - name: cp.icr.io/cp/mas/monagent-mas:1.10.71-ppc64le@sha256:1002874be34a36f65d4a23c50272b6e45a55f7623953df727dc4baed099e2818
   - name: cp.icr.io/cp/mas/importuser:4.3.56-ppc64le@sha256:b955880147c1ddebc5a9a9da7095cb436ebae6331e54e556364579aea63ba109
   - name: cp.icr.io/cp/mas/datamodel-migration:3.0.46-ppc64le@sha256:ffc998b1598157df2217b61a80bb09740feef3265cfb86151280ad0424ba8037
-  - name: cp.icr.io/cp/mas/ibm-mas-entitymgr:9.1.14-ppc64le@sha256:843593ce8f7368e0a5ec787a54b6a91016ce76c9068ddcb848abda923d2dc7a1
+  - name: cp.icr.io/cp/mas/ibm-mas-entitymgr:9.1.14-ppc64le@sha256:d13f53016930f3b5bde82e8c046e6b351045066825cdd9b88b03538d6c0cd6ae
   - name: cp.icr.io/cp/mas/oidcclient-reg:2.5.50-ppc64le@sha256:2e7ab411fa352c9a5546209b92251b0e497f7fa1a549e42f2418c63485454016
   - name: cp.icr.io/cp/mas/coreidp:12.2.10-ppc64le@sha256:4ed2d7332121d65446e98b7d54b5d5175172ff0b6130df18455418ee4ac898ce
   - name: cp.icr.io/cp/mas/coreidp-login:6.3.33-ppc64le@sha256:9e17e606a016c195e3806d8ec956af02ad5555cdaf62c2ff8c16e9a7355eda51
@@ -37,4 +37,4 @@ mirror:
   - name: cp.icr.io/cp/mas/push-notification-service:2.6.29-ppc64le@sha256:9d8720e2da0526246579521893afed17a85118638b65393a32e2d1cb2035ebeb
   - name: cp.icr.io/cp/mas/licensing-sync:1.3.42-ppc64le@sha256:acb9f21f1e694925360539a6c2cd90d8ef5c332e2553bd18c93a6fa5d6325309
   - name: cp.icr.io/cp/mas/licensing-mediator:4.4.67-ppc64le@sha256:7471ac320dc8c9f7f60439aef7fccbeb618a0254f2688c9fbfbaa72fe351f481
-  - name: icr.io/cpopen/ibm-mas:9.1.14-ppc64le@sha256:827d8c6e419306ae9efe1c1b197d89c3dcb1d50ab906563818ad9002568a7799
+  - name: icr.io/cpopen/ibm-mas:9.1.14-ppc64le@sha256:b45a9557eab53f4b381a2780e29fcaa60c9e215537d0253c918c6e6fafef98f7
