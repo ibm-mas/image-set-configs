@@ -1,0 +1,52 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: cp.icr.io/cp/mas/accapppoints:3.9.13-amd64@sha256:91a5ee71b8a75560bf896f964c3ee3d8042ba843175b336d6bd2369681b0f6b2
+  - name: cp.icr.io/cp/mas/admin-dashboard:11.12.89-amd64@sha256:66d96743ff9dde30fb18b66e5f07cfd64fcca1f1147e79cd6d9735331a725244
+  - name: cp.icr.io/cp/mas/adoptionusage-metering:1.4.11-amd64@sha256:8447427939263eb497520df5e397081428e5f02fca3d7a0b583e0faec29b7b02
+  - name: cp.icr.io/cp/mas/adoptionusage-reporter:1.14.4-amd64@sha256:8455607ba016c05aeff41c57eae548f575f559cef3181095b3dc76bb64f65299
+  - name: cp.icr.io/cp/mas/adoptionusageapi:1.16.17-amd64@sha256:176417144bc20cef7a9b7d55b6cd26ae0eeaeac1191147b91dd919a479c74cf3
+  - name: cp.icr.io/cp/mas/catalogapi:2.6.12-amd64@sha256:0d7189443a0fff6f5751dffbfabda0de2a872edefa6661d110c1edf7199f715e
+  - name: cp.icr.io/cp/mas/catalogmgr:3.3.11-amd64@sha256:7c6fda6ce79e12eaf41f6259a53ddfd3b6af67bd86b9f7f3b6534091484b9704
+  - name: cp.icr.io/cp/mas/coreapi:24.9.66-amd64@sha256:a6acfd154b4e8cd848dd72920c3fb13216b8860ca8904f90e29c0442fef5d29c
+  - name: cp.icr.io/cp/mas/coreidp-login:5.1.101-amd64@sha256:4e78560c4b484a5d147b048c2a30bf1b5c1a233cacd8414116a4b127c6eb6810
+  - name: cp.icr.io/cp/mas/coreidp:9.2.7-amd64@sha256:d35017eaeddca7e382a226aae6bafdbd4c6252ff18592448acb29f63efbe4c8b
+  - name: cp.icr.io/cp/mas/groupsync-coordinator:1.6.11-amd64@sha256:5c819b74d204a6a519e32c8799b86ee10b6ab6e1c461be43fe69b67dd0cd2292
+  - name: cp.icr.io/cp/mas/homepage:9.3.31-amd64@sha256:52561ce941ec0123ff17cadf22b794b5061f327b2560e5efdde83fbee9e619b2
+  - name: cp.icr.io/cp/mas/ibm-mas-addons:9.0.11-amd64@sha256:bd5bcfa90a3ef77561a073e454496e0576274ae48e4fda534d7057610d2ee9af
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-bas:9.0.11-amd64@sha256:bbd54353a91e8e2370f2715275b5ddac897fb16aa783f0aaf0ccdb4339dad058
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-idp:9.0.11-amd64@sha256:146dc1ec2134451d964c06d00b6254a09dc65c364be9fe2ba23eb5fa7bf93e09
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-jdbc:9.0.11-amd64@sha256:2a961a13b8c2b9a103451a31dc84c728476034f1b35609c590a13ce7d1a10cd1
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-kafka:9.0.11-amd64@sha256:1ccd6fe31ff5eb70cbc3657acea5ee3e77ad5dda923f4ef7653bb1bb5a90f5a8
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-mongo:9.0.11-amd64@sha256:87082e344fe499f79d5385056ab63b66e599012a204eefabf5e2c313114f7176
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-objectstorage:9.0.11-amd64@sha256:c5c78303ec6da320af61d109f93c015de8955373b9e4e285c3d70d7f4bd6d9b6
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-pushnotification:9.0.11-amd64@sha256:d532fe2e0492a56a65992389a63db47dd9a88ba60f2650a64ceaeaa0bd0c8f54
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-scim:9.0.11-amd64@sha256:98aaa918f06fbcdf7a71ed689d9dab2ca6d90a0947f66caf45a316f9868ffc3c
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-sls:9.0.11-amd64@sha256:19b2d0c68903aa807cb9853ccd0c897b9f615891aa91f334237192c481cc0865
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-smtp:9.0.11-amd64@sha256:29ec363af089ffcf720074385af1964d941c8bde174ca947fff8c308653d94d7
+  - name: cp.icr.io/cp/mas/ibm-mas-cfg-watsonstudio:9.0.11-amd64@sha256:e0edfaa066ea3e85598693e883ef830bb895477576e8b6029fe58cc8f3699f0c
+  - name: cp.icr.io/cp/mas/ibm-mas-coreidp:9.0.11-amd64@sha256:69736739e464d34ca2beb0e883599c266c4ed4b44a48c7ac86ef870b90419e89
+  - name: cp.icr.io/cp/mas/ibm-mas-suite:9.0.11-amd64@sha256:a0bb9bfac15b360605832b2887731ed3f91ed0cc4e16fa109107872d6ede143f
+  - name: cp.icr.io/cp/mas/ibm-mas-ws:9.0.11-amd64@sha256:8246bc6f7afbbbc480909227810a16f7e27e92061bdd6f24ab3aaf774eddf717
+  - name: cp.icr.io/cp/mas/importuser:4.3.10-amd64@sha256:770a9b7a8a1a95f8b863e80ef6a4ed46f4f98c72d19738325242f2891050a5ed
+  - name: cp.icr.io/cp/mas/internalapi:9.14.38-amd64@sha256:8ec1f238c28b531e7f9c2f192ed125d6dafb0e33b85df88ec59c1d72bd678fb2
+  - name: cp.icr.io/cp/mas/kubectl:4.2.13-amd64@sha256:f72ac311f7f4482550f84a5f087b0d8a55c449483d2511f2ce77d23c62b60371
+  - name: cp.icr.io/cp/mas/licensing-mediator:4.4.7-amd64@sha256:1f96eca754f6afb5d7931d789c6bf0094309e3a4a630cb13055c0c6977cd89d5
+  - name: cp.icr.io/cp/mas/licensing-sync:1.2.11-amd64@sha256:7bc5be31e7e881ed297a95f7b1bfa7ec28fc0a3194abe5ad3e177ddc313887ed
+  - name: cp.icr.io/cp/mas/ltpakeys-generator:3.2.3-amd64@sha256:59d3832135d678636b5effd49f91d94aa3f5d94c7ecf1e149ae84d50e7424b3c
+  - name: cp.icr.io/cp/mas/milestonesapi:2.8.9-amd64@sha256:fb441d90eb6e18cc1854dabce43e8ddd2e1a856802ae5159a6d0854e87e639c8
+  - name: cp.icr.io/cp/mas/mobileapi:6.5.133-amd64@sha256:ce7a935d11f41fa6f8b6dab269878ca7c9d425208e8da17c11d87d34a12345ca
+  - name: cp.icr.io/cp/mas/monagent-mas:1.10.9-amd64@sha256:7b4ea2bda2a6734b5a564f4d6c9b7eb57f6effc40b04d1a8d889433dabb56a4d
+  - name: cp.icr.io/cp/mas/navigator:9.3.32-amd64@sha256:27321aa753459e94ea418267c2b481909c350b9698aafb70aaac45ccc2676625
+  - name: cp.icr.io/cp/mas/oidcclient-reg:2.5.7-amd64@sha256:5b9639d899332361dceb532a5676649154ebbb80f32e9bf17f7400981ec00517
+  - name: cp.icr.io/cp/mas/push-notification-service:2.5.2-amd64@sha256:9d340a5d03fc43e3f8a4b82e4e7bb1048182dc192ef5d9a682fa1287df1ceee5
+  - name: cp.icr.io/cp/mas/scimsync-agent:5.3.8-amd64@sha256:7e6f9f7eff3d08735850811e6354c9ebf2d9ace5490317ed695aabd3534ca0bc
+  - name: cp.icr.io/cp/mas/scimsync:3.2.7-amd64@sha256:ab1127c738c2efb84ed57450faf481a6c71886dac0a94df983865d44a577515b
+  - name: cp.icr.io/cp/mas/sendmailapi:1.15.10-amd64@sha256:68405eca7a14a0bdf095124f3d2460e947cb97dcbc8ce9298eaf3ef4103d559e
+  - name: cp.icr.io/cp/mas/sim-user-data-service:1.2.8-amd64@sha256:8fd4f0fc5f6ec8ef6ee80c89f62ab961f00f6ac3ea0e54b34d86b80e56ccadd9
+  - name: cp.icr.io/cp/mas/usersync-coordinator:3.4.10-amd64@sha256:1fccbb30fd940a1a1de59ad02cedb273b02b1a5d832751b6833faee9bfd63947
+  - name: cp.icr.io/cp/mas/workspace-coordinator:2.7.10-amd64@sha256:fcd2fc185f857500e8205da8fe06a59ccb784a31ae93a9491accf9d09c48a8b5
+  - name: icr.io/cpopen/ibm-mas-operator-bundle:9.0.11-amd64@sha256:a5b8e11ede5504c75ecfcef7cda2ff7c7100db1c1bdc64dc1fbaec1b3e47e8ea
+  - name: icr.io/cpopen/ibm-mas:9.0.11-amd64@sha256:e94c9f644838213dc78aa1ea41cc1f04a7c052b7ccbadbb210ea93ab9826a6f5
