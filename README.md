@@ -15,10 +15,11 @@ python3 scripts/create_iscs.py --all-catalogs
 ```
 
 The script will:
-1. Extract version information from the catalog YAML file
-2. Download CASE bundles using `oc ibm-pak get` (if not already cached)
-3. Generate ISC files in the `packages/` directory organized by product and version
-4. Process extras (MongoDB, Amlen) from ansible-devops repository
+1. Generate catalog ISC file in `catalogs/` directory (if missing)
+2. Extract version information from the catalog YAML file
+3. Download CASE bundles using `oc ibm-pak get` (if not already cached)
+4. Generate ISC files in the `packages/` directory organized by product and version
+5. Process extras (MongoDB, Amlen) from ansible-devops repository
 
 **Prerequisites:**
 - `oc` CLI with `ibm-pak` plugin installed
@@ -36,7 +37,12 @@ python scripts/create_iscs.py --catalog v9-260326-amd64
 python scripts/create_iscs.py --catalog ../python-devops/src/mas/devops/data/catalogs/v9-260326-amd64.yaml
 ```
 
-This will process the specified catalog and generate ISC files for all CASE packages and extras defined in that catalog. The script automatically resolves short catalog names to the full path in the python-devops repository.
+This will process the specified catalog and generate:
+- Catalog ISC file (e.g., `catalogs/v9-260326-amd64.yaml`) using the `catalog_digest` from the catalog data
+- ISC files for all CASE packages defined in that catalog
+- ISC files for extras (MongoDB, Amlen) from ansible-devops
+
+The script automatically resolves short catalog names to the full path in the python-devops repository.
 
 ### Process All Recent Catalogs
 ```bash
