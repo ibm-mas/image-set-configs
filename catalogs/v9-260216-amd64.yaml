@@ -1,0 +1,5 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/ibm-maximo-operator-catalog:v9-260216-amd64@sha256:4eef87dcf11f9ce3cae2396f7d41f5f7eb7a2bc2a5a8b6340ca2d1d04406eac0

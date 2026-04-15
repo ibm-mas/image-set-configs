@@ -100,6 +100,45 @@ def load_extras_file(extras_path: str) -> List[Dict]:
         return data.get('extra_images', [])
 
 
+def generate_catalog_isc(catalog_name: str, catalog_digest: str) -> None:
+    """Generate ISC for the catalog image itself."""
+
+    # Extract architecture from catalog name (e.g., v9-260430-amd64 -> amd64)
+    import re
+    match = re.match(r'v\d+-\d{6}-(.+)', catalog_name)
+    if not match:
+        print(f"Warning: Could not extract architecture from catalog name: {catalog_name}")
+        return
+
+    arch = match.group(1)
+    output_dir = "catalogs"
+    output_file = f"{catalog_name}.yaml"
+    output_path = os.path.join(output_dir, output_file)
+
+    if os.path.exists(output_path):
+        print(f"Catalog ISC {output_path} already exists. Skipping generation.")
+        return
+
+    # Create ISC with catalog image
+    isc = deepcopy(ISC_TEMPLATE)
+
+    # Remove archiveSize from catalog ISC (not needed for single image)
+    if 'archiveSize' in isc:
+        del isc['archiveSize']
+
+    catalog_image = dict(
+        name=f"icr.io/cpopen/ibm-maximo-operator-catalog:{catalog_name}@{catalog_digest}"
+    )
+    isc["mirror"]["additionalImages"].append(catalog_image)  # pyright: ignore
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    with open(output_path, 'w') as file:
+        yaml.dump(isc, file, indent=2)
+
+    print(f"Generated catalog ISC: {output_path}")
+
+
 def generate_extras_isc(extras_name: str, extras_version: str, extras_path: str) -> None:
     """Generate ISC from extras YAML file."""
 
@@ -381,6 +420,7 @@ def process_single_catalog(catalog_path: str) -> bool:
     print(f"{'='*80}")
 
     try:
+        catalog_data = load_catalog_file(catalog_path)
         catalog_versions = process_catalog(catalog_path)
         print(f"Extracted versions for {len(catalog_versions)} CASE packages from catalog\n")
     except FileNotFoundError:
@@ -389,6 +429,17 @@ def process_single_catalog(catalog_path: str) -> bool:
     except Exception as e:
         print(f"Error processing catalog file: {e}", file=sys.stderr)
         return False
+
+    # Generate catalog ISC if catalog_digest is present
+    if 'catalog_digest' in catalog_data:
+        catalog_digest = catalog_data['catalog_digest']
+        # Extract catalog name from path (e.g., v9-260430-amd64)
+        catalog_filename = os.path.basename(catalog_path)
+        catalog_name = catalog_filename.replace('.yaml', '')
+        print(f"Generating catalog ISC for {catalog_name} with digest {catalog_digest}")
+        generate_catalog_isc(catalog_name, catalog_digest)
+    else:
+        print("Warning: No catalog_digest found in catalog data file")
 
     # Track if any CASE was processed
     processed = False
