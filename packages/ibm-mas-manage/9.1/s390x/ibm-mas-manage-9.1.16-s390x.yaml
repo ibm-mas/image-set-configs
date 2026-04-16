@@ -1,5 +1,6 @@
 apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
+archiveSize: null
 mirror:
   additionalImages:
   - name: icr.io/cpopen/ibm-mas-manage-operator-bundle@sha256:f971ca183e83f746328c21b3a092b2558d6941a4f4a15bcc41da95b868b56d79
@@ -30,7 +31,6 @@ mirror:
   - name: cp.icr.io/cp/manage/extension-envizi:9.1.6-s390x@sha256:eb4cf966d9bfffc6045a6e474f48b3c23e9a3e0edc85d0ad45377886a8debb79
   - name: cp.icr.io/cp/manage/extension-health:9.1.36-s390x@sha256:aef0f2a65cf42f4297d21baee7854d1cfedf6c266c4de06280702b2123aecf49
   - name: cp.icr.io/cp/manage/extension-hse:9.1.67-s390x@sha256:97ae96c8ea838c0b9f6728b56259688b8d6aa8976d0be6461c38eba772c570bb
-  - name: cp.icr.io/cp/manage/extension-icd:9.1.49-s390x@sha256:fa81ec1a8d352816567d9b5fd7951ef4e9fa42fac65633e59a48d90386ecd92b
   - name: cp.icr.io/cp/manage/manageadmin:9.1.356-s390x@sha256:8c2dfc43e760c14c7298d2a71424cbbf0d88f2bc98078dd9eb9d93726409ddf6
   - name: cp.icr.io/cp/manage/ubi-wlp-manage:4.0.26-s390x@sha256:bdee80272db758ac347c318a83b4d0d3d03b2619cef41353e238ae15ad960505
   - name: cp.icr.io/cp/manage/extension-nuclear:9.1.20-s390x@sha256:a25cb8398ffd74305f23a69f454a9a98fc1a7329c86a6760794e8b58f3475e52
