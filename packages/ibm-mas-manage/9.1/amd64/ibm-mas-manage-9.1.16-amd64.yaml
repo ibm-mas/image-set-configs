@@ -3,7 +3,6 @@ kind: ImageSetConfiguration
 archiveSize: null
 mirror:
   additionalImages:
-  - name: cp.icr.io/cp/manage/extension-icd:9.1.49-amd64@sha256:df0b77680bf69529490d608748e360d946631ae50ddb3bc266f318fb874ac0e8
   - name: icr.io/cpopen/ibm-mas-manage-operator-bundle@sha256:c8e55bb116aa2b1942612fdda6dae43f70ab178c885de0d29684c55870763d69
   - name: cp.icr.io/cp/manage/healthext-model-engine:2.1.11-amd64@sha256:93cebfda66d1ba113aeb10e2d80567794b3e0d9efd407d68eb1a3bb041d465ea
   - name: cp.icr.io/cp/manage/image-stitching:1.1.73-amd64@sha256:6dca918d3e6f8af814893bf5f526fc751461f20b3a796d386e342f5410b65da7
