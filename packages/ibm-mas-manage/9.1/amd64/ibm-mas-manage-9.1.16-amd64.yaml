@@ -1,5 +1,6 @@
 apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
+archiveSize: null
 mirror:
   additionalImages:
   - name: icr.io/cpopen/ibm-mas-manage-operator-bundle@sha256:c8e55bb116aa2b1942612fdda6dae43f70ab178c885de0d29684c55870763d69
@@ -30,7 +31,6 @@ mirror:
   - name: cp.icr.io/cp/manage/extension-envizi:9.1.6-amd64@sha256:223b84ca435b44d70ad098cec9cb5dd04f209ab8b068ae7ce1fe174e59a09fdf
   - name: cp.icr.io/cp/manage/extension-health:9.1.36-amd64@sha256:81bb670acc13665fa9703b8bbee6223cff2abb0f5b58b01ac6868f7f26856f27
   - name: cp.icr.io/cp/manage/extension-hse:9.1.67-amd64@sha256:62638cdda9c44fda5d9b6c57d30a3237509a39af58c8a99e4e46c9205b5a1a08
-  - name: cp.icr.io/cp/manage/extension-icd:9.1.49-amd64@sha256:df0b77680bf69529490d608748e360d946631ae50ddb3bc266f318fb874ac0e8
   - name: cp.icr.io/cp/manage/manageadmin:9.1.356-amd64@sha256:f2b88e1ab622bf10becd5b2dc00e8a54cee33de8372d1a2a4355fc89ed588cbe
   - name: cp.icr.io/cp/manage/ubi-wlp-manage:4.0.26-amd64@sha256:1a6c47070d28089b35e0ff25d09d979bf67cc24db065bac1d3b414a0de0e68c8
   - name: cp.icr.io/cp/manage/extension-nuclear:9.1.20-amd64@sha256:70c336677a2e4f057b0ba4dbd60a4562aade772fe34345d48c3064ba4a21e827
