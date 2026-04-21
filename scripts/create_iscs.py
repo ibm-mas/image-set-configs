@@ -81,13 +81,11 @@ def load_catalog_file(catalog_path: str) -> Dict:
 
 
 def extract_versions_from_dict(version_dict: Dict) -> Set[str]:
-    """Extract version values from a dictionary, filtering out empty strings and pre-release versions."""
+    """Extract version values from a dictionary, including feature/pre-release versions."""
     versions = set()
     if isinstance(version_dict, dict):
         for key, value in version_dict.items():
-            # Skip feature/pre-release versions (containing 'feature' or 'pre')
-            if key and ('feature' in key.lower() or 'pre' in str(value).lower()):
-                continue
+            # Include all non-empty versions (including feature/pre-release)
             if value and value != "":
                 versions.add(value)
     return versions
@@ -312,6 +310,10 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
     version_parts = case_version.split('.')
     major_minor = f"{version_parts[0]}.{version_parts[1]}"
 
+    # Convert version format for oc ibm-pak command
+    # For pre-release versions: "9.2.0-pre.stable_9887" -> "9.2.0-pre.stable.9887"
+    case_version_for_pak = case_version.replace('_', '.')
+
     # Strip extended semver (everything after '+') for file naming
     file_version = case_version.split('+')[0]
 
@@ -324,7 +326,7 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
     output_path = f"packages/{effective_case_name}/{major_minor}/{arch}/{effective_case_name}-{file_version}-{arch}.yaml"
 
     images_csv_path = os.path.expanduser(
-        f"~/.ibm-pak/data/cases/{case_name}/{case_version}/{case_name}-{case_version}-images.csv"
+        f"~/.ibm-pak/data/cases/{case_name}/{case_version_for_pak}/{case_name}-{case_version_for_pak}-images.csv"
     )
 
     if os.path.exists(output_path):
@@ -335,7 +337,7 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
         # Execute oc ibm-pak get command
         cmd = [
             "oc", "ibm-pak", "get", case_name,
-            "--version", case_version,
+            "--version", case_version_for_pak,
             "--skip-dependencies"
         ]
 
@@ -509,7 +511,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-mas-monitor",
             case_versions=versions,
-            architectures=["amd64"]
+            architectures=["amd64"],
         )
         processed = True
 
@@ -520,7 +522,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-mas-optimizer",
             case_versions=versions,
-            architectures=["amd64"]
+            architectures=["amd64"],
         )
         processed = True
 
@@ -531,7 +533,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-mas-visualinspection",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -542,7 +544,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-mas-predict",
             case_versions=versions,
-            architectures=["amd64"]
+            architectures=["amd64"],
         )
         processed = True
 
@@ -553,7 +555,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-mas-assist",
             case_versions=versions,
-            architectures=["amd64"]
+            architectures=["amd64"],
         )
         processed = True
 
@@ -564,7 +566,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-mas-iot",
             case_versions=versions,
-            architectures=["amd64"]
+            architectures=["amd64"],
         )
         processed = True
 
@@ -575,7 +577,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-mas-facilities",
             case_versions=versions,
-            architectures=["amd64"]
+            architectures=["amd64"],
         )
         processed = True
 
@@ -586,7 +588,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-data-dictionary",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -597,7 +599,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-aiservice",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -608,7 +610,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-cp-common-services",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -619,7 +621,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-zen",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -630,7 +632,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-cp-datacore",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -641,7 +643,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-licensing",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -652,7 +654,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-ccs",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -663,7 +665,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-cloud-native-postgresql",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -674,7 +676,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-datarefinery",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -685,7 +687,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-wsl",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -696,7 +698,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-wsl-runtimes",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -707,7 +709,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-elasticsearch-operator",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -718,7 +720,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-opensearch-operator",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -729,7 +731,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-wml-cpd",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -740,7 +742,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-analyticsengine",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
@@ -751,7 +753,7 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_iscs(
             case_name="ibm-cognos-analytics-prod",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"]
+            architectures=["amd64", "ppc64le", "s390x"],
         )
         processed = True
 
