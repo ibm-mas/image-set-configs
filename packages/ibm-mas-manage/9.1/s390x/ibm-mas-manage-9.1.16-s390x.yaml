@@ -1,6 +1,6 @@
 apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
-archiveSize: null
+archiveSize: 2
 mirror:
   additionalImages:
   - name: icr.io/cpopen/ibm-mas-manage-operator-bundle@sha256:f971ca183e83f746328c21b3a092b2558d6941a4f4a15bcc41da95b868b56d79
