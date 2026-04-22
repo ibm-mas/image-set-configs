@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-iot-operator-bundle@sha256:fc2cef456da22e291069df4c663d99726cea9a91d8e74b52c71d3e7271d5cec8
+  - name: icr.io/cpopen/ibm-mas-iot-operator-bundle@sha256:498da1633181722563af358ddbc1fe2315fb0dc74a337007dec7df70fe02dab5
   - name: cp.icr.io/cp/wiotp/api-actions:3.0.31@sha256:da866ced5b6e25c9a34d276f86737512861c32358dbea8ccf192585774b12573
   - name: cp.icr.io/cp/wiotp/action-mgr:3.0.107@sha256:33475070af37a6cae8c19a6be2917ca4a78df342f2fcaccdb66db5a87a8bb3f2
   - name: cp.icr.io/cp/wiotp/deprovagent-actions:1.1.187@sha256:bf35fe4b7854fadf2052a86134d0e7278e01eb49b00aa9abd4018016fd9c12bc
