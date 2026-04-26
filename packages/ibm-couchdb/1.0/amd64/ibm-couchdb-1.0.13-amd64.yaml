@@ -1,0 +1,12 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/couchdb-operator:2.2-1643019477@sha256:a14bda7dc34d823496679e41da499fcde21461c68a27de81e98dc19cfdf7fc86
+  - name: icr.io/cpopen/couchdb-operator-bundle:2.2.1-1643268190@sha256:393a44e4651dc21d52a7247bb01d9671f52deb4636abf583bde70dae1b206185
+  - name: icr.io/cpopen/couchdb-operator-catalog:latest@sha256:c35df32a8de999a4bb76229fbe302b1107d9c6bd17d159ee30167016c51bc215
+  - name: quay.io/opencloudio/couchdb3:3.2.1-1643018916@sha256:071c548bbb2888057537ca12c9cf8fccf3aab4e8de40e7dbad5b028c1291546d
+  - name: quay.io/opencloudio/couchdb-operator-mgmt:1.6.25-1643121381@sha256:ee45180fbce0d1b78ed2e89d07e99b51dfa5e59d2e0e427e69fbdfe792616299
+
+# Made with Bob
