@@ -1,5 +1,6 @@
 apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
+archiveSize: 2
 mirror:
   additionalImages:
   - name: icr.io/cpopen/ibm-mas-manage-operator-bundle@sha256:8e761ca1cf709f366c4ef9671e1ee76f965cf7c0a1c60975ed67f47a44525575
@@ -30,7 +31,6 @@ mirror:
   - name: cp.icr.io/cp/manage/extension-envizi:9.1.6-ppc64le@sha256:12561dd9e577a107eec3851b0a04c3e0e6d1ae2bf474140c09b4e6e8857ef0fd
   - name: cp.icr.io/cp/manage/extension-health:9.1.36-ppc64le@sha256:c984167ae03bece544b9a1f62413558005bd0a95fa6f9330b5d004c927b9a7e3
   - name: cp.icr.io/cp/manage/extension-hse:9.1.67-ppc64le@sha256:535fb12bd3c6c0920bc99ec022cd6de5ad91b48ef9e2bcf0c73725c1bd0f71a7
-  - name: cp.icr.io/cp/manage/extension-icd:9.1.49-ppc64le@sha256:81bc398d5ff42124a0e5b1fffd383288aea776ccd7fbe2f0c5804c31a408ccb1
   - name: cp.icr.io/cp/manage/manageadmin:9.1.356-ppc64le@sha256:250a5200d4c5d9491e79659038da2e6ee00e1cb94ed59058fce784d45c8a9c11
   - name: cp.icr.io/cp/manage/ubi-wlp-manage:4.0.26-ppc64le@sha256:d553b59a603bba1cc3fe2c342e739cb3d569b23e66291b0eeb68b45688a82e49
   - name: cp.icr.io/cp/manage/extension-nuclear:9.1.20-ppc64le@sha256:e499b425d9f089353fd5f87f25886ff70f94032d6cb9e31d602765585469285a
