@@ -26,7 +26,6 @@ mirror:
   - name: cp.icr.io/cp/manage/extension-envizi:9.0.5-ppc64le@sha256:6ee5900264c48253d19885bfad4a2ac5a4f5bd17a85d030c69b87a5bc633da5e
   - name: cp.icr.io/cp/manage/extension-health:9.0.85-ppc64le@sha256:e17980fb336c08bc2f534cfee5f4ae0f48c9b01d4a03f87e8afeb44877cc2698
   - name: cp.icr.io/cp/manage/extension-hse:9.0.26-ppc64le@sha256:08d1609811a4f0c45abb72a0703f11890566d19d81d9c911975dabc7157dc70c
-  - name: cp.icr.io/cp/manage/extension-icd:9.0.41-ppc64le@sha256:bdb20cd0e51189dd67d545d6ee2b97f210b2b5174b7b909cf8c104ce719146ea
   - name: cp.icr.io/cp/manage/manageadmin:9.0.275-ppc64le@sha256:c96efd7c06fa66f9d891e42336675cfb71ea21fcdf1d690db77b21202830ee74
   - name: cp.icr.io/cp/manage/ubi-wlp-manage:3.2.26-ppc64le@sha256:39803b3fbb08e70378253f6136d23af8718145900f7d71cf9cb2f144906f053c
   - name: cp.icr.io/cp/manage/extension-nuclear:9.0.15-ppc64le@sha256:2020de4162ed765257398f875c5fd56d35935c8971dbc2837c897ed0d08673e1

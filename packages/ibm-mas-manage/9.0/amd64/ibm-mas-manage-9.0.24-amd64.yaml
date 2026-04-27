@@ -26,7 +26,6 @@ mirror:
   - name: cp.icr.io/cp/manage/extension-envizi:9.0.5-amd64@sha256:93f4d8d3d53bc493be40d5bbbb806aeb95951c4170b47e38445c6bad1b105eb5
   - name: cp.icr.io/cp/manage/extension-health:9.0.85-amd64@sha256:6802195804131e554dd38c13ea1bfa1980402ac26cec450d29a0b0d2a42b0bf6
   - name: cp.icr.io/cp/manage/extension-hse:9.0.26-amd64@sha256:77b6145f86795834fae93aec228506c1fd3bafe7fd0cd807bb3a2af81e69d530
-  - name: cp.icr.io/cp/manage/extension-icd:9.0.41-amd64@sha256:8b518e68624e9cc973d1aa0cb50dffd871809f6d83221f2eeec5b93c5f81a255
   - name: cp.icr.io/cp/manage/manageadmin:9.0.275-amd64@sha256:29390ea48b37f422eacaa9f6881ef6afcb7916962bafd102f593f7edd1dbcfc6
   - name: cp.icr.io/cp/manage/ubi-wlp-manage:3.2.26-amd64@sha256:63df7b428fad2e693de5268448d629b351c886906fad9353d36d339ff6e42f66
   - name: cp.icr.io/cp/manage/extension-nuclear:9.0.15-amd64@sha256:921c02ca5a41a34535764e7772cfbc6f9c31411f67694a120938bc733c55f522
