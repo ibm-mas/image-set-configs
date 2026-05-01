@@ -1,0 +1,46 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis-operator-bundle@sha256:c8cf450c82dc30a5b7e7d816ad4b63340a27e1d2746c50ad49f19819c3728438
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/enterprise-admin:12.0.0.7286@sha256:e18968845a3a739445d96dee8f3713b28a1f2a885738e1b9d5c197b93e72c01a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/enterprise-admin-tools:12.0.0.7286@sha256:681dcb4d622bccaeb55d0cdd3c82adb4cbd1c5ab1b6e49f4a4798ac5cca1f60a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-busybox:12.0.0.7286@sha256:3b0d42f10f6481b540256d08c7545902c1013f0124a4f703d04c1755b0f71537
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/catalog-server:12.0.0.7286@sha256:bad3733dacad1900e5a82d26adb880ec86263dd33af63512d56d521e96eb32d7
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/config-factory-server:12.0.0.7286@sha256:9a7207667cd3b27b811afa194b4facac2b1958214f875e61140c8327da2c9c65
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/customdata-server:12.0.0.7286@sha256:90c301ea0f50c2f134c3d6bcedea0ab77dabcaa95edaaccaecf9ece103021838
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/deeplearning-model-server:12.0.0.7286@sha256:79503a27c3273aa0adcbe4df482031f1552dd37a52f57c00f829fcb98fb708ae
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-disaster-recovery:12.0.0.7286@sha256:b3e498b6bd3b6193ffc90cbe0c67a847d280214d32dd9c274de91b6fd2a38737
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcobjects-server:12.0.0.7286@sha256:217b3f02e56e71638ec94585b4dea20fc49f8fa606a7dde6679e7bfb9f75609c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/distributed-server-deeplearning:12.0.0.7286@sha256:ee1ec4200b5db1f328daa42dce38dbd5f93140981c4f56d8c822fc4424f1c5ae
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-fluent-bit:12.0.0.7286@sha256:caae0f0267b9fbabf8e9a1917fbddbd9e31d27d48c09b3c87f09951b8f874267
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/geocode-runtime-server:12.0.0.7286@sha256:ca11c2fd54998717da789d43c60b9f98b964762e34ede96b3fda8ed449c4b4c1
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/help:12.0.0.7286@sha256:5a9bec7410566e3b8e7de185c203b65213184ae32403768792c4ee4b0e80c5cc
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-ingress-controller:12.0.0.7286@sha256:aeebf51fb510a5754839d847070683defcfe91983105930f0843aebe419d69fc
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/job-manager:12.0.0.7286@sha256:cc6e0af60963316fea56084f002a91b9f4822428d40f9f5d0303230f6181962c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/manager:12.0.0.7286@sha256:a80b05cdb6ad74ac22c8e83aab48eae42d62fe5f93871f83965c9153d8eb484f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/native-server:12.0.0.7286@sha256:ec0e1b3158be78b335e35e0231d8c9cabd3cc7085e7f0f61698070e984dd6295
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-notebook-handler:12.0.0.7286@sha256:0cc0d2a64eb06c531d5535f60e9ed3dcc408850f8924d0712709116fd31111ec
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-notebook-server:12.0.0.7286@sha256:855794dc880afebf1e54cd3a0e7845d562237e1eaf72adc6d9105d6f43997bd8
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/object-store-migration-tools:12.0.0.7286@sha256:62e870ef2b0fbb2a329ce89f623bf8aad3f6324226073d0327f077a084a6d0db
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/apps:12.0.0.7286@sha256:e33b2d2966fda8eb2e794b59409a9313b9a917fe59ba5516c50bf494b8204346
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/portal-content-template:12.0.0.7286@sha256:02bcc43595df0dcd93e4ac26c8b3d7f2ccff0c75ac1105d510992b58fea195ff
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/home:12.0.0.7286@sha256:328c0bd2a95ec62bb7a5a2f236100e1e470fd442e7cddbe5b4faed99aca87230
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/jsapi:12.0.0.7286@sha256:59103509bfa829ff3b807cc349f6a6aca371262f9cfa977507a34d29b152e600
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/sharing:12.0.0.7286@sha256:038367a2a579b1566790191dba293399d055dfe9f4f70992f8f1559f6321676f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/web-style:12.0.0.7286@sha256:1a2b2e7a9f84b6b90f2afdf46e32bc887edabc99fda79e2f377b965ac98f6bc5
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/postgres-upgrade-tools:12.0.0.7286@sha256:040f9b349423f55207682643e2fd537c78c5724ffd974e834ee6e1b148d408a6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-prometheus:12.0.0.7286@sha256:02fd6a0297e17b8fc406e2334e9cb5b308c7e9729a9aa9c8ad9d86cd2edfec7a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/enterprise-rabbitmq:12.0.0.7286@sha256:93518107398310a884824b6b666e8c54e00d46e0f790c391c320b7d6c22bee02
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/raster-analytics-server-deeplearning:12.0.0.7286@sha256:5c38372b2ab4c96bfc4473381547964a1fa3fbab7656ee17e37bbe58a7ad2ece
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/sds-feature-server:12.0.0.7286@sha256:6d377156ab594a6c78a1a96e57d2f0b5857939a5ad49d51a49c6c0a487b9a2f9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-ignite:12.0.0.7286@sha256:d127f840a2e957f770a1c3dbf8cc301d9a99c59aafd17e0bed701696591d7ff0
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-ozone:12.0.0.7286@sha256:612437ca62ff9d86bc74d332c893eb3ae9d54406a11a69354ec5e67f82f76f88
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-postgresql:12.0.0.7286@sha256:3ffa0c9e988ee8029aebcb4219e8597bee55e99066a461b69f5f95afcc537a6e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/relational-datastore:12.0.0.7286@sha256:af86e2c6187a46e98a26b5fbc946b0eda77cd8ac3578c8902248719111d03443
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-opensearch:12.0.0.7286@sha256:658de15fa18f6c58691d3b6c480194f2f351eed91a5cbaacf67e2e833b8aa0ac
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/tile-server:12.0.0.7286@sha256:4c388201845bb0e47fefd8a6ba59d0041f612af606a39c958df746e5769cbcba
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-nginx-web:12.0.0.7286@sha256:9ee018eba9beb6c97c2db879f22cd3c9db66066d3093d95ba4b783e328d84cb8
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/webhook-processor:12.0.0.7286@sha256:e4deaacd48266e2b8c0be676b89deba2009babfd69e823fad4162f7e153faa45
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/ibm-mas-arcgis-ws:9.2.0-pre.ren-dev-dbce63@sha256:3c7dfe7fc432e722d84bb602c6b64e0e033522d8a52868fc30172fae282b793e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis:9.2.0-pre.ren-dev-dbce63@sha256:7fe449e0629ac6b08640bb17e7eb571e5f24d6defdcaa72a694c630278d942ef
