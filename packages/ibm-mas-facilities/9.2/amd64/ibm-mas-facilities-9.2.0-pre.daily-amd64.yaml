@@ -1,0 +1,9 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-facilities-operator-bundle@sha256:0fc2b9b945c00dea1cef6fc648194dd987cd128c6953cdb894cfc704992395e8
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/facilities/ibm-mas-facilities-ws:9.2.0-pre.daily@sha256:5a5262879336d7c1391b8fd6ea36ccd596f2534a2c70dc2b16897fb301f0a284
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/facilities/datainit:DAILY_117@sha256:0b2a5abf466b739d86b9d332fada171f7e1cd8c2e0012ab031b4bd2b41293aff
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/facilities/platform:DEV_403631@sha256:7c001738fa8dacd0c3ea0f1a85ddf07fe0afda64b556e78a9e574b547d0fb97d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-facilities:9.2.0-pre.daily@sha256:2e61b7233aef371c3b1cb882937635d20806b81c75eeb4f55403b997b8423c41
