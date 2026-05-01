@@ -1,0 +1,14 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-operator-bundle@sha256:5e93f197e3fbc08812de65e2c15f9a38c9308c62e7df0cbf66c6f94a37bc04a6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/api:9.5.6-amd64@sha256:0d4b08a393504a62ec77100537e7ea6670463eecc44b009ccbfecdec0abb95ba
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/execution-service:9.5.6-amd64@sha256:f3a2453fcf771b7b0dfef8af9543a78eb1d4e60a6796a7f09447d40cefbc8014
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/workspace-init:9.5.6-amd64@sha256:3728a5332f8120cc2a093537360b59597445b148438ea4a653d9a8c84b1c5c2a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-primary-entity:9.2.0-pre.ren-dev-dbce63-amd64@sha256:fa3d43a8508dfba0a75e4cb2b9510947836982224409e3dfd406b882ae995b66
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/admin-ui:11.0.5-amd64@sha256:b5c89ec11ed5ac7893143633c8ae49a839f4978bd5fdb23efa7e1defe0108824
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-ws:9.2.0-pre.ren-dev-dbce63-amd64@sha256:650fc41ce79bf3dc15d31613e64a2ccda8f1704d260df5853f52d522f951e539
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-appstatus:9.2.0-pre.ren-dev-dbce63-amd64@sha256:40f10be08c6256174791c9cf10b85f49858ed3fd3588221ad6eae022d7cf9040
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer:9.2.0-pre.ren-dev-dbce63-amd64@sha256:ada2c8d650a99354170f8a7c47b2db1ca8a34e5f97d31257a608cf53d4299655
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-webhook:9.2.0-pre.ren-dev-dbce63-amd64@sha256:25f5f910a94ae26c34f6c0c024973ec8304838a5e59af852009505bbea6d808e
