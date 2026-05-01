@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage-operator-bundle@sha256:28167fce940bd98f86d16499c95c27eb93130bb402bb956a91933216dfa54446
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage-operator-bundle@sha256:1b3a7808675661ab6f7ea19323d6173ee63f3bcb34041728f50e0fc456dbf96a
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/healthext-model-engine:2.2.5-amd64@sha256:373f3ba38fec34874a52be4f02a59bb0b3808768369a072a26c870fba777fb6c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/image-stitching:2.0.7-amd64@sha256:31b3dd52ddc42be75cdd58c10c3d5c3a0997213ce6387a877a2b8ff6bc69c7f1
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/image-stitching:2.0.7-amd64@sha256:31b3dd52ddc42be75cdd58c10c3d5c3a0997213ce6387a877a2b8ff6bc69c7f1
