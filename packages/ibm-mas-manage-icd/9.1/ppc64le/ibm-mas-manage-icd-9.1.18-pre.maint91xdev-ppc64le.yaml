@@ -1,0 +1,5 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/extension-icd:9.1.52-ppc64le@sha256:aababc029654c6f361b5ebb5e76b95c93bef19c8eec9db3642e11278f167bfff
