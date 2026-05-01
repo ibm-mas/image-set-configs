@@ -2,9 +2,9 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:5ccbda7b51e04dca0bc85952474f4ab24861d0554ff2dd313ba4e267653c1ff7
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:b8019a4b9de4ef08c361f384d2c338ba68f3c90fe18e6cb7968c14edb62d53c2
   - name: registry.access.redhat.com/ubi8/ubi-minimal@sha256:7f9482f9e0c3ed4952209cb732f8cdc1979d60a29483fe1a2e03bf22640ed7fc
-  - name: icr.io/cpopen/ibm-mas-visualinspection:9.1.13-pre.redis@sha256:1d17040acabe81771d29d9607aed98f86e56a81db5ec43d8d741a5bdf80540cb
+  - name: icr.io/cpopen/ibm-mas-visualinspection:9.1.13-pre.redis@sha256:036213403516f6ca7def5779389ae28df4139e9957570be7c09e56e84ca92b38
   - name: cp.icr.io/cp/visualinspection/vision-dataset-feature:1.1.76@sha256:38facafacdb96e5883e96fc1ad71c58a6244ac14a272ddaa59c654f7e55ef664
   - name: cp.icr.io/cp/visualinspection/vision-dataset-summarization:1.1.75@sha256:c712210ef712848e4048e52fa9041b9be1a9b602c16d4cae9fd12f0af4219d3d
   - name: cp.icr.io/cp/visualinspection/vision-edge-dle:9.4.46@sha256:d69d30c20b13271cfca31190a767b5694be7c797072ad2e828f4b68653001622
