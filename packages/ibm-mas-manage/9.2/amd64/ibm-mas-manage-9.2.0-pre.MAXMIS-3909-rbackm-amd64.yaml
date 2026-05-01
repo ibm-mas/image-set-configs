@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage-operator-bundle@sha256:1ed39683866a4643c847a702ada782146ae74fdec4383ca5e4072238b7c0f752
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage-operator-bundle@sha256:c9d159b251a1f33775ef0d7057362a76d83af26d8ca823f77240ced38b8177b4
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/healthext-model-engine:2.2.5-amd64@sha256:373f3ba38fec34874a52be4f02a59bb0b3808768369a072a26c870fba777fb6c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/image-stitching:2.0.7-amd64@sha256:31b3dd52ddc42be75cdd58c10c3d5c3a0997213ce6387a877a2b8ff6bc69c7f1
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/image-stitching:2.0.7-amd64@sha256:31b3dd52ddc42be75cdd58c10c3d5c3a0997213ce6387a877a2b8ff6bc69c7f1
@@ -10,16 +10,16 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/baseimage-kafkamodel:3.0.108-amd64@sha256:77c836701bf79bb5115e5ae3264e319e3e51cbf8a401772f65378255205c981b
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/icdslack:9.2.5-amd64@sha256:25dfc5c3be9b2c47881d099f4b5343596be0af33a224ee75af33a8212a707ebe
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/aip-optimizer:2.0.7-amd64@sha256:d7a981d6301635cf451590218fb2975a7bdd887ddb2a6526bf2764f477d678ea
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-primary-entity:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:60b971d353535617f65e5c1832d4e42d271fcc8e0bd6b3bca93c583927985ea3
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-acc:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:04b42df7c8b435dcc9326fe184b3e7204dce6d06190ff711b956e359afc320fb
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-appstatus:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:c76f5d5251d5a163be0573cd4a794f7324a8e5a23bdeb12bf1551ec169221c30
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-bdi:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:a53b315dbc0bd1a5fe60745a91cea50f94c98bee1fc8d0adf05f9db012198f40
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-primary-entity:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:f2abc53b714c3f2d240d010d6b7fb48a20cd33d5738d2f19490a13572ba2207e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-acc:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:e5adb2b4eb9eace368f92f72723e0917f927f9ae879d5756cd67e7fc43823555
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-appstatus:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:dda5d30bf6cc0e478a2b25069a3d6ad5cabdb09de124ea2f524d975729716246
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-bdi:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:6c10b638140492d89dbcd592218596724f1afe5c80d49aaf96220ce2234a2d22
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-aipoptimizationext:2.0.6-amd64@sha256:6cfbc867f4dcfa392d98c073990edcdb368d26cd9b6c9adfcea8a8abe4fe5dd2
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-healthext-ws:2.2.9-amd64@sha256:b4ad5f215b46a5cd8e644ebeb6236cbc5cdd6cbdb9c09e7090c51295364e6cb9
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-imagestitching:2.0.0-pre.MAXMIS-5591-kafkamodel-amd64@sha256:897c269e7a0aa629ccb3c901cba5e708a3e8d54bb4b3df240d745822be77b21f
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-kafkaimageprocessor:2.0.0-pre.MAXMIS-5591-kafkamodel-amd64@sha256:036c1f239fda9367030d184341d1a02a5efbf14f35dda87facc5636789085b76
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-imagestitching:2.0.0-pre.MAXMIS-5591-kafkamodel-amd64@sha256:6c7f70d1c3c108d8da226ab69aeb2d54d2fc2dede1eeec0fda7b0843f65c056c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-kafkaimageprocessor:2.0.0-pre.MAXMIS-5591-kafkamodel-amd64@sha256:2adf08710bf0159c542c0bc029fb207d06a83444ce29b29718a5f7279d621b81
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-slackproxy:9.2.6-amd64@sha256:a71d0cfbe82a037ce994ea48fdd5b84fbfc1dc8c2d7418d16a794bbfa768a0aa
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-ws:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:7f0b58644f978862a5dfde40c91686ca14c57aa88f653e639e3682fa59e12ef1
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/ibm-mas-manage-ws:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:de826d498de9037e6eb523c4bcfc0c32db79f041c1078085e23881e961bca5c8
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/bdi:9.2.15-amd64@sha256:a00f453e922df9c482726f1deafe7536144db6ea700bde4d0f2ee75ac57d69c1
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ltpakeys-generator:3.2.7-amd64@sha256:4d9b74e3fcc3ed490dc6548f9f8344461c2000a53643fedc248f2379238c6239
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/manageadminfoundation:9.2.171-amd64@sha256:1d70e2335903e1de6d56e0d8d33bc59173eecf1bef2644f8fbef3c76e25f80b5
@@ -49,5 +49,5 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/monitoragent:6.0.1-amd64@sha256:330b9d4d83887e5b2f0270be9747ef6812a72828ea9ba5ae0626e7bc87cf3102
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/mas-mcp-framework:2.1.14-amd64@sha256:f6b96374f6e222ef77ee11bc0a3dd966ab59bf8680696c04edfc5257550a5365
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/manage/maxloader:9.0.21-amd64@sha256:9465de86f8044b5f2fe10808e6d018a87162a1ba249f7feede8f8b06cc8ce40a
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:c05cdae926ca9c7a9d66a964dc3b79c792a23832ffea6a3bbfabacb1e05b2c65
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage-webhook:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:afff98eb5b09a8f0a06ec8cc852406a2f44dc66414b3fbfb51c9178ff56a766d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:12a899dfec0e37f344a788433749a146ea08a6e57d38ff3bea11be14d2038b83
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-manage-webhook:9.2.0-pre.MAXMIS-3909-rbackm-amd64@sha256:98922a1778ec8c1d437ae04127d384608c4cb4d2f887d396258596684df36d46
