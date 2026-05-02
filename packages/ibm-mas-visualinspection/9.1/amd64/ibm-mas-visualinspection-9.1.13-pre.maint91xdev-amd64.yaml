@@ -2,9 +2,9 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:32977270ee7c8abc9f727df3c3b7576b8219b85c8b7a3b49c91c2423a2be5de9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:5c83b3a93d3c6a0258523a9c7732861d9478f32cd7f0f9a62b8a9263d306d22e
   - name: registry.access.redhat.com/ubi8/ubi-minimal@sha256:7f9482f9e0c3ed4952209cb732f8cdc1979d60a29483fe1a2e03bf22640ed7fc
-  - name: icr.io/cpopen/ibm-mas-visualinspection:9.1.13-pre.maint91xdev@sha256:04736c8fd8df429acebe9d39a5eb6f57dd6ac6fce9c8b0ec25afd2f279951fb7
+  - name: icr.io/cpopen/ibm-mas-visualinspection:9.1.13-pre.maint91xdev@sha256:c84aeb6eb42d961f58d2672b9333dbb632b82c21ab3263d45b4d4fafc6bb8da5
   - name: cp.icr.io/cp/visualinspection/vision-dataset-feature:1.1.76@sha256:38facafacdb96e5883e96fc1ad71c58a6244ac14a272ddaa59c654f7e55ef664
   - name: cp.icr.io/cp/visualinspection/vision-dataset-summarization:1.1.75@sha256:c712210ef712848e4048e52fa9041b9be1a9b602c16d4cae9fd12f0af4219d3d
   - name: cp.icr.io/cp/visualinspection/vision-edge-dle:9.4.46@sha256:d69d30c20b13271cfca31190a767b5694be7c797072ad2e828f4b68653001622
@@ -19,4 +19,4 @@ mirror:
   - name: cp.icr.io/cp/visualinspection/vision-ui:10.0.132@sha256:e7fd6713ab50cfca6f5a30d10d86fc503a00ecebf1ead5b33664e6cccbdd8e31
   - name: cp.icr.io/cp/visualinspection/vision-usage-reporter:1.5.80@sha256:10c47394442aba56309235793c4e20c0fc769a19bf176d38d5afb5252252e521
   - name: cp.icr.io/cp/visualinspection/vision-video-microservice:9.1.89@sha256:bb3bf1230b45f244b8c229e84f5a8b141e8e498a0933199d71c7fe0509e8f598
-  - name: cp.icr.io/cp/visualinspection/vision-auth:1.0.97@sha256:c7dc08b8db9f8a41cede24fab6bb4c6feb73e92bf264598686dec341c131fc33
+  - name: cp.icr.io/cp/visualinspection/vision-auth:1.0.98@sha256:d5186b9c37122e42910b92eaeec227632f935308ac299d2bb4a06b6bb0148236
