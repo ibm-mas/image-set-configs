@@ -2,8 +2,8 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:d34646852bf2df68cb37dfd2d3411c0d0f35696fa1dc6e09c9b6a6a5ebc05d1e
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/maximo-iot-monitor-auth-api:9.2.4@sha256:b6840e677d75f11a17e133ebf9d09a91038c3a7e3b8fceedfd0b7cccd4140add
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:22ea413198cf4ef8321f7cc6fc3883ecc5a1428c6c666252a3dd582709a75239
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/maximo-iot-monitor-auth-api:9.2.5@sha256:5dad0910128b2e684e40910d9196c88292cf7ad6275cf5560e5aad7fac845699
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-devops:4.0.20@sha256:696091b239db9879f3d0503583a1d1c15e86737ac52a94b2d7310e449b7efda7
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-status:3.4.168@sha256:91dda5be164d88d8b9462781a244d0d767c605f80579490080a15af21656cd68
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/messagesight:5.16.133@sha256:d3f0b2c91313cd894d78ac231f4381e657ebfeb90a44ea38030c79359acf9308
@@ -20,10 +20,10 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/statsd:1.3.194@sha256:9bac16a30b2a2480b1f63909a7a92c645374d4b9ae85936595b34099274d8ad8
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ltpakeys-generator:3.3.21-amd64@sha256:e4ee3d823693f1dd0440592d12c46cc308b0d86cfd1df04167f1c49873c4409b
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/monagent-iot:2.3.110@sha256:8dd5f96399b4223008e1e97cf549d580fa92111c0c2c4958e310b7b86588144a
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-auth:9.2.6-pre.iot.next@sha256:3580d86fa7599de5292687f07a5d557987a8a44efe255f0d1836d3019e0c3861
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-auth:9.2.8@sha256:4974df9036005e5227b9b1755866ddfc7fe34956a3bb1c488059fed251366014
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-devops:11.0.37@sha256:6693d2b6b34fcf358b51a30e741f87cbdf43337030fdb5998a2c72673bc0b8fa
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-mbgx:9.2.8-pre.iot.next@sha256:9be2a291a2388a9f813d5ef9fb940a70342d52295d063f31a5e090ba446ce7ed
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-mbgx:9.2.7@sha256:27d5d5912dfa39d166b517ba8310fae4b9c6dbb3ebf1daae40491960bb7179df
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-mfgx:9.2.10@sha256:bae90f92c146dddc92516750c9c898dacaecc3b9a20dd9f9c95ffc5e86dacf52
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-workspace:9.2.5@sha256:004dbf495ab185d927bc7c575aefa3c9b69e39a978e1f1ea187f1d8cfa8d65a5
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-mas-iot-primary-entity:9.2.0-pre.iot.next@sha256:5c0b41fe3f1d1626958640f3ce582c8d4c09c6ad3730a5693a99a149c109a986
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:9.2.0-pre.iot.next@sha256:245a866e3b2c28e2c2c175d97053c47c540ac53a34deabd6bb1cdfcfe6a649da
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-mas-iot-primary-entity:9.2.0-pre.iot.next@sha256:90768d4454de4299f43da551925af941ed385f3872b03b27206b73bb8d685684
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:9.2.0-pre.iot.next@sha256:840356249633c21cb4c008adcac6ca5d9ae846efeacda58fcffa39c1af6ee437
