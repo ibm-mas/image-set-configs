@@ -2,9 +2,9 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:ff19a6acf2f3e3772e3dd1753532b8a0b115a1581371ab6e2c4dfb859247ad4e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:8c1b87af8962f6ef31b804e8e036c1d80f0164ac89ef4113b0c03e7e38ca1796
   - name: registry.access.redhat.com/ubi8/ubi-minimal@sha256:7f9482f9e0c3ed4952209cb732f8cdc1979d60a29483fe1a2e03bf22640ed7fc
-  - name: icr.io/cpopen/ibm-mas-visualinspection:9.1.13-pre.maint91xdev@sha256:e673646560fb0507d0458201a584e03e7075f0253c75ab67a5de22df78ad39ab
+  - name: icr.io/cpopen/ibm-mas-visualinspection:9.1.13-pre.maint91xdev@sha256:f2c9382ac10169d26369c6eb1206dbc78cd93753acea63d20e8640da011ecc3b
   - name: cp.icr.io/cp/visualinspection/vision-dataset-feature:1.1.76@sha256:38facafacdb96e5883e96fc1ad71c58a6244ac14a272ddaa59c654f7e55ef664
   - name: cp.icr.io/cp/visualinspection/vision-dataset-summarization:1.1.75@sha256:c712210ef712848e4048e52fa9041b9be1a9b602c16d4cae9fd12f0af4219d3d
   - name: cp.icr.io/cp/visualinspection/vision-edge-dle:9.4.46@sha256:d69d30c20b13271cfca31190a767b5694be7c797072ad2e828f4b68653001622
@@ -14,7 +14,7 @@ mirror:
   - name: cp.icr.io/cp/visualinspection/vision-model-conversion:8.8.58@sha256:49c1d084730a7fdfeb1b804c96be2b174a8727a2a30e41d41ffdb7cb14bb6e90
   - name: cp.icr.io/cp/visualinspection/vision-models:8.6.35@sha256:0151669acf1b11210628dbca3ebf85e428246e79ef00a14c3a2617f330837a54
   - name: cp.icr.io/cp/visualinspection/vision-preprocessing:8.11.76@sha256:26b408fe118cd4fa7f455d5467d24a4a15ff6e0c7256cbeb0b3ddfdc22a4317d
-  - name: cp.icr.io/cp/visualinspection/vision-service:9.14.126@sha256:1cbc7a2377e91c185670756bb84938bbfa459393ff9cfffd3529e3c306e72206
+  - name: cp.icr.io/cp/visualinspection/vision-service:9.14.127@sha256:0e548302cff90bc8a6240b41d14150d8afe38993826332a320311608c9437578
   - name: cp.icr.io/cp/visualinspection/vision-taskanaly:8.6.111@sha256:b0458d739ebb44fd96a6258736d7c30bdb375aae6c8574572015d02ce5c36e4c
   - name: cp.icr.io/cp/visualinspection/vision-ui:10.0.132@sha256:e7fd6713ab50cfca6f5a30d10d86fc503a00ecebf1ead5b33664e6cccbdd8e31
   - name: cp.icr.io/cp/visualinspection/vision-usage-reporter:1.5.80@sha256:10c47394442aba56309235793c4e20c0fc769a19bf176d38d5afb5252252e521
