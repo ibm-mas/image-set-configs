@@ -1,0 +1,21 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:c7d06b677d34dc868532b4efcb7b0a1b763cac7e769db6250ddabd5b48e6c444
+  - name: registry.access.redhat.com/ubi8/ubi-minimal@sha256:7f9482f9e0c3ed4952209cb732f8cdc1979d60a29483fe1a2e03bf22640ed7fc
+  - name: icr.io/cpopen/ibm-mas-visualinspection:8.9.22-pre.maint89xdev@sha256:984089a3eed034ad7f616cfb9aebb67c0ccf1c1a545de57078cfcf13ba7e2381
+  - name: cp.icr.io/cp/visualinspection/vision-edge-dle:8.9.21@sha256:7210455c3ce19da11f49ac649bcc1f3569b646f27963bffbf4e263d41a3f00ae
+  - name: cp.icr.io/cp/visualinspection/vision-dnn-service:8.9.16@sha256:3d2916894e41e75c87cba4fb880f632a510fd40cf5eeaa8141eda0d503651822
+  - name: cp.icr.io/cp/visualinspection/vision-models:8.5.128@sha256:14137ea3ed8af21904ad5f7a1b35feed7a562db1dde79bd84bb2ef8024568bdb
+  - name: cp.icr.io/cp/visualinspection/vision-preprocessing:8.8.46@sha256:014c5cb519a73da8d70982ab5f89ad93748cab2ad7f04ee63e17e8425ae57f9a
+  - name: cp.icr.io/cp/visualinspection/vision-service:9.4.59@sha256:daca991cdf856140703fd9613cbc3192a3e031250fddbfbd5888e8c1c6149cd0
+  - name: cp.icr.io/cp/visualinspection/vision-taskanaly:8.5.87@sha256:29433240b263d1cdb05cf453503ed0501a6aafb150a02b94c05f7efb724702f2
+  - name: cp.icr.io/cp/visualinspection/vision-ui:9.2.54@sha256:d392c3c4634f531e756c0b791eb2c272aeccb4077768cb06a867d0a5d84b76e9
+  - name: cp.icr.io/cp/visualinspection/vision-video-microservice:8.8.27@sha256:cf9f75a72732db83a0c57e352547fd0e9538cc2e4bbc70005678814a2de41450
+  - name: cp.icr.io/cp/visualinspection/vision-useragent:8.6.154@sha256:643dc0fa69757e02fb0d58e9225f01d4f4c9bc353a6c6d9ad1bcbd32423a0ec0
+  - name: cp.icr.io/cp/visualinspection/vision-model-conversion:8.7.91@sha256:b03fd252da7f20522dda96d5c737021333a779d3411cd5e95dda3083fa6e06fc
+  - name: cp.icr.io/cp/visualinspection/vision-usage-reporter:1.1.196@sha256:2f6303590c8d2536750ef10712da436443be61ed3f921555d270f59970191d69
+  - name: cp.icr.io/cp/visualinspection/vision-dataset-feature:1.0.75@sha256:a8dfc1639ea44f13a493ebe714e405733a0d44acc2bfd4777b81d8bb0fd80f3f
+  - name: cp.icr.io/cp/visualinspection/vision-dataset-summarization:1.0.74@sha256:ab2742a02e591fd550ea00f9699d931dd1cc5a3fdd898208f39cb9997102195c
+  - name: cp.icr.io/cp/visualinspection/vision-edge-manager:1.0.60@sha256:912dfe1395b884837747b6754c7ed7db45db123ec261f270192628637f5ef922
