@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-operator-bundle@sha256:5f52240044feb0ad559aa91651cf3f45df4b983e283a98512028495339124c34
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-operator-bundle@sha256:f08664bb552a5d2a90fab246faa2b57ce86a6c53bea6fc55d147b849d12ff703
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/kubectl:4.0.31@sha256:c901fdff9a40a8e65f531db7e7d6f80a2228325128e6e67688e41d5cccc50138
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ltpakeys-generator:2.6.132@sha256:a0085dad64a8f5af35eadbdb916cf49699f7195d84e39f5bacf9e2811c42d891
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreapi:13.0.244@sha256:781d132c303cecf945c0e9c89a9f47456f846d86f801f44e8bb58e7fbc4dbbb4
@@ -18,7 +18,7 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/mobileapi:6.2.300@sha256:4aa11046fb8310e9479d1c6c807a418490ef5656c5216e6b166544d2511fae1c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/monagent-mas:1.8.150@sha256:fed26f0a4461817a2ff45487316ac53bf74aab7a069e6a4c1635fa25f52b62c3
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/importuser:2.1.174@sha256:b838b8c4530f1c7d3e0926735afe9346dc72b081d9c19420d1190797f7d3517a
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ibm-mas-entitymgr:8.10.38-pre.ren-maint810xdev-dbce63@sha256:bced9bff0001a9b032615c48d1a95c9e628e6ad20903df92d044a1e6b1cfafd0
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ibm-mas-entitymgr:8.10.38-pre.ren-maint810xdev-dbce63@sha256:0902d8f996c60863f9876200584f18bc81cc825e34104e719acd24717eb5815f
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/oidcclient-reg:2.3.236@sha256:c14161ce95e149e9e1a93065e443cb29a98e40f668171900ec2369f08bbe74b9
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreidp:2.5.131@sha256:a9774e87ab5a26a7fcb27184bb721eb547f091cf492045b89e5e664d35a0b34b
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreidp-login:3.2.199@sha256:11909637400e31db6454813dde4b605340ec4d2f5f9debd719be436055350037
@@ -34,4 +34,4 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/push-notification-service:2.3.144@sha256:07e843dd433b30837b20a1e53d9c960f0faf6559a26c66ba2c8e1ec6d689995c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-mediator:4.2.63@sha256:8872a1ee53fd6c4be6f7c56ffee5e98636dd657e140433843aa90542c30bdd83
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-sync:1.0.114@sha256:53d263d0768e70b5842bf10ddabc13e355af85b2aae4d129ec23e60d292081bb
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas:8.10.38-pre.ren-maint810xdev-dbce63@sha256:8c2db3570a85fc526a52058973932b730487e90e2de875d936f5613d5f9fb34f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas:8.10.38-pre.ren-maint810xdev-dbce63@sha256:c38a974c6c68e25cd0b3d15f2377b3455889c51f6c21eecaf5436fd6b38b2eaf
