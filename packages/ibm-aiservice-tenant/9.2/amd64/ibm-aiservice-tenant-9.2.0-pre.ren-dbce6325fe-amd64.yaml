@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-aiservice-tenant-operator-bundle@sha256:cfbbab710452e1408d819d8e8874711a30a18740ed477f16fb841c14ffc53eb8
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-aiservice-tenant-operator-bundle@sha256:4db29389bff17ae8276f06c08be415463655ba4a19ba5350038f803a3411347b
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/aibroker/s3:1.0.5@sha256:e62f27dc47314bd667b8cdba4e42a2ab51384f027ed5861cac1f65428ec791ca
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/aibroker/maximo-pcc-common:1.5.0@sha256:175cbf0e600bfbc09a2e62e283b8597167021f54b7e85107bf36af140a0367a5
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/aibroker/maximo-pcc-train:1.5.0@sha256:c87a14079a595dde8a313094d9ea8e91b65f52ccc38db80b535386913a564343
@@ -51,4 +51,4 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/aibroker/maximo-insights-predictor:1.1.0@sha256:ead917991f6b6f1dbcff3ed917a1ee29841d59895fced8bf031e294ac00f8711
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/aibroker/maximo-insights-common:1.2.0@sha256:b0186a178fb05e31cae3dce939d83a362fcb91a3d5dcb3d30a12034e2a1a702c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/aibroker/maximo-insights-predictor:1.2.0@sha256:203015796865a057bd86038987ee705b92626721289baa64e539f7517b48eaa9
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-aiservice-tenant:9.2.0-pre.ren-dbce6325fe@sha256:6a056ee6ac7c448427f1fe9da2a1cc55fd008f078c22238f796488cdd7fb951b
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-aiservice-tenant:9.2.0-pre.ren-dbce6325fe@sha256:16b321039f7e34cf4689d17171ef38813307881961a00b5b006be1300c0ecf43
