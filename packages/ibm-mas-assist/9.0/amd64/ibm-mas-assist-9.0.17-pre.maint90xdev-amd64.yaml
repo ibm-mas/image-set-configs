@@ -1,0 +1,20 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-assist-operator-bundle@sha256:947e10781838e254114e36f15d6e58e5ace3c2f117dd0004a02d8f25d62e6d91
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/assist-db-job:2.0.88@sha256:a33c8cd3f9eca1fa799da11e92d1b70dbb3bc0c0be0b074f923360206186f0ef
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-api:2.0.127@sha256:71bd719e488d3e11100adf320a8350d3118fe50189d3f4772ce4bea419c4232f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-admin-console:2.0.114@sha256:9267421464e5f1e31251b273f7ce5ab393ff57fafcd55f381eee9b6ea7d0d48f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-studio:2.0.86@sha256:50d31c2cbc26bd8060443cc7ce010449624f23a21b86c10defaaebbcc14ff895
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-technician:2.0.114@sha256:ad69f673dc390f8bb5e2c597598cca127427e73c7aed59ab78134a983f023469
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-multi-tenant:2.0.101@sha256:1dd214c2bb3f5e0454e26b7ddf050699eba72ca9546ed050433ceeabdc307861
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-monitor:2.0.87@sha256:f8396be8b9bbf238659723108595eeb5e21888212cc1b8e32771e355583ae940
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-pg-cronjob:2.0.67@sha256:0da0fe7ce836b3c22ff3fe9d3ec313b480ce908c46810121b318574faea78635
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/assist-useragent:2.0.91@sha256:4cc5d2eef69bfb42acaa5f82c275ed8053b72cff30acaaa2aeaf858a85a55db2
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-common-util:2.0.88@sha256:32554aad675cbf364317aa06c426d134735201559b630dc7c401c33c4eff4d6d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-redis:2.0.88@sha256:884e51f797f30b0462d4936dc7979a75319d54c77244b89309d3280f40670add
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ema-haproxy:2.0.88@sha256:053a3e9f800a4154628b903477847dea377a6ca1370df2122a497ee817523fbe
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ibm-mas-assist-ws:9.0.17-pre.maint90xdev@sha256:a13177ada59fb4158e1af9ee32ce8ecf7af3d4fcfd3b97517ed86ad340c7938a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/assist/ibm-mas-assist-primary-entity:9.0.17-pre.maint90xdev@sha256:fb325d2f701a08067c69396785cb4f876c5553bea1df172fdf6b1a69c9d67a4c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-assist:9.0.17-pre.maint90xdev@sha256:3eec5f577c6fb73b05a80ef20f50e22fa0c20e1fe54841cadada345f50a721d3
