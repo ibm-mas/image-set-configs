@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:1bad55052a64e1c566acd4f492e1d092f92c99e78f854d4a8a7a3933ea093412
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-visualinspection-operator-bundle@sha256:03575f163906e9a999f5a53c58edfb2b4c717f2872d3bc25b8f02f3482cb248f
   - name: registry.access.redhat.com/ubi8/ubi-minimal@sha256:7f9482f9e0c3ed4952209cb732f8cdc1979d60a29483fe1a2e03bf22640ed7fc
   - name: icr.io/cpopen/ibm-mas-visualinspection:9.1.15-pre.valkeyregistry@sha256:2bcd5971cb809dadbf7eb4f3563f1e42fc59c9a6c6948c87ed8c3ea7f819875c
   - name: cp.icr.io/cp/visualinspection/vision-dataset-feature:1.1.76@sha256:38facafacdb96e5883e96fc1ad71c58a6244ac14a272ddaa59c654f7e55ef664
