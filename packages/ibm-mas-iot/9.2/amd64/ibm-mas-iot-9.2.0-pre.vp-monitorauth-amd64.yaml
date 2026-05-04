@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:969418d5a3ebd952c3ab89568d13a6c9e8cd02e608c57009f80d88579e696c44
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:3e387459a9b763950bb042cf0603c0a7ee4c3490504542d4a9b9c3975a62401f
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/maximo-iot-monitor-auth-api:9.2.5@sha256:5dad0910128b2e684e40910d9196c88292cf7ad6275cf5560e5aad7fac845699
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-devops:4.0.20@sha256:696091b239db9879f3d0503583a1d1c15e86737ac52a94b2d7310e449b7efda7
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-status:3.4.168@sha256:91dda5be164d88d8b9462781a244d0d767c605f80579490080a15af21656cd68
@@ -25,5 +25,5 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-mbgx:9.2.7@sha256:27d5d5912dfa39d166b517ba8310fae4b9c6dbb3ebf1daae40491960bb7179df
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-mfgx:9.2.11@sha256:ec316903b86b02c1491fcceee5fd7465861071a50f70255c4012b145619ec05d
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-workspace:9.2.10@sha256:dc34218920f7fbdac8c491a56662b803cf4f1e1ce0c8fce97f645303b8dd4146
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-mas-iot-primary-entity:9.2.0-pre.vp-monitorauth@sha256:6d1a3f717fc49c28846921d9af2e0b1934d2edd3ec656e2d750426e544e79bfd
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:9.2.0-pre.vp-monitorauth@sha256:2a9dcf4cb447322d752c9aee17944ca5fb4e4761be0b5dc98b0682a0e68e22d0
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-mas-iot-primary-entity:9.2.0-pre.vp-monitorauth@sha256:927ea2d5306167b5f0274c9685dddb4fc3f3d161d68c7dd3d3b5d88d68855d9c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:9.2.0-pre.vp-monitorauth@sha256:70570d00f4d3969bef0afdab1943d2caeb8401c15eb88eedc3fec312882534a0
