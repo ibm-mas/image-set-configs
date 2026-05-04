@@ -2,13 +2,13 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-operator-bundle@sha256:dc6e177690d552018a969b1b765523253fb550d564e4d7661f58282e69651bc3
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-operator-bundle@sha256:2c914fc648706fc3b50f6a6e3c3dffc621bd9fc0ca94855eb7ca2a3cd56c1344
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/api:9.5.6-amd64@sha256:0d4b08a393504a62ec77100537e7ea6670463eecc44b009ccbfecdec0abb95ba
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/execution-service:9.5.6-amd64@sha256:f3a2453fcf771b7b0dfef8af9543a78eb1d4e60a6796a7f09447d40cefbc8014
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/workspace-init:9.5.6-amd64@sha256:3728a5332f8120cc2a093537360b59597445b148438ea4a653d9a8c84b1c5c2a
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-primary-entity:9.2.0-pre.ren-dev-dbce63-amd64@sha256:843b1432f662faa7b71a92888a085017667f886e46d15ffac1f285ee63a43081
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-primary-entity:9.2.0-pre.ren-dev-dbce63-amd64@sha256:d3ab7b01d5b7de448ba0d6cf8163c15acce9184dd6bb7262174fbddde339de5a
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/admin-ui:11.0.5-amd64@sha256:b5c89ec11ed5ac7893143633c8ae49a839f4978bd5fdb23efa7e1defe0108824
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-ws:9.2.0-pre.ren-dev-dbce63-amd64@sha256:70f90ffc86a1acc3efe44262722ee6fac5403283b6943af0b8adb3fbeb587a06
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-appstatus:9.2.0-pre.ren-dev-dbce63-amd64@sha256:590759571f70732428557f07396d9be06d451c9702e20ceb15a800912e2d35a2
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer:9.2.0-pre.ren-dev-dbce63-amd64@sha256:bd457e1a563eae08fce00bb8442ba9aa9758b7477f260c106a1a66d47d147334
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-webhook:9.2.0-pre.ren-dev-dbce63-amd64@sha256:2384936dd9206592e0d4a6c3876091e25ca1afc290ebb26a792dcbe71928e024
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-ws:9.2.0-pre.ren-dev-dbce63-amd64@sha256:b67bf61e8278d02b757e071aec18ee9703864cf5cdc2af65417c66ebf12327e4
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-appstatus:9.2.0-pre.ren-dev-dbce63-amd64@sha256:e636dd7a00ac5d421040541b2c2e595077cb46cd3d38e35a8537b2c1d3a754f8
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer:9.2.0-pre.ren-dev-dbce63-amd64@sha256:327f51be9a2bc062b530f19e4a5b15230a2294b83ca4df69b607a0750ff69804
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-webhook:9.2.0-pre.ren-dev-dbce63-amd64@sha256:e530c226c347789a87b397d57520439e4f4006224ee2a4952181daf2e49a8d13
