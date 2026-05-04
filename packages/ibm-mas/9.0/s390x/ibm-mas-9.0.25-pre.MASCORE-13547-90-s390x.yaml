@@ -1,0 +1,38 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-operator-bundle@sha256:16951a72f31d3151d1e67cac561d4e11b60e4902b3bb93f297a26098dc013fff
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ibm-mas-suite:9.0.25-pre.MASCORE-13547-90-s390x@sha256:ed1de43d3c54a14407fc41f90286cbb3ea9291c84055b4e390e251e372f63bf6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/kubectl:4.2.40-s390x@sha256:45ec5ef5c664529778d90257fc2149706f65a62ada2727604dd591d98d6e80c2
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ltpakeys-generator:3.2.7-s390x@sha256:9561aef6e0587395a106b3c890cd7bd491d67ab88646f8687903bfff6fa9994d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreapi:24.9.124-s390x@sha256:95c39471093d3ad6fbfca061201cb00f7e3ce168b68ece700810b7bd03643a57
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/internalapi:9.14.109-s390x@sha256:5afb12855f0dcee4ef1895b2fccf7890d51662d459f32784ea97a24d275753b7
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/admin-dashboard:11.12.126-s390x@sha256:3734a9ba92e6421ab5b8688d6fa96a753c5ec1e26406983f82d09237f977d783
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/homepage:9.3.52-s390x@sha256:ff39c9dc3aaec224384446441b039adc0dc9120c15dddfa95d58c38bd2f615a9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/navigator:9.3.53-s390x@sha256:dab5eac1b6b1834febc718efec268a0aba17f8fa43426d404215575a6bd1d1c1
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/usersync-coordinator:3.4.57-s390x@sha256:f5c589f9f20c8ab82bb9d61e94e72ca3d773826a48146621a80971781378dad6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/groupsync-coordinator:1.6.70-s390x@sha256:d605c44d2596bd51afeded8fb3f694b005036a30221325f183335d470a1b82ab
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/workspace-coordinator:2.7.74-s390x@sha256:f0c772ad34dbee4953e70cdef93bdf31c3cae207d3786694b66014a248e959a2
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/catalogmgr:3.3.19-s390x@sha256:4c01b8f7f184e14d91baf3307d2f0bf7f10b8fbe52e7b36caaca14f50d5f8486
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/catalogapi:2.6.19-s390x@sha256:3291c1b2983fdc532fd8a83af07464419aa3284eef72a80773cfc89aff7dd0c7
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/mobileapi:6.5.235-s390x@sha256:a52afd6c34fe78583cbbd6709f4b070e72f4b305ec47acfff731dc69cea7e6b4
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/monagent-mas:1.10.80-s390x@sha256:bb2da5e054ac614d1d84c1b839a8448ce85ba96a2244acc0eadb873f573f5dd6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/importuser:4.3.66-s390x@sha256:2bd6b2eedb760c0d74699de24ad0dde90d1e62f6c4bded95eac00576ab75e25f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ibm-mas-entitymgr:9.0.25-pre.MASCORE-13547-90-s390x@sha256:b0a595f9eae97c9e02baf89d40ddf91b588d274642dddf6ce841012e1948e9aa
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/oidcclient-reg:2.5.58-s390x@sha256:8f57c4c943c9943d0c33dd9ed8158d0438dd0e93d18297927dce5dc7ad2857d6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreidp:9.2.53-s390x@sha256:ee0804cf2647bed63beb9a6786089ae70e01072828f40ebd361f04003017b314
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreidp-login:5.1.134-s390x@sha256:82d5e3ba59a3e681ff5a141b70d10e788742405d8b8bd391d41986bf99320393
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/milestonesapi:2.8.83-s390x@sha256:d3cfa0a099688e0ab5fb721b3c54ec0b4c522dbbda282800ac8fe2e680e99045
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/adoptionusageapi:1.16.79-s390x@sha256:bd69bfbcae4c357824c060ee1268b2c9e152e0356ec6f0c2560c25fe1dcca624
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/adoptionusage-reporter:1.14.44-s390x@sha256:1555849bd83e2e595ce5dfa64bbbd71730950cec8adf92244801c874fca9f713
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/accapppoints:3.10.49-s390x@sha256:8b3782fb8940de34103a9ddd0bac52a523736b5ca41dab84d7c5164873f6442c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/adoptionusage-metering:1.4.63-s390x@sha256:21bf06088dfa65ee0101dfa71c194b5a09109fa18fa39699a956f2d149a972bd
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/sim-user-data-service:1.2.56-s390x@sha256:d6b55d7171b86e3d849f0f411a7494ba1c79a56e53223fc87f4877f8563ecc9c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/scimsync-agent:5.4.53-s390x@sha256:929c596f978acd9a54b163367289c6fbcf3731f7183dab0e8b4eec90ccf19850
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/scimsync:3.2.41-s390x@sha256:5ef2a08b2edbd0a94dc77eefa9591b211545b911426720ee090eaa005c8fd52d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/sendmailapi:1.17.76-s390x@sha256:ae0c1497b240989fc3471842ad7ca9e8597f34cd66ca6d90077bf11a71d8ff23
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/push-notification-service:2.5.13-s390x@sha256:038c45ea8b0f33cf672175e40553b632b957c67d38e663a9954ca9aef27d77f9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-mediator:4.4.78-s390x@sha256:9f4051c09e64ee1e4c38c2aa82bea0d9169d8097ef1499ad0d35b65244531311
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-sync:1.2.18-s390x@sha256:edb865a26054448cf4d0aa10187ef20da4606d4bbbe987d6d6341d7738509297
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas:9.0.25-pre.MASCORE-13547-90-s390x@sha256:8cc9ea6080ceb8b7fcf0390213bf1ce361780efc8a4ba2879390caaea34ac001
