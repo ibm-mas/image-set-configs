@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:12c6333fde016bb9bd4a9e7b639d83e3107d76a31cb3d196836206fa160297cf
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:e2ac4d93d383936049c1effc14cf3512024cdb0c8bbee4ac70590545d1d36a89
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-actions:3.0.31@sha256:da866ced5b6e25c9a34d276f86737512861c32358dbea8ccf192585774b12573
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/action-mgr:3.0.107@sha256:33475070af37a6cae8c19a6be2917ca4a78df342f2fcaccdb66db5a87a8bb3f2
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/deprovagent-actions:1.1.187@sha256:bf35fe4b7854fadf2052a86134d0e7278e01eb49b00aa9abd4018016fd9c12bc
@@ -102,5 +102,5 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-state:6.0.71@sha256:1ae8442d4eee7665fc55f19f5ec5f41996266d37a8ab0b3a63eb9fbd42180f6b
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-webui:7.0.63@sha256:aa7ad0f316e0f3a42c12eae860895da865cbdec109545a83cd50fca7024e2ff2
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-workspace:2.7.125@sha256:49a019739686c082f3e3aeee250e4adcd5959ccbc87cf43d4715960e61a83cd7
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-mas-iot-primary-entity:9.1.11-pre.ren-maint91xdev-dbce63@sha256:84ff76ed3baf57eddd510dafe0917993349ccf11e90fd350f5309f01bcb0946c
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:9.1.11-pre.ren-maint91xdev-dbce63@sha256:0ed85863f2bcf151b9a668c08569128ecd1dc8a60b6594e48ca46abab04b5b43
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-mas-iot-primary-entity:9.1.11-pre.ren-maint91xdev-dbce63@sha256:75c2b7bd8d6b711f028ed093f11ce1a67c78c00b7de8d84bb0c426bf31973994
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:9.1.11-pre.ren-maint91xdev-dbce63@sha256:53aded5ba7b505fd37c0a19832a240decd04e2deea3ad5127459f85b63c16da1
