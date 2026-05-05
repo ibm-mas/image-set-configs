@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-operator-bundle@sha256:5eb36049dd5016bfd8fc903ed778cd2baab90df33096335d6220327a362465c4
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-operator-bundle@sha256:17bc9dcbfc0038a85371b7493828479e41e8b3f5ca98b4a80883877012d4c17c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/kubectl:4.0.31@sha256:c901fdff9a40a8e65f531db7e7d6f80a2228325128e6e67688e41d5cccc50138
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ltpakeys-generator:2.6.132@sha256:a0085dad64a8f5af35eadbdb916cf49699f7195d84e39f5bacf9e2811c42d891
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreapi:13.0.244@sha256:781d132c303cecf945c0e9c89a9f47456f846d86f801f44e8bb58e7fbc4dbbb4
@@ -34,4 +34,4 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/push-notification-service:2.3.144@sha256:07e843dd433b30837b20a1e53d9c960f0faf6559a26c66ba2c8e1ec6d689995c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-mediator:4.2.64@sha256:e9940c29b56165ab670c33d1e8d7b24eb3e347cca13e035bea236aa3055e26bb
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-sync:1.0.115@sha256:b646ab81cd07cfca2edafa9740564f9da28c655c2b5d398df43438e800d7e203
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas:8.10.38-pre.MASISMIG-73210-cpu-throttling-810x@sha256:8f3a9a770181a45008ed0c7d5ef332dee4e809e5379c99c41ca2458d0a55d5e0
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas:8.10.38-pre.MASISMIG-73210-cpu-throttling-810x@sha256:6858a3d179af4d3c607d944f5f10114b2e763f71d22e3b671438a521142f2456
