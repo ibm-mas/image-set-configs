@@ -2,10 +2,10 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict-operator-bundle@sha256:937d33ef9d57c9a22f9e994da8ffd5c72cb6a0415f032a5cb4aa04df89cbae41
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict-operator-bundle@sha256:5a1bc3e702dc6b743ba9a4bc2724da1ce58fcae2f1b1827b3fda7d1344f281e7
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/kubectl:5.0.20@sha256:61bc875d64a472380e690ea485300b35c0491aaf68368664831a2a8db8161bbe
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/ibm-mas-predict-ws:9.2.0-pre.path-92@sha256:b9406f5dada598418d7d0ce887dcfc1b7ea8dfcab295ae35c212fb8c1d66f075
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/ibm-mas-predict-ws:9.2.0-pre.path-92@sha256:e7bf2006d9d0bd3009b2981a589a20f2c4f8cec5a04bef5f88df9d462d24d6d9
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/explainability:1.7.12@sha256:e3578ea0c0616a0bf62714c1da1d933df35a53c7b805f17cedc74307cce20fba
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/mat-service:1.5.3@sha256:82b8c8d7e6fd4fb05d50513fe9141217264aba6fa20dce1fb9a3af12b2153080
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/predict-api:6.2.0-pre.masmon-5863@sha256:52b72e81c48c3e0897408a5825097124c2e04b4af3fcbf969bbd1077adacad99
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict:9.2.0-pre.path-92@sha256:776be2601feb6345f26eddf477e7e46bc85d4b1f2cbb9a512144da0dff2d576f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict:9.2.0-pre.path-92@sha256:35308d6c30d9bcdb8a6669994edbb304c575682ee6fbab8bed6ab121e3dc86b5
