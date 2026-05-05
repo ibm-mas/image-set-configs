@@ -1,0 +1,37 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-operator-bundle@sha256:eeeee4c0c872865f070e2a4d4693d4285edd3caf9832ea62cdac7974a54008ab
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/kubectl:4.0.31@sha256:c901fdff9a40a8e65f531db7e7d6f80a2228325128e6e67688e41d5cccc50138
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ltpakeys-generator:2.6.132@sha256:a0085dad64a8f5af35eadbdb916cf49699f7195d84e39f5bacf9e2811c42d891
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreapi:13.0.244@sha256:781d132c303cecf945c0e9c89a9f47456f846d86f801f44e8bb58e7fbc4dbbb4
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/internalapi:5.8.231@sha256:0c4a110f45d305956ac9640fd714e9398e5c809ccecdaf7cbcfa6dc50337ad23
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/admin-dashboard:9.0.228@sha256:00a0284cfc60accde08d194140e04e49fa7ea9c8af54f563edec7e81b6a7b18d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/homepage:7.0.122@sha256:50e6b01c4a9f01969e9472d2e9f4a36032ab5ebc5db0a95a860504cf1957932e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/navigator:7.0.97@sha256:5a283e6d481efa7f0d589a7b9887158213398b25470044605a04a05aa21feddd
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/usersync-coordinator:3.0.242@sha256:ca9cd590996f50d1588cfe64f4fd7a1274f987d2105b8ac799ba9f5f9b18259e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/groupsync-coordinator:1.4.282@sha256:828a99cd05a86822ac4f4466f4671fcd5427cfad8091eb77ccc515569e9031cf
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/workspace-coordinator:2.5.265@sha256:1d54125d434e7b46a1b635e4fed2a58c910b6eef66f35a03f753cb00041552f2
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/catalogmgr:3.1.155@sha256:e7736438c2c6375420c864fc3cc5cd40908a0b9aabcf781959e47680260c321f
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/catalogapi:2.3.181@sha256:ac464b351ce215a3602eb708e767cd8ce08458dd35adea6504bd57127f964e7d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/mobileapi:6.2.301@sha256:c21ff66f57bce4b8e724a6465978c20f27df367779315b979bfeb0d54b9b9ca5
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/monagent-mas:1.8.150@sha256:fed26f0a4461817a2ff45487316ac53bf74aab7a069e6a4c1635fa25f52b62c3
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/importuser:2.1.176@sha256:c1c0eb7bb2a5cdd0e7d51a022595387d3b3d9365121141ecfa8e12f2a40cb847
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/ibm-mas-entitymgr:8.10.38-pre.autobuildspsmaint810xdev@sha256:2fec06550738fddf02aa0358e0878b5172b5ee6feafc4cc7b5f56fee4fb3e367
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/oidcclient-reg:2.3.239@sha256:9b2d12edadeb3d623b7cd945ea8a27ba78e489e3df2a18fbbe51de5f7af15003
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreidp:2.5.131@sha256:a9774e87ab5a26a7fcb27184bb721eb547f091cf492045b89e5e664d35a0b34b
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/coreidp-login:3.2.199@sha256:11909637400e31db6454813dde4b605340ec4d2f5f9debd719be436055350037
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/milestonesapi:2.6.217@sha256:6def13a4ba3c0f44543a1c5b82b0598d290c4746805f979e63861daafe74f93a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/adoptionusageapi:1.13.102@sha256:ba465668d5bbf908c85c000117c043e8778808106024a4fc0411a36a7a007a13
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/adoptionusage-reporter:1.12.99@sha256:7a1a071a20bd0f37bdb725972bd78aeca28f24c8c607ab53c985ddbbfaf04e1e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/accapppoints:3.6.95@sha256:dc84394d07ffa8ffe9c93846caf0be7dc158d323f8f7977fb950bb3ebda19fc9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/adoptionusage-metering:1.1.193@sha256:24a3392ffc9f10fd2e1f9f69a8508b4d637763ee34dbb556845a9467deea9fe9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/sim-user-data-service:1.0.58@sha256:38096145a731f120f4fa83bf9ff5ea1ecf6fb1157be52070537dadbae4cd784e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/scimsync-agent:2.4.266@sha256:d21c2698125c4145f6b818cef7de05400a6967e6683acb0fbb458364eb9be5fc
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/scimsync:1.1.183@sha256:f67802250810386de7b0510adbc3e65011cd7eecb07b49357eccfcd9fb909d40
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/sendmailapi:1.13.77@sha256:8dbd79a7697321e6b2211bbbe29cf2ad19ef23251b695d3b937831cdf49a3607
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/push-notification-service:2.3.147@sha256:9c0216131655e9f2227ce64619962ef77da422a6f8101720a84fc5939c94bac1
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-mediator:4.2.67@sha256:30c75dde4ac91804b1ffd3c35c1961f07adfe329f178b14862a30a63543cb3b2
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/licensing-sync:1.0.117@sha256:eb41cd3cdd4321899915090e58e9ef4d47a21d39330e217e0809c295bd445960
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas:8.10.38-pre.autobuildspsmaint810xdev@sha256:2af725b244eba67a5221e09483e27d6283eeae12c6fd726754089be32c3341b6
