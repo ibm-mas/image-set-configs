@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis-operator-bundle@sha256:3c0e6dff8e6482ce622a2b1684dc4304d24d0ca867035e5c476b1d897682df01
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis-operator-bundle@sha256:4789b61f98dea7a518b91ab96c34de88c5ccdf6c7ee08fd83d84134a0e10f344
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/enterprise-admin:12.0.0.7286@sha256:e18968845a3a739445d96dee8f3713b28a1f2a885738e1b9d5c197b93e72c01a
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/enterprise-admin-tools:12.0.0.7286@sha256:681dcb4d622bccaeb55d0cdd3c82adb4cbd1c5ab1b6e49f4a4798ac5cca1f60a
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-busybox:12.0.0.7286@sha256:3b0d42f10f6481b540256d08c7545902c1013f0124a4f703d04c1755b0f71537
@@ -42,5 +42,5 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/tile-server:12.0.0.7286@sha256:4c388201845bb0e47fefd8a6ba59d0041f612af606a39c958df746e5769cbcba
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-nginx-web:12.0.0.7286@sha256:9ee018eba9beb6c97c2db879f22cd3c9db66066d3093d95ba4b783e328d84cb8
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/webhook-processor:12.0.0.7286@sha256:e4deaacd48266e2b8c0be676b89deba2009babfd69e823fad4162f7e153faa45
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/ibm-mas-arcgis-ws:9.2.0-pre.ren-dev-dbce63@sha256:c4858711556170491172aca5956c968a3c935d306b63dcdda30271885b702e88
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis:9.2.0-pre.ren-dev-dbce63@sha256:c8d1b0ce927da05bd88ec7e7f6d7cd9670586e57587ca852f46d1fb8886cc924
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/ibm-mas-arcgis-ws:9.2.0-pre.ren-dev-dbce63@sha256:e2d8ce36f04e23422b1f25d68be30d04abc76ee8eb40eea66974d0b13eb71d4c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis:9.2.0-pre.ren-dev-dbce63@sha256:50e46e264cce3c5c5ab5bf2811c8de815427b9930b3926ef0324852a70479a24
