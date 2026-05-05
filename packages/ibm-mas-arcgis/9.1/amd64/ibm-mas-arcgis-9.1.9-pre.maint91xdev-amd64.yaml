@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis-operator-bundle@sha256:925724657998ee0fe6ef66d92476aaa57280e39b49007ba8ee8d9b0978900792
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-arcgis-operator-bundle@sha256:e5ad6297584f6c96287029b4d6c626557f29db3c1c610e25daacf029b61b2e67
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/enterprise-admin:11.5.0.6745@sha256:80c32812b076d1d5535742f2004457fe52a50b73b60bd65b900f51d5d28a54e1
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/enterprise-admin-tools:11.5.0.6745@sha256:488d00c9e3933d2cc37e30874ecac41221617942fcbf68724339957b826caf84
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/arcgis/arcgis-busybox:11.5.0.6745@sha256:019aa549a779798be5efe914f7718a31bb6e11101ea0bff1ca3153c936255ce1
