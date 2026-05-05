@@ -1,0 +1,14 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-operator-bundle@sha256:1b9a880af8aef3ff89a78001929670d60eb9f0c393a2fa9453bbd85f4c2b5202
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/execution-service:8.5.30-amd64@sha256:1b9e83f6f3c9eedd6f2943d9ae595e4f8ee740bb90e3162da821aa883c05a3ee
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/workspace-init:8.5.30-amd64@sha256:756bfa92d7284fa5525a24350c40f7c13b85ed6a0b9e77021a5d85544266fad3
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/usersyncagent:8.3.61-amd64@sha256:f6790271cf918fa60a967858a9f4646da6657429fc07f49ef667917ab870b0e4
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/admin-ui:8.5.30-amd64@sha256:37a2911bd01f4738b22f38b38490e1ca51f5dc1aebd25dec155bb0842f21cc10
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/api:8.5.30-amd64@sha256:e975cdf758a9fbf558ae39d03a0dc894e685c9e49a27024db52eccbb4a855df4
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-ws:8.5.29-pre.ren-maint85xdev-16b334-amd64@sha256:24d49145ba90e2c40798f6f623258c494102fbdc294a9db59d5f378419af7450
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-appstatus:8.5.29-pre.ren-maint85xdev-16b334-amd64@sha256:424bba5a60cd6ff803ce1bfcec32b9ce09af554f0cceb7c74f4c5c6a4dd7bf6e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer:8.5.29-pre.ren-maint85xdev-16b334-amd64@sha256:feb293e63fb9d77608951954242c1d853ffd6f78c44c945b363fae65e210c916
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-webhook:8.5.29-pre.ren-maint85xdev-16b334-amd64@sha256:a05f27ed3239a3e539690808fbf0031fcd62aa0bcbae25ce05c0f87616d85652
