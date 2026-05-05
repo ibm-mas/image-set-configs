@@ -2,6 +2,6 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-sls-operator-bundle@sha256:680b97471ab4650cbd947d91e82852ed7cee78dff3eacbbd220b42b723eb1615
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-sls-operator-bundle@sha256:513535ccc5d4b4c9e09ce9dac5603322301c040f7f99ac239410471f2f459b7d
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-sls/api-licensing:7.6.3-ppc64le@sha256:9349a5ebec7d3e0c2df7c77ac1c20fc28f66d4a258efcf011ecf4c571f572fc4
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-sls:3.12.9-pre.mc12260-ppc64le@sha256:2f73efe3886c113fce3c456f734d198ad13e97261b1b9dc6e51867049647cbe9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-sls:3.12.9-pre.mc12260-ppc64le@sha256:1ee1ce8436f04dae435f7fb0b11f5e5ef3c036ff91cac5f145e7beff7b930467
