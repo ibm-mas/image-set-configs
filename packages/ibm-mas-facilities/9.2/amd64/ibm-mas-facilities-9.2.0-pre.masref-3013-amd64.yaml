@@ -2,8 +2,8 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-facilities-operator-bundle@sha256:3e03c43fe5a73c198c91b1b2a1154e51ee7782049d80b16a3e9a00455a19bb5d
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/facilities/ibm-mas-facilities-ws:9.2.0-pre.masref-3013@sha256:3bfa8d88a0ea4a89f4abdfe370f6bce209524ccca871d96371750dbdb420869a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-facilities-operator-bundle@sha256:cee47d56fe0f14630c9e923d129543c92e314442b846bb57737fd4cbf691afc5
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/facilities/ibm-mas-facilities-ws:9.2.0-pre.masref-3013@sha256:bc1d5498a05725f36986c4428f3ba1feea928fb483435f762d6e54ba8f2ed766
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/facilities/datainit:9.2.0@sha256:953239f4faa91274843f09977c36d2082d5f43b28a7f5128845505bf60a72080
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/facilities/platform:DEV_403618@sha256:06cba49a95421a085d7bc28a76f9f6418c3fa99a99bef1fa5f20312ec0f01048
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-facilities:9.2.0-pre.masref-3013@sha256:2e37f863bb8b3cc5a24e20ba0d93b029056fd77ce182e44a48d83b1982512bdc
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-facilities:9.2.0-pre.masref-3013@sha256:2a7f27ebe9a62ab7fa5665dbe852c6ebadb7694eb4684f8e274e30261ae580cb
