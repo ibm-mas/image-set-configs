@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:1bbbf5a41acfd6a5cf2bf48300e73c0bf8b53af0f00b1677821dbb4d113d9104
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:a3ec5f0df89ecdd5bfa12ffec3cfa5d36a75fba49b3f4c78a8ad1776f8efeba5
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/maximo-iot-monitor-auth-api:9.2.5@sha256:5dad0910128b2e684e40910d9196c88292cf7ad6275cf5560e5aad7fac845699
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-devops:4.0.20@sha256:696091b239db9879f3d0503583a1d1c15e86737ac52a94b2d7310e449b7efda7
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-status:3.4.168@sha256:91dda5be164d88d8b9462781a244d0d767c605f80579490080a15af21656cd68
