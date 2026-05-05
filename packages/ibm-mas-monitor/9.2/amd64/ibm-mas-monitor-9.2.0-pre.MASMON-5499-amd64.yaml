@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor-operator-bundle@sha256:519afde450fc8e7fef926fe20901449fd3416ca6ce3b624dce36e9e4ac1713b6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor-operator-bundle@sha256:d9aea18619d2436684ee62b2d73c02deec023fbc90a343c64ae0244a04cfb3b8
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/hook-db-monitor:9.2.36@sha256:805f103c37a1437f023f7e847731a45d3c7bd7cb7f7aa1bc96dea451d1735455
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/pipeline-engine:9.2.15@sha256:f2beb3d7363ccd585f63b119bdc278a9c80d4c67690d77c4f00744d914d76131
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-inputprocessor:9.2.29@sha256:b3402c0f3a368b2c1745a62758e6fd905ae3498aa47aa7b4d36f14f6d1efbf2e
@@ -26,7 +26,7 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/omnio/omnio-server:9.2.12@sha256:688888543297c3c41e98aa655f6c16ced8b83479ad8231e06355a8724870c40c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/omnio/sqlmodel-edgeconfig:9.2.12@sha256:e966ac34de17141c6a739db4a4aa4153474e5839e9d1451538f9434aa6968fff
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/omnio/djangomodel-edgeconfig:9.2.12@sha256:9131af7f06b41cf706a8a41fc40addcae3d1277f9e2aa752015e60228dcb091d
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/ibm-mas-monitor-ws:9.2.0-pre.MASMON-5499@sha256:0d6c68a0877d7de9cd0f82bd8c97da65aad1e07cce67e3bc0d7459683fe70150
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/ibm-mas-monitor-ws:9.2.0-pre.MASMON-5499@sha256:16b00387779d99dcea26cbf6111f82b4ab39812985fecbd8cbb02eb0f29310b6
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas/edgedatacollector:9.2.2@sha256:497a9ead098fa68c5edf3440d2cd5a7b897114bedad1fbd6609053b1e67a1c49
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas/scadaconnector:9.1.21@sha256:425039d5aab9ece1939ca732e655d325286211f91521b4f5cdabf0ee9d926470
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor:9.2.0-pre.MASMON-5499@sha256:b613da7099c5861e89e97a3e1dffdfcc4c109f92a5f64e9531d007eba0c43558
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor:9.2.0-pre.MASMON-5499@sha256:0b9cb02d52d5a25d989e0a583f0659df1d129841a323acc20af57c21f1f018b7
