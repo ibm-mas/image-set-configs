@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:173076edbcb725ec8c545906675f8398f85b80e9c572dc243a376fb9fb933cb6
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot-operator-bundle@sha256:502c6697b8a4bc3eeea42878c357971b5f5845c2810667809431290b02debfe2
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/api-actions:3.0.31@sha256:da866ced5b6e25c9a34d276f86737512861c32358dbea8ccf192585774b12573
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/action-mgr:3.0.107@sha256:33475070af37a6cae8c19a6be2917ca4a78df342f2fcaccdb66db5a87a8bb3f2
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/deprovagent-actions:1.1.187@sha256:bf35fe4b7854fadf2052a86134d0e7278e01eb49b00aa9abd4018016fd9c12bc
@@ -99,4 +99,4 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-state:6.0.71@sha256:1ae8442d4eee7665fc55f19f5ec5f41996266d37a8ab0b3a63eb9fbd42180f6b
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-webui:7.0.63@sha256:aa7ad0f316e0f3a42c12eae860895da865cbdec109545a83cd50fca7024e2ff2
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/wiotp/ibm-iot-workspace:2.6.51@sha256:15f9242176bc513885b7598d95b24ac996c93b840b0ac2766e186f15caaf0e4c
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:8.7.34-pre.maint87xdev@sha256:77da796737d0c161dedc6ec8858f3a13b2301c2cd382912492cae8ef52a67743
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-iot:8.7.34-pre.maint87xdev@sha256:6c00190d2a8ece42b9cab314d1958d9c1d99d1e499a2a2cb1ad9890da8ac4f67
