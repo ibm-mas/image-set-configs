@@ -1,0 +1,14 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-operator-bundle@sha256:f456aadafb5fc706030273c529520d0c11e85ffc1f273a27b1ffc3cc4f521acc
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/api:9.5.7-pre.mso-2648-amd64@sha256:41b580425507bbcc8ce21b5e34b6989733d546a6840ac5a25579ca51789facdb
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/execution-service:9.5.7-pre.mso-2648-amd64@sha256:db3f0009e1fb6b165d418d1ed893ed01c1f66bb03c31c58cc644e3d260faad6d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/workspace-init:9.5.7-pre.mso-2648-amd64@sha256:000ed181fde91a4189bc2fa89841b867b3500c394a4b122721ce756824918dfa
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-primary-entity:9.2.0-pre.mso-2648-amd64@sha256:18b483acde8a07ec40e0230f862d541b18abc87b42fcf084986a09bddbbc6d2c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/admin-ui:11.0.5-amd64@sha256:b5c89ec11ed5ac7893143633c8ae49a839f4978bd5fdb23efa7e1defe0108824
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-ws:9.2.0-pre.mso-2648-amd64@sha256:7bf1e996e9a477ab1f6c77d94a59b1572e26590327767c17a4e5459b3f785e51
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/optimizer/ibm-mas-optimizer-appstatus:9.2.0-pre.mso-2648-amd64@sha256:32b4f3adf4411f4c7697a715d059166315fc81efd29383126dcb1268d83a898c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer:9.2.0-pre.mso-2648-amd64@sha256:20d2e9855cf3b7c2d66008c5eea20ef4c75d7ece5224ba202e48d7f710fde98c
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-optimizer-webhook:9.2.0-pre.mso-2648-amd64@sha256:b0c17bfb9b51fc3fc3c0143722da85dd89976fe61a978c67cbfdd4a9a28b7488
