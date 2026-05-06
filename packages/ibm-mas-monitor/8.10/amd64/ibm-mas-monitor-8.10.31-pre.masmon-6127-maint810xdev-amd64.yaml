@@ -1,0 +1,26 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor-operator-bundle@sha256:f17f5ed55996b79bffd85a18ec7d491c81ead8e41ece865d96db00c738031566
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/pipeline-engine:8.10.120@sha256:419a3bf6d4ec42695492fa120a34097cbf19496e40e43eafd4a7d2c559c6fe36
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-outputprocessor:8.10.219@sha256:380cfc019958cca1feb325168550d590ffdd8c3857c058bdc0a76c6cb5ff3a4a
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-outputerrorprocessor:8.10.219@sha256:b87493e3c2e7a28dfddb178184b3631c88bb450a1389783af789ecb181a8a7ac
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/hook-db-monitor:8.10.209@sha256:84564d9284dce1a3d677ee57b2eecd5768fb8d47dfe273fa02711ef84725b814
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/rest-dscmanager:8.10.241@sha256:2207afe76ae479089d04e04c5fba460ef374a62e47e86a6031fad5b401059613
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/v2-core-api:8.10.241@sha256:ab1a53aba0fa0342d92a4dffd11c475aa4ddcd2eea652b9359695b16482db976
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/v2-core-scheduler:8.10.241@sha256:221b02d9aa161c04d18dd70f719e0b235c8990a7870dcf4a7ea89be55d59d8d3
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/v2-datalake-api:8.10.241@sha256:6779ea3a8290901bb8b275dd663ee7ebefc4950b77b40394c9b153ba05ecebfb
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/v2-datadictionary-scheduler:8.10.241@sha256:e27bd2045a04a35f2385e9375411af5c81766e5c72d3acd29582c121fb75e574
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/v2-deviceidpopulation-scheduler:8.10.241@sha256:498d6fb8849bdb51c820842197b5207871ed90d50e113036e8ed9cb5461c8eaa
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/pipeline2-sync-scheduler:8.10.241@sha256:0c4593481c993053a71971234204e5f154d52ed0e673f2e0e675e59cae7a2b85
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/as-library:8.10.127@sha256:bd314e97a0e92d39d2ac98905f2aaf4935731ec0c2c985096ffd4eeaca189aa0
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db-base:8.10.152@sha256:a0edb541ad1328f3fab53094d3360ce9ec5d4b86cfddaec4438a306f05a79a35
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/ft-datamapping:8.10.152@sha256:cd00ede1359e1eb291752c99ef00b38b59386a2d13e82ddfa90a9bd76834a83d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/as-ui:8.10.197@sha256:7ef0deb28508ef174417e6ffb3a65ebe6e4bc7aae06c8644bb6679b0c76cc012
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-inputprocessor:8.10.219@sha256:d7d3ba6221ac3408cf2f9b4cba8fa406d1c1de83e2845ae4522308bc2ae85164
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-inputerrorprocessor:8.10.219@sha256:7abcac48e840a45b80139377c9e4e1c2b86182a69801e55f4aeeb5660ef097da
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-usagereport:8.10.219@sha256:47138bd0d0b269860bc13d7cfb26cd44b0637a3fefe14347fd3a6449c48a1ec1
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-datameter:8.10.219@sha256:b75830fc27f7bc8526f55eee50ba1914cb8373cd8492069ec663e86c63bb3856
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/ibm-mas-monitor-ws:8.10.31-pre.masmon-6127-maint810xdev@sha256:7f0593e08e878602d7d46ea2bbff52e037e96161289b26894973ad89047b4255
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor:8.10.31-pre.masmon-6127-maint810xdev@sha256:64dcca114b601c972087d4c52e8c37ad0f335a8b33fac8c24bfeeda06a2d731f
