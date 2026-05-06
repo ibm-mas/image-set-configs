@@ -2,10 +2,10 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict-operator-bundle@sha256:7807c06d0f378c7f3174a8e4fd89be14a4aa7dea1a6478f249e71dc1828f6d8b
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict-operator-bundle@sha256:904307707a0da2d5dc8a246a6d89114329ad3c04a5be273cea95a393e042766c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/mas/kubectl:5.0.20@sha256:61bc875d64a472380e690ea485300b35c0491aaf68368664831a2a8db8161bbe
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/ibm-mas-predict-ws:9.2.0-pre.path-92@sha256:fe06a382b33d3e7b18a513b06fd2cc5c747da805a9687fd918b00efbf26d4661
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/ibm-mas-predict-ws:9.2.0-pre.path-92@sha256:4cd64180494ea4f79702ffa5eda535800c5916a9d5d4985b7dad6e23e437ac49
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/explainability:1.7.12@sha256:e3578ea0c0616a0bf62714c1da1d933df35a53c7b805f17cedc74307cce20fba
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/mat-service:1.5.3@sha256:82b8c8d7e6fd4fb05d50513fe9141217264aba6fa20dce1fb9a3af12b2153080
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/predict-api:6.2.0-pre.masmon-5863@sha256:52b72e81c48c3e0897408a5825097124c2e04b4af3fcbf969bbd1077adacad99
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict:9.2.0-pre.path-92@sha256:ecfe2fe7f158bce93441aefb63804cd755a1246804d240b51c88e7a8c88e5539
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/predict/predict-api:6.2.1-pre.masmon-5863@sha256:6d1da69e246a66525dff02881b2494199402017dfa3b3fda729b9ea8420d00f0
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-predict:9.2.0-pre.path-92@sha256:479938b33a1c7b0428e27f1659c32b876e6c125369560fe8b91412e1986eb320
