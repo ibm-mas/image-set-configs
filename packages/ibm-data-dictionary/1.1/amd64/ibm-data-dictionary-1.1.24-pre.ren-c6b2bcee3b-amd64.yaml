@@ -1,0 +1,11 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-data-dictionary-operator-bundle@sha256:ab2c07f3b79f0d53aa916fb86a07c65b912b5908b0632c6a99df4304109bfe83
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/datadictionary/kitt-v3-router:3.3.63@sha256:83fe7bf1376a72eb5df14188d6326b4392040fc6ef3e0770bbef2dec9ce6f709
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/datadictionary/kitt-v3-user-store:3.3.63@sha256:c623dc0f2a22d204c8371284c21fe4f9936714e53ba26c88f99b6f977f8cc4e3
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/datadictionary/kitt-v3-graph-service:3.3.63@sha256:05aa9769c36915c3717a90523ff0f56a084ea726bb1fa674b8128b2f0dd003fc
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/datadictionary/kitt-v3-series-store:3.3.63@sha256:747def3fc857e8ea1ab4bb04064b99b8b9bb443835c95dc0db92a1f2da70da23
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/datadictionary/kitt-v3-maximo-connector:3.3.63@sha256:dbf46d7275406e9b969ce5b6d347302385c6d1d6dc7c5fcee036f0b9ea73e502
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-data-dictionary:1.1.24-pre.ren-c6b2bcee3b@sha256:2fc3dffb9785478f71ad83db4bb57c0dff4d65928d0572ef18117c2c6e4c0067
