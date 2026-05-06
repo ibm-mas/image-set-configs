@@ -2,6 +2,6 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-truststore-mgr-operator-bundle@sha256:e3d3e3c9daf2f8e789696f2170de94355c2d2825ba54b54f733ae8fe19f97505
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-truststore-mgr/worker:1.7.7-pre.ren-9225b91676-ppc64le@sha256:cf013826f15adf6af76d479bedc9dd3ce311b2b761f56d1c967d40f35b77e5f2
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-truststore-mgr:1.7.7-pre.ren-9225b91676-ppc64le@sha256:a7b610edecae0175e214e402eea9b2267aa4115406a600b5b1ba8dc64c53fbd9
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-truststore-mgr-operator-bundle@sha256:69c0a6746edd13e30ebb0d37252c0dc9c4a7f3ad118fc7d9ec84ec51eb00a376
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-truststore-mgr/worker:1.7.7-pre.ren-9225b91676-ppc64le@sha256:fbde4a8f905931d14029d1ea912f24bdac0402398662f4e18d1a5467bfe8e67b
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-truststore-mgr:1.7.7-pre.ren-9225b91676-ppc64le@sha256:b7770c009f6e858454f0af51edd514f2c7732c7ab18437d128bd6243783f56e3
