@@ -3,7 +3,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   operators:
-    - catalog: registry.redhat.io/rhoai/redhat-operator-index:v{{ ocp_release }}
+    - catalog: registry.redhat.io/redhat/redhat-operator-index:v{{ ocp_release }}
       packages:
         - name: odh-rhel9-operator
           channels:
@@ -14,3 +14,4 @@ mirror:
         - name: odh-model-controller-rhel9
           channels:
             - name: stable
+  additionalImages: {}
