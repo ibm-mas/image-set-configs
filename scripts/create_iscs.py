@@ -275,6 +275,7 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
         'mas_visualinspection_version': 'mvi',
         'mas_facilities_version': 'facilities',
         'aiservice_version': 'aiservice',
+        'aiservice_tenant_version': 'aiservice_tenant',
     }
 
     for catalog_key, arg_name in catalog_mappings.items():
@@ -598,6 +599,17 @@ def process_single_catalog(catalog_path: str) -> bool:
         print(f"Generating ISCs for ibm-aiservice versions: {', '.join(versions)}")
         generate_iscs(
             case_name="ibm-aiservice",
+            case_versions=versions,
+            architectures=["amd64", "ppc64le", "s390x"],
+        )
+        processed = True
+
+    # Process ibm-aiservice-tenant
+    if 'aiservice_tenant' in catalog_versions:
+        versions = catalog_versions['aiservice_tenant']
+        print(f"Generating ISCs for ibm-aiservice-tenant versions: {', '.join(versions)}")
+        generate_iscs(
+            case_name="ibm-aiservice-tenant",
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
