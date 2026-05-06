@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor-operator-bundle@sha256:64af160e8ce59402cfb202f14e54c1be48be5c6d2da910e4bfe0293c468acf1e
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor-operator-bundle@sha256:2f1f245077f58475c102565b29dad3b6c74cf5bcafe7fa7f5e2acc050b5f9a3c
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/pipeline-engine:8.10.120@sha256:419a3bf6d4ec42695492fa120a34097cbf19496e40e43eafd4a7d2c559c6fe36
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-outputprocessor:8.10.219@sha256:380cfc019958cca1feb325168550d590ffdd8c3857c058bdc0a76c6cb5ff3a4a
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-outputerrorprocessor:8.10.219@sha256:b87493e3c2e7a28dfddb178184b3631c88bb450a1389783af789ecb181a8a7ac
@@ -22,5 +22,5 @@ mirror:
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-inputerrorprocessor:8.10.219@sha256:7abcac48e840a45b80139377c9e4e1c2b86182a69801e55f4aeeb5660ef097da
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-usagereport:8.10.219@sha256:47138bd0d0b269860bc13d7cfb26cd44b0637a3fefe14347fd3a6449c48a1ec1
   - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/db2-dataingest-datameter:8.10.219@sha256:b75830fc27f7bc8526f55eee50ba1914cb8373cd8492069ec663e86c63bb3856
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/ibm-mas-monitor-ws:8.10.31-pre.autobuildspsmaint810xdev@sha256:a5f7ef39562f93999cff4346ccfabd8597d3617ae18ad089ca03c5be2375c45d
-  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor:8.10.31-pre.autobuildspsmaint810xdev@sha256:b60580357d80b57cd362aa3f003e8ba28300eec9828e7c97d00fbdb2a29c279d
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/monitor/ibm-mas-monitor-ws:8.10.31-pre.autobuildspsmaint810xdev@sha256:1cbc7435ed5a828cab578300d27a0c5220f8b94c50c24405e7187c6d399bc5e3
+  - name: docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen/ibm-mas-monitor:8.10.31-pre.autobuildspsmaint810xdev@sha256:17c411f0235aa88fddd987e93b2a00185d9251903d79a27b326336c140837814
