@@ -1,0 +1,25 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/db2u-day2-operator:7.6.0-19264-dev@sha256:6a7ed614a9d37f79ed7e306749c75f11b342ce8b71a5a040fb497bb4774dd7dc
+  - name: icr.io/cpopen/db2u-operator:7.6.0-19264-dev@sha256:bb33adbed402bd7e74b0e83210402431e7cc5db5255823144a6b17e4c7df64ea
+  - name: icr.io/cpopen/ibm-db2uoperator-bundle:7.6.0-19264-dev@sha256:be038406d53a2852f2df9843aa166f5b280f1b4a20be658d6b248fd2ae211207
+  - name: icr.io/cpopen/ibm-db2uoperator-catalog:19264-dev@sha256:ac608e4f744be84997e0306e459f086a99223749bc29725045e3f673b1c0446b
+  - name: icr.io/db2u/db2u.auxiliary.auth:12.1.4.0-255-amd64@sha256:c26eee3a41e0c11f63674f1f78311f8f526ae9f1304068ac23a900733120f7d4
+  - name: icr.io/db2u/db2u.db2wh.restricted.v2:12.1.4.0-255-amd64@sha256:0732f4c8cd717622ab9c765765bb3315723f5cfcaa362b80e4ee898cdfd6b6bc
+  - name: icr.io/db2u/db2u.db2wh:12.1.4.0-255-amd64@sha256:fa92b23d7199c58a6607eddab4a2cf05fed042221a029b2ea94a685ba983b1f3
+  - name: icr.io/db2u/db2u.instdb.restricted.v2:12.1.4.0-255-amd64@sha256:68e4865f4607328b33dcb3583e921363f88a89970fea0a8fde055c17fa86447f
+  - name: icr.io/db2u/db2u.instdb.restricted:12.1.4.0-255-amd64@sha256:9e294bb37f0e5fb818a43dca2d3b0fc0f6f3a1aa23b425c9d42693d855955c7e
+  - name: icr.io/db2u/db2u.instdb:12.1.4.0-255-amd64@sha256:b971054daedf8239bb828ddc3d078ca583d206199d0830aaf69cad08588292bb
+  - name: icr.io/db2u/db2u.mustgather:12.1.4.0-255-amd64@sha256:01a9a12cb2f8a5b8f93fd0447f97a2d780f7330434aef63b5cd07cf180828283
+  - name: icr.io/db2u/db2u.qrep:12.1.4.0-255-amd64@sha256:bdc414e1df51c2cb901494046c450b839d004d93e06d8ab560fbcbfff8207017
+  - name: icr.io/db2u/db2u.rest:12.1.4.0-255-amd64@sha256:f12743f710daf1b7b7c9af3ae032f1685dc78303301167c4c5a95cf8303d75ac
+  - name: icr.io/db2u/db2u.restricted.v2:12.1.4.0-255-amd64@sha256:149b71fb4c0d1e95e2210b6147ae259a64e869b903bc05289376d0f5b333eaea
+  - name: icr.io/db2u/db2u.restricted:12.1.4.0-255-amd64@sha256:61ee668dae3c55b9070b929a2f94216c9dba25ebf4acd1cb4b7fc3ca1a69f056
+  - name: icr.io/db2u/db2u.tools:12.1.4.0-255-amd64@sha256:511b9109e84e001cae9bd1149f2e766094dcac90aa33f3922e113b5a589de02f
+  - name: icr.io/db2u/db2u.update.image:12.1.4.0-255-amd64@sha256:d19bd9ecd3e613a8ea46b5942e6566cc6d5b4ddca0d6c3f450f2f07932de1b2c
+  - name: icr.io/db2u/db2u.veleroplugin:12.1.4.0-255-amd64@sha256:7bdbb45d7ef6cbbabcf6cb763b66ca922ada012aff22676bc602c5ca586d0969
+  - name: icr.io/db2u/db2u:12.1.4.0-255-amd64@sha256:f9aff80eb56f5a4180e7feb5971580646214795122da80ede711fd692b2fa77a
+  - name: icr.io/db2u/etcd:12.1.4.0-255-amd64@sha256:0aa9f05781a4f236b4a712da4dfb555710a5e778bc77c36e1713cd51ede3540b
