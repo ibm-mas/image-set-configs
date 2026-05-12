@@ -1,0 +1,21 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/db2u/db2u.auxiliary.auth:12.1.4.0-255-ppc64le@sha256:f99bdfd0d3d522578f7114c8b1337b51a86b5adcb8cc1c584b6a38d5905a178b
+  - name: icr.io/db2u/db2u.db2wh.restricted.v2:12.1.4.0-255-ppc64le@sha256:d2fe9d655ae68e292da3c5ead1004c8b5ab2dadec3bcf042b374e9ad69de82ba
+  - name: icr.io/db2u/db2u.db2wh:12.1.4.0-255-ppc64le@sha256:1b151606383dc3ed77184ed7936f94e3e70b325532ec7c4b7642def09f2e2382
+  - name: icr.io/db2u/db2u.instdb.restricted.v2:12.1.4.0-255-ppc64le@sha256:3913bc67037debf24716eca41f49288c1e28c0a5395d6a1cd13f220c82f38194
+  - name: icr.io/db2u/db2u.instdb.restricted:12.1.4.0-255-ppc64le@sha256:2d0d319f570445092e381780dd12702b8412dbf710c29ad13121db863ba8b7f3
+  - name: icr.io/db2u/db2u.instdb:12.1.4.0-255-ppc64le@sha256:45ca3cba073a8c6717b0af932b276406ada5d17d6c920fe13f00f0bb402f614f
+  - name: icr.io/db2u/db2u.mustgather:12.1.4.0-255-ppc64le@sha256:f7bf9147c24d5cf409a3288d6e3f302e9f01aaefe41aa4e45ae92a8dbc1941c5
+  - name: icr.io/db2u/db2u.qrep:12.1.4.0-255-ppc64le@sha256:6f5989ae544c3674d3e60be90520387a07214c8b89a184107cca7b64adbf50fc
+  - name: icr.io/db2u/db2u.rest:12.1.4.0-255-ppc64le@sha256:9f7e2f14a3b45045a767313eb00a86a66000a531215c2b215d04fff347af7994
+  - name: icr.io/db2u/db2u.restricted.v2:12.1.4.0-255-ppc64le@sha256:09dc370efcc5697234680520bf57e54ec1138f8a7309be4d3fbfc898a0534c04
+  - name: icr.io/db2u/db2u.restricted:12.1.4.0-255-ppc64le@sha256:d4305adceafeae2b4cf067acdedb3101a79971d459c5cf9ea0eeb303784b6b7a
+  - name: icr.io/db2u/db2u.tools:12.1.4.0-255-ppc64le@sha256:e1a7c2858facccf108b719fc9d006ee414030d2f598d3ee87911a98d5ee82cc1
+  - name: icr.io/db2u/db2u.update.image:12.1.4.0-255-ppc64le@sha256:9d6963a2d06b9fbc33cdf3ff4f54bf1f98a7fbe33005679c018e32436d735b4b
+  - name: icr.io/db2u/db2u.veleroplugin:12.1.4.0-255-ppc64le@sha256:4291c289a6d78385f88f5975af817445e86f2257ac897dce7e6810de909cd2b5
+  - name: icr.io/db2u/db2u:12.1.4.0-255-ppc64le@sha256:69e64b8ab686a2302cca52647675e3f2c2af295b138e9ca1da3a82c24cd550dd
+  - name: icr.io/db2u/etcd:12.1.4.0-255-ppc64le@sha256:864f4b764d7a10d0f9104f9782e2ecb5388843a09d40e7711a1121be5c612aac
