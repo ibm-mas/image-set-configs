@@ -2,13 +2,13 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-optimizer-operator-bundle@sha256:637e655fa5c4f507d5943f85cde46079968ac7f71766ef5a778518aff5ab9849
+  - name: icr.io/cpopen/ibm-mas-optimizer-operator-bundle@sha256:4125eea517147b86d1851114ea35dbc467375aa725d298e6356a2ff56be4118d
   - name: cp.icr.io/cp/optimizer/execution-service:9.0.22-amd64@sha256:1fc564bd93e6f1fcbbe374b2ed656c409dae65c7788809cbd8f9b97509594a48
   - name: cp.icr.io/cp/optimizer/workspace-init:9.0.22-amd64@sha256:ccb6a09443666dcc56e831cc065105906b07705d87a47b5227054f4eeae2c8fa
   - name: cp.icr.io/cp/optimizer/usersyncagent:9.0.59-amd64@sha256:5207a6f1ee72ee7ab3c76a8e5104a3c4a6c4bb6237a254978875624eb78bfa54
   - name: cp.icr.io/cp/optimizer/admin-ui:9.0.27-amd64@sha256:9b228a8f62e95db430e76841a90c9e0ffeaf735a975ae343ac7355afe2899306
   - name: cp.icr.io/cp/optimizer/api:9.0.22-amd64@sha256:ed173c68132d55c00bb613c96857aa7a415cc8c6d24e8e058720848a61a3b693
-  - name: cp.icr.io/cp/optimizer/ibm-mas-optimizer-ws:9.0.23-amd64@sha256:95e11b35bdae97809c9c6a31936c432ebbffb254bfca7da8690104d29aa58fd6
-  - name: cp.icr.io/cp/optimizer/ibm-mas-optimizer-appstatus:9.0.23-amd64@sha256:2ce2a5d972e5b2221cdc773eb59656ef8c92d5775a052c90984884e84ecb613d
-  - name: icr.io/cpopen/ibm-mas-optimizer:9.0.23-amd64@sha256:d6a1728760a76f181ade77ec94efbcc195942472312143f3b781788d2fb41bc5
-  - name: icr.io/cpopen/ibm-mas-optimizer-webhook:9.0.23-amd64@sha256:12337e72cfb88ef4d967393f98600a07cb76b5bc2fb0486b481a57705d5f4741
+  - name: cp.icr.io/cp/optimizer/ibm-mas-optimizer-ws:9.0.23-amd64@sha256:84de60d5f77d6481b9be7d6289f6ac3f68ef2e5673088b34e70f7c1eb00290ce
+  - name: cp.icr.io/cp/optimizer/ibm-mas-optimizer-appstatus:9.0.23-amd64@sha256:43f7cae7de42b12ecfc9d48170ef39c95724f5d2b9578ee9c0df0b280e114218
+  - name: icr.io/cpopen/ibm-mas-optimizer:9.0.23-amd64@sha256:2d0d999d66fb6dfc1c90cdd0d11634dd5456368bf8085efdd5c3daf08d844e96
+  - name: icr.io/cpopen/ibm-mas-optimizer-webhook:9.0.23-amd64@sha256:2aa08fff468444f13a9f793e25c67fb341f2034055ec2961dccd578609baf924
