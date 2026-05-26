@@ -800,6 +800,17 @@ def process_single_catalog(catalog_path: str) -> bool:
             generate_extras_isc("amlen", version, extras_path)
             processed = True
 
+    # Process odh
+    if 'odh' in catalog_versions:
+        versions = catalog_versions['odh']
+        print(f"Generating ISCs for odh versions: {', '.join(versions)}")
+        generate_iscs(
+            case_name="opendatahub",
+            case_versions=versions,
+            architectures=["amd64"]
+        )
+        processed = True
+
     if not processed:
         print("Warning: No CASE packages found in catalog.", file=sys.stderr)
 
