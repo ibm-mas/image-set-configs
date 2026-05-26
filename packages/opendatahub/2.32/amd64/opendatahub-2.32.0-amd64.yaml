@@ -1,0 +1,10 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: quay.io/opendatahub/odh-model-controller@sha256:ac9c3c4bf7fe27f9bb42113ef81c74abf2fd35db98ab43932e9ea5f4915ecca6
+  - name: quay.io/opendatahub/data-science-pipelines-operator@sha256:f4b0025eb248c65ea58406aede3d8b57b30320d7e657b9e40ce79765d7b7f5fd
+  - name: quay.io/opendatahub/kserve-controller@sha256:322abd7198eca2d3c88884c8ee7992853fb7bf30222570e7fc16c744b4e3c7d5
+  - name: quay.io/opendatahub/kserve-storage-initializer@sha256:059ff698b8de6a7c39de06c2e6db700256968d705baea3d86a7e8d0c6a87608b
+  - name: quay.io/opendatahub/opendatahub-operator@sha256:28ec8137ed7fa0dc70b6b10c57bcbb1078a813a032133bd07eb131b9b0d52bdd
