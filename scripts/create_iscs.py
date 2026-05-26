@@ -276,6 +276,7 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
         'mas_facilities_version': 'facilities',
         'aiservice_version': 'aiservice',
         'aiservice_tenant_version': 'aiservice_tenant',
+        'odh_version':'odh',
     }
 
     for catalog_key, arg_name in catalog_mappings.items():
