@@ -1,0 +1,6 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/ibm-aiservice-tenant-operator-bundle@sha256:5cd68a424f14c157fbe941eac1a77bf277150cc51e41d15bf1d3225b604e2e02
+  - name: icr.io/cpopen/ibm-aiservice-tenant:9.2.0@sha256:5ce030d7df122f3be58068d7e06d8be8453e303b997542329fba2576646b78f3
