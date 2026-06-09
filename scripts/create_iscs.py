@@ -302,6 +302,9 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
     if 'amlen_extras_version' in catalog_data:
         versions_map['amlen_extras'] = [catalog_data['amlen_extras_version']]
 
+    if 'minio_version' in catalog_data:
+        versions_map['minio_extras'] = [catalog_data['minio_version']]
+
     return versions_map
 
 
@@ -810,6 +813,17 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64"]
         )
+        processed = True
+
+    # Process minio
+    if 'minio_extras' in catalog_versions:
+        for version in catalog_versions['minio_extras']:
+            print(f"Generating ISC for Minio extras version: {version}")
+            # Determine path to extras file (assuming ansible-devops is sibling to image-set-configs)
+            extras_path = os.path.join("..", "ansible-devops", "ibm", "mas_devops", "roles",
+                                      "mirror_extras_prepare", "vars", f"minio_{version}.yml")
+            generate_extras_isc("minio", version, extras_path)
+            processed = True
         processed = True
 
     if not processed:
