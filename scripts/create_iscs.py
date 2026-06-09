@@ -302,8 +302,8 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
     if 'amlen_extras_version' in catalog_data:
         versions_map['amlen_extras'] = [catalog_data['amlen_extras_version']]
 
-    if 'minio_version' in catalog_data:
-        versions_map['minio_extras'] = [catalog_data['minio_version']]
+    if 'minio_extras_version' in catalog_data:
+        versions_map['minio_extras'] = [catalog_data['minio_extras_version']]
 
     return versions_map
 
