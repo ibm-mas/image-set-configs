@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-iot-operator-bundle@sha256:535ae5395f1fa7da3658ea27fa4b067dd748d2f7411e77668a5eaafd07d34d13
+  - name: icr.io/cpopen/ibm-mas-iot-operator-bundle@sha256:1d5b78b4681148215abba23955ea00850a77b1968f506df89f2da5c7a59853a6
   - name: cp.icr.io/cp/monitor/maximo-iot-monitor-auth-api:9.2.11@sha256:d173caa0b265afa4b1e3dc8ca1f7f460efdd1ef295edc76bf20051514eaebf0f
   - name: cp.icr.io/cp/wiotp/api-devops:9.2.1@sha256:18f29e283ded439b6d0c8e4429a3bdafd33599ec0441682905740f67199f1ba9
   - name: cp.icr.io/cp/wiotp/api-status:3.4.209@sha256:83f9ded52590cbcfa0d0ddaabcec228785f5068e559647be300684aff750444a
@@ -22,5 +22,5 @@ mirror:
   - name: cp.icr.io/cp/wiotp/ibm-iot-mbgx:9.2.13@sha256:9869b39f6793392b7c4e87eb0d11d09d5fb9cff6cba2e3261b802af10f1ca003
   - name: cp.icr.io/cp/wiotp/ibm-iot-mfgx:9.2.20@sha256:705e822b2cfd39f935f3b79324031398fcdf9304dc0dc275bcc4657b33d3e324
   - name: cp.icr.io/cp/wiotp/ibm-iot-workspace:9.2.14@sha256:9876180c75177fe33875f4afefeff9dde43a578a601414e97bdb3b6f5d581a88
-  - name: cp.icr.io/cp/wiotp/ibm-mas-iot-primary-entity:9.2.0@sha256:6e2dd742a64a573fbe08ac39a153052f611a7a2e01e24387ec5bf340339a3d46
-  - name: icr.io/cpopen/ibm-mas-iot:9.2.0@sha256:33c52372679591680f592d931935560fe7e896d7e05fff15b9c4b3ff738b0ce7
+  - name: cp.icr.io/cp/wiotp/ibm-mas-iot-primary-entity:9.2.0@sha256:42c66c20745c3a9d93afd429968f4034cf2c1df091ba81e7e2cdbba818fc0a62
+  - name: icr.io/cpopen/ibm-mas-iot:9.2.0@sha256:ae49106c255e567bd041ede4b254df25764edf18264d64ae07c6070dc6968784
