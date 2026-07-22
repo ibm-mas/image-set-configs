@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-iot-operator-bundle@sha256:39069a3b7de7e51e4c13182287dddf093dcf43c446f044ccb381b7e781000a46
+  - name: icr.io/cpopen/ibm-mas-iot-operator-bundle@sha256:fb422b14b2fd1b2df06abb8e1bb62c7be932050ca85c7e0365c06ff5869889c3
   - name: cp.icr.io/cp/wiotp/api-actions:3.0.41@sha256:4dee5edd931d09b161752e7a6f3b331860097c4b87b7f2d0cd97a547481a484f
   - name: cp.icr.io/cp/wiotp/action-mgr:3.0.114@sha256:1e543a36b7a2ef25e2a2a71a39226612eb7a53724b5e3f6854079ffe48329436
   - name: cp.icr.io/cp/wiotp/deprovagent-actions:1.1.188@sha256:d86c6e3d1ef10381c4dc728f778ee0c6d909a8a803497ec2ea05f37b26591772
@@ -102,5 +102,5 @@ mirror:
   - name: cp.icr.io/cp/wiotp/ibm-iot-state:6.0.81@sha256:67eb2e78e70bc0f80ce7037e1d9b3f880fc3e8b30818fa652124489c94f0f4d3
   - name: cp.icr.io/cp/wiotp/ibm-iot-webui:7.0.71@sha256:8bcba5e9ddba4e18a8efc436d55bfd07e2f8c9de575b8180bc52204b72ddc36c
   - name: cp.icr.io/cp/wiotp/ibm-iot-workspace:2.7.131@sha256:49e91e4db54ca5637b8c089a9f29ac5778216d189ace9820d105e9e60a6b0873
-  - name: cp.icr.io/cp/wiotp/ibm-mas-iot-primary-entity:9.1.13@sha256:8fe43c2e60643171f804b2f8f89ef95e103bf2f6ce85e2e06386a9188e20002c
-  - name: icr.io/cpopen/ibm-mas-iot:9.1.13@sha256:27f35602c74eadbbdcc260d2aa61590e4a63d457d9c2f5572591ca12d9fff98e
+  - name: cp.icr.io/cp/wiotp/ibm-mas-iot-primary-entity:9.1.13@sha256:0d98cec1bc3b4b7e9d405cd190ec91c8778f13b7e8974a6b1cd743388ac1b41f
+  - name: icr.io/cpopen/ibm-mas-iot:9.1.13@sha256:0bb029170e95bd5a670894ea5daad8abb1aecf62cc94345459d575bbf2a4b2df
