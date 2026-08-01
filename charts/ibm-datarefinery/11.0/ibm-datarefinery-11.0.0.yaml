@@ -1,0 +1,15 @@
+# Chart metadata for ibm-datarefinery (IBM Data Refinery)
+# Generated from CASE bundle ibm-datarefinery, catalog key: wsl_version (shared)
+# Helm repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm
+#
+# These charts are pulled via 'helm pull' at mirror-time and pushed to the
+# target OCI registry under <registry>/charts/.
+#
+# casectl_resolve_charts: true (charts ARE embedded in the CASE bundle)
+# CPD minimum version: 5.2.0
+# -----------------------------------------------------------------------------
+charts:
+  - name: datarefinery
+    version: "12.1.0"
+  - name: datarefinery-cluster-scoped
+    version: "12.1.0"

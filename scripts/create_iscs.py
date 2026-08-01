@@ -2,6 +2,11 @@
 """
 Create ISCs script for IBM MAS CASE package operations with command-line arguments.
 Allows users to specify CASE names and versions via command line.
+
+Also generates chart metadata YAML files in charts/ for CPD CASE bundles that
+contain Helm charts (casectl_resolve_charts=true in mirror_dependencies.yml).
+Chart metadata is consumed by the Python CLI 'mas mirror' command at mirror-time
+to helm pull + helm push charts to the target OCI registry.
 """
 
 import argparse
@@ -12,6 +17,35 @@ import os
 from copy import deepcopy
 from typing import List, Optional, Dict, Set
 import yaml
+
+# Helm chart definitions for CPD CASE bundles that include embedded charts.
+# These are the bundles where casectl_resolve_charts=true in mirror_dependencies.yml.
+# Each entry maps a CASE bundle name to the list of Helm charts it provides.
+# Chart versions are the fixed Helm chart versions from the IBM charts repo
+# (not the CASE bundle version from the catalog).
+# Source: ibm/mas_devops/roles/cp4d_service/defaults/main.yml (cpd_service_info + cpd_helm_common_dependencies)
+CHART_CONFIGS: Dict[str, List[Dict[str, str]]] = {
+    "ibm-wsl": [
+        {"name": "ws", "version": "12.1.0"},
+        {"name": "ws-cluster-scoped", "version": "12.1.0"},
+    ],
+    "ibm-wml-cpd": [
+        {"name": "wml", "version": "12.1.0"},
+        {"name": "wml-cluster-scoped", "version": "12.1.0"},
+    ],
+    "ibm-analyticsengine": [
+        {"name": "analyticsengine", "version": "12.1.0"},
+        {"name": "analyticsengine-cluster-scoped", "version": "12.1.0"},
+    ],
+    "ibm-datarefinery": [
+        {"name": "datarefinery", "version": "12.1.0"},
+        {"name": "datarefinery-cluster-scoped", "version": "12.1.0"},
+    ],
+    "ibm-wsl-runtimes": [
+        {"name": "ws-runtimes", "version": "12.1.0"},
+        {"name": "ws-runtimes-cluster-scoped", "version": "12.1.0"},
+    ],
+}
 
 ISC_TEMPLATE = dict(
     apiVersion="mirror.openshift.io/v1alpha2",
@@ -196,6 +230,55 @@ def generate_extras_isc(extras_name: str, extras_version: str, extras_path: str)
             yaml.dump(isc, file, indent=2)
 
         print(f"Generated extras ISC: {output_path}")
+
+
+def generate_chart_metadata(case_name: str, case_version: str) -> None:
+    """Generate chart metadata YAML for a CPD CASE bundle that includes Helm charts.
+
+    The metadata file is consumed by 'mas mirror' at mirror-time to helm pull
+    and helm push the charts to the target OCI registry.
+
+    Output path follows the same convention as packages/:
+      charts/<case_name>/<major.minor>/<case_name>-<version>.yaml
+
+    Only generates for CASE bundles listed in CHART_CONFIGS. Skips generation
+    if the CASE bundle has no chart definitions.
+
+    Args:
+        case_name: CASE bundle name (e.g., "ibm-wsl")
+        case_version: CASE bundle version from the catalog (e.g., "11.0.0+20250521.202913.73")
+    """
+    if case_name not in CHART_CONFIGS:
+        return
+
+    # Strip build metadata (everything after '+') for version used in file naming
+    file_version = case_version.split('+')[0]
+    version_parts = file_version.split('.')
+    if len(version_parts) < 2:
+        print(f"Warning: Could not parse version '{case_version}' for {case_name}")
+        return
+
+    major_minor = f"{version_parts[0]}.{version_parts[1]}"
+    output_dir = os.path.join("charts", case_name, major_minor)
+    output_path = os.path.join(output_dir, f"{case_name}-{file_version}.yaml")
+
+    if os.path.exists(output_path):
+        print(f"Chart metadata {output_path} already exists. Skipping generation.")
+        return
+
+    chart_entries = CHART_CONFIGS[case_name]
+    metadata = {
+        "case_name": case_name,
+        "case_version": file_version,
+        "helm_repo": "https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm",
+        "charts": chart_entries,
+    }
+
+    os.makedirs(output_dir, exist_ok=True)
+    with open(output_path, 'w') as f:
+        yaml.dump(metadata, f, indent=2, default_flow_style=False)
+
+    print(f"Generated chart metadata: {output_path}")
 
 
 def extract_catalog_date(catalog_filename: str) -> Optional[int]:
@@ -445,6 +528,20 @@ def process_single_catalog(catalog_path: str) -> bool:
     else:
         print("Warning: No catalog_digest found in catalog data file")
 
+    # Determine whether Helm chart metadata should be generated.
+    # Charts are only applicable for CPD 5.2.0+ (helm-based install path).
+    cpd_version_raw = catalog_data.get('cpd_product_version_default', '')
+    try:
+        cpd_major, cpd_minor = str(cpd_version_raw).split('.')[:2]
+        cpd_helm_eligible = (int(cpd_major), int(cpd_minor)) >= (5, 2)
+    except (ValueError, AttributeError):
+        cpd_helm_eligible = False
+
+    if cpd_helm_eligible:
+        print(f"CPD version {cpd_version_raw} >= 5.2.0 — chart metadata generation enabled")
+    else:
+        print(f"CPD version {cpd_version_raw!r} < 5.2.0 or not set — skipping chart metadata generation")
+
     # Track if any CASE was processed
     processed = False
 
@@ -691,6 +788,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-datarefinery", v)
         processed = True
 
     # Process ibm-wsl
@@ -702,6 +802,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-wsl", v)
         processed = True
 
     # Process ibm-wsl-runtimes
@@ -713,6 +816,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-wsl-runtimes", v)
         processed = True
 
     # Process ibm-elasticsearch-operator
@@ -746,6 +852,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-wml-cpd", v)
         processed = True
 
     # Process ibm-analyticsengine
@@ -757,6 +866,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-analyticsengine", v)
         processed = True
 
     # Process ibm-cognos-analytics-prod
