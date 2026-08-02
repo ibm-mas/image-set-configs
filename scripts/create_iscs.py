@@ -265,7 +265,10 @@ def generate_chart_metadata(case_name: str, case_version: str) -> None:
         print(f"Chart metadata {output_path} already exists. Skipping generation.")
         return
 
-    chart_entries = [{"name": name, "version": file_version} for name in CHART_CONFIGS[case_name]]
+    chart_entries = [
+        {"name": name, "version": "0.0.0" if name.endswith("-migration") else file_version}
+        for name in CHART_CONFIGS[case_name]
+    ]
 
     # Build ordered metadata matching the schema used in manually-created files.
     # helm_repo is only written here because generate_chart_metadata is only called

@@ -6,5 +6,5 @@ charts:
 - name: datarefinery-cluster-scoped
   version: 12.1.0
 - name: datarefinery-migration
-  version: 12.1.0
+  version: 0.0.0
 helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

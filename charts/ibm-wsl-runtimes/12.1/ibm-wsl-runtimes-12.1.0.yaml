@@ -6,5 +6,5 @@ charts:
 - name: ws-runtimes-cluster-scoped
   version: 12.1.0
 - name: ws-runtimes-migration
-  version: 12.1.0
+  version: 0.0.0
 helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

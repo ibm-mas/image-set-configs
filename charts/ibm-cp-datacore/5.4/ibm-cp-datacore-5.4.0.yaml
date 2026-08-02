@@ -6,7 +6,7 @@ charts:
 - name: cpd-platform-cluster-scoped
   version: 5.4.0
 - name: cpd-platform-migration
-  version: 5.4.0
+  version: 0.0.0
 - name: platform-config
   version: 5.4.0
 helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm
