@@ -1,0 +1,10 @@
+case_name: ibm-wml-cpd
+case_version: 12.1.0
+charts:
+- name: wml
+  version: 12.1.0
+- name: wml-cluster-scoped
+  version: 12.1.0
+- name: wml-migration
+  version: 12.1.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

@@ -1,0 +1,9 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/cpfs/ibm-licensing:4.2.20@sha256:5bea8b2bd563b9b646da2fb47d11aaa4e22905835ee000f220a15458aec47729
+  - name: icr.io/cpopen/ibm-licensing-catalog:cd-20260210-1118@sha256:734017cedb6605a4aba3a2de54c0ccb8e314e7b533ec0e30a362fa315ef8e1dd
+  - name: icr.io/cpopen/ibm-licensing-operator-bundle:4.2.20@sha256:0f33d2b78cdbe76b824dc0c2e0cbbe00c794c4d3d2f26180db7f0eb3bdae7a1c
+  - name: icr.io/cpopen/ibm-licensing-operator:4.2.20@sha256:d4811262f9a6121d120148bfc1f50e64092f9220e5dc4257a151d489347e3cc3
