@@ -12,3 +12,4 @@ mirror:
   - name: cp.icr.io/cp/opencontent-ibm-opensearch-plugins-3.2.0:1.2.0@sha256:e36ede5fd11777b4ec0538d304d986f8416a6b93c4c910340b725a677e2a9158
   - name: icr.io/cpopen/opencontent-ibm-opensearch-operator-bundle:1.2.0@sha256:29214e21a13579e135d3cedaf99e95a2674498e47c50b3258f258794671ffce2
   - name: icr.io/cpopen/opencontent-ibm-opensearch-operator-catalog:1.2.0@sha256:c20414136174ef24513560ca56204787fb4a3c3de8f84a490551dd63efb67a7f
+  - name: icr.io/cpopen/opencontent-ibm-opensearch-operator@sha256:59479b6ee251af7b0ac3592226fe5bf8b2e8eaa200aade0d945f2ad5596bc777

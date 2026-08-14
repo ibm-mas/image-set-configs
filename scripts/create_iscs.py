@@ -396,6 +396,73 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
     return versions_map
 
 
+def extract_opensearch_operator_image(bundle_digest: str) -> Optional[str]:
+    """Extract the bare operator image reference from the opensearch bundle's CSV manifest.
+
+    The operator image (icr.io/cpopen/opencontent-ibm-opensearch-operator@sha256:...)
+    is referenced inside the ClusterServiceVersion embedded in the OLM bundle image
+    but is NOT listed in the ibm-pak images.csv — hence it must be extracted here.
+
+    Uses the OCI registry HTTP API with anonymous access (no docker required) so this
+    works inside containers and CI environments without a docker socket.
+
+    Returns the fully-qualified image name string, or None on failure.
+    """
+    import re as _re
+    import io
+    import tarfile
+    import urllib.request
+    import urllib.error
+
+    registry = "icr.io"
+    repo = "cpopen/opencontent-ibm-opensearch-operator-bundle"
+
+    try:
+        # 1. Fetch the image manifest to get the layer digests
+        manifest_url = f"https://{registry}/v2/{repo}/manifests/{bundle_digest}"
+        req = urllib.request.Request(
+            manifest_url,
+            headers={"Accept": "application/vnd.docker.distribution.manifest.v2+json"}
+        )
+        with urllib.request.urlopen(req) as resp:
+            manifest = yaml.safe_load(resp.read())
+
+        layers = manifest.get("layers", [])
+        if not layers:
+            print("Warning: no layers found in opensearch bundle manifest", file=sys.stderr)
+            return None
+
+        # 2. Fetch each layer (smallest-first to minimise data transfer) looking for the CSV
+        layers_by_size = sorted(layers, key=lambda l: l.get("size", 0))
+        for layer in layers_by_size:
+            layer_digest = layer["digest"]
+            blob_url = f"https://{registry}/v2/{repo}/blobs/{layer_digest}"
+            try:
+                with urllib.request.urlopen(blob_url) as resp:
+                    layer_bytes = resp.read()
+            except urllib.error.HTTPError:
+                continue
+
+            try:
+                with tarfile.open(fileobj=io.BytesIO(layer_bytes), mode="r:gz") as tar:
+                    for member in tar.getmembers():
+                        if member.name.endswith(".clusterserviceversion.yaml"):
+                            csv_content = tar.extractfile(member).read().decode("utf-8")  # type: ignore
+                            match = _re.search(
+                                r'^\s*image:\s*(icr\.io/cpopen/opencontent-ibm-opensearch-operator@sha256:[a-f0-9]+)',
+                                csv_content, _re.MULTILINE
+                            )
+                            if match:
+                                return match.group(1)
+            except tarfile.TarError:
+                continue
+
+        print("Warning: could not find operator image in opensearch bundle CSV", file=sys.stderr)
+    except Exception as e:
+        print(f"Warning: failed to extract opensearch operator image from bundle: {e}", file=sys.stderr)
+    return None
+
+
 def generate_isc(case_name, case_version, arch="amd64", include_group=None, exclude_group=None, child_name=None, db2_variant=None) -> None:
     """Generate image set configuration by executing oc ibm-pak commands."""
 
@@ -486,6 +553,20 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
             # Note: not all IBM products properly define the architecture field so we need to also match "" as amd64
             if (architecture == arch or (arch == "amd64" and architecture == "")) and groups != exclude_group and (include_group is None or groups == include_group):
                 isc["mirror"]["additionalImages"].append(image_fqn)  # pyright: ignore
+
+    # The opensearch operator image is embedded in the bundle CSV but absent from the
+    # ibm-pak images.csv. Fetch it via the OCI registry API and add it explicitly.
+    if case_name == "ibm-opensearch-operator":
+        bundle_digest = None
+        with open(images_csv_path, 'r') as f:
+            for row in csv.reader(f):
+                if len(row) > 3 and row[1] == "cpopen/opencontent-ibm-opensearch-operator-bundle":
+                    bundle_digest = row[3]  # digest column
+                    break
+        if bundle_digest:
+            operator_image = extract_opensearch_operator_image(bundle_digest)
+            if operator_image:
+                isc["mirror"]["additionalImages"].append({"name": operator_image})  # pyright: ignore
 
     if len(isc["mirror"]["additionalImages"]) > 0:  # pyright: ignore
         # Sort additionalImages by the name field
