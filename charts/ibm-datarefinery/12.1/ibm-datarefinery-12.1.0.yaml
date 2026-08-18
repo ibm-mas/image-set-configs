@@ -1,0 +1,10 @@
+case_name: ibm-datarefinery
+case_version: 12.1.0
+charts:
+- name: datarefinery
+  version: 12.1.0
+- name: datarefinery-cluster-scoped
+  version: 12.1.0
+- name: datarefinery-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

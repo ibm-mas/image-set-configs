@@ -1,0 +1,10 @@
+case_name: ibm-wsl-runtimes
+case_version: 12.1.0
+charts:
+- name: ws-runtimes
+  version: 12.1.0
+- name: ws-runtimes-cluster-scoped
+  version: 12.1.0
+- name: ws-runtimes-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

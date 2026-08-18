@@ -1,0 +1,10 @@
+case_name: ibm-ccs
+case_version: 12.1.0
+charts:
+- name: ccs
+  version: 12.1.0
+- name: ccs-cluster-scoped
+  version: 12.1.0
+- name: ccs-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

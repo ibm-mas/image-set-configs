@@ -2,6 +2,11 @@
 """
 Create ISCs script for IBM MAS CASE package operations with command-line arguments.
 Allows users to specify CASE names and versions via command line.
+
+Also generates chart metadata YAML files in charts/ for CPD CASE bundles that
+contain Helm charts (casectl_resolve_charts=true in mirror_dependencies.yml).
+Chart metadata is consumed by the Python CLI 'mas mirror' command at mirror-time
+to helm pull + helm push charts to the target OCI registry.
 """
 
 import argparse
@@ -12,6 +17,35 @@ import os
 from copy import deepcopy
 from typing import List, Optional, Dict, Set
 import yaml
+
+# Helm chart definitions for CPD CASE bundles that include embedded charts.
+# These are the bundles where casectl_resolve_charts=true in mirror_dependencies.yml.
+# Each entry maps a CASE bundle name to the list of Helm chart names it provides.
+# Versions are NOT stored here — they are derived at runtime from the catalog CASE version.
+# Source: ibm/mas_devops/roles/cp4d_service/defaults/main.yml (cpd_service_info + cpd_helm_common_dependencies)
+# Each CASE bundle contains ONLY its own charts — dependencies are separate CASE bundles.
+CHART_CONFIGS: Dict[str, List[str]] = {
+    # ibm-cp-datacore (CP4D Platform)
+    "ibm-cp-datacore": ["cpd-platform", "cpd-platform-cluster-scoped", "cpd-platform-migration", "platform-config"],
+    # ibm-ccs (Common Core Services)
+    "ibm-ccs": ["ccs", "ccs-cluster-scoped", "ccs-migration"],
+    # ibm-cognos-analytics-prod (Cognos Analytics)
+    "ibm-cognos-analytics-prod": ["cognos-analytics", "cognos-analytics-cluster-scoped", "cognos-analytics-migration"],
+    # ibm-opencontent-opensearch (OpenSearch)
+    "ibm-opencontent-opensearch": ["opencontent-opensearch", "opencontent-opensearch-cluster-scoped"],
+    # ibm-wsl (Watson Studio)
+    "ibm-wsl": ["ws", "ws-cluster-scoped", "ws-migration"],
+    # ibm-wml-cpd (Watson Machine Learning)
+    "ibm-wml-cpd": ["wml", "wml-cluster-scoped", "wml-migration"],
+    # ibm-analyticsengine (Analytics Engine / Spark)
+    "ibm-analyticsengine": ["analyticsengine", "analyticsengine-cluster-scoped", "analyticsengine-migration"],
+    # ibm-datarefinery (Data Refinery — dependency of wsl)
+    "ibm-datarefinery": ["datarefinery", "datarefinery-cluster-scoped", "datarefinery-migration"],
+    # ibm-wsl-runtimes (Watson Studio Runtimes — dependency of wsl)
+    "ibm-wsl-runtimes": ["ws-runtimes", "ws-runtimes-cluster-scoped", "ws-runtimes-migration"],
+    # ibm-redis-cp (Redis — dependency of wml)
+    "ibm-redis-cp": ["ibm-redis-cp", "ibm-redis-cp-cluster-scoped", "ibm-redis-cp-migration"],
+}
 
 ISC_TEMPLATE = dict(
     apiVersion="mirror.openshift.io/v1alpha2",
@@ -198,6 +232,61 @@ def generate_extras_isc(extras_name: str, extras_version: str, extras_path: str)
         print(f"Generated extras ISC: {output_path}")
 
 
+def generate_chart_metadata(case_name: str, case_version: str) -> None:
+    """Generate chart metadata YAML for a CPD CASE bundle that includes Helm charts.
+
+    The metadata file is consumed by 'mas mirror' at mirror-time to helm pull
+    and helm push the charts to the target OCI registry.
+
+    Output path:
+      charts/<case_name>/<case_version>/<case_name>-<case_version>.yaml
+
+    Only generates for CASE bundles listed in CHART_CONFIGS. Skips generation
+    if the CASE bundle has no chart definitions.
+
+    Args:
+        case_name: CASE bundle name (e.g., "ibm-wsl")
+        case_version: CASE bundle version from the catalog (e.g., "11.0.0+20250521.202913.73")
+    """
+    if case_name not in CHART_CONFIGS:
+        return
+
+    # Strip build metadata suffix for file naming (e.g. "5.4.0+20260501..." -> "5.4.0")
+    file_version = case_version.split("+")[0]
+    version_parts = file_version.split(".")
+    major_minor = f"{version_parts[0]}.{version_parts[1]}"
+
+    # Directory uses major.minor so a single folder covers all patch releases.
+    # This matches the path expected by getChartMetadata() in app.py.
+    output_dir = os.path.join("charts", case_name, major_minor)
+    output_path = os.path.join(output_dir, f"{case_name}-{file_version}.yaml")
+
+    if os.path.exists(output_path):
+        print(f"Chart metadata {output_path} already exists. Skipping generation.")
+        return
+
+    chart_entries = [
+        {"name": name, "version": "0.0.0" if name.endswith("-migration") else file_version}
+        for name in CHART_CONFIGS[case_name]
+    ]
+
+    # Build ordered metadata matching the schema used in manually-created files.
+    # helm_repo is only written here because generate_chart_metadata is only called
+    # when cpd_helm_eligible (>= 5.2.0) is True in process_single_catalog.
+    metadata = {
+        "case_name": case_name,
+        "case_version": file_version,
+        "charts": chart_entries,
+        "helm_repo": "https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm",
+    }
+
+    os.makedirs(output_dir, exist_ok=True)
+    with open(output_path, 'w') as f:
+        yaml.dump(metadata, f, indent=2, default_flow_style=False, sort_keys=False)
+
+    print(f"Generated chart metadata: {output_path}")
+
+
 def extract_catalog_date(catalog_filename: str) -> Optional[int]:
     """
     Extract date from catalog filename (e.g., v9-260326-amd64.yaml -> 260326).
@@ -243,40 +332,42 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
     catalog_data = load_catalog_file(catalog_path)
     versions_map = {}
 
-    # Mapping from catalog keys to our argument names
-    # Based on compare_catalogs.py and catalog structure
+    # Mapping from catalog keys to our argument names.
+    # Mirrors the CASE bundles processed in mirror_dependencies.yml.
     catalog_mappings = {
-        # Dependencies
-        'tsm_version': 'tsm',
-        'dd_version': 'data_dictionary',
-        'sls_version': 'sls',
-        'db2u_version': 'db2u',
-        'common_svcs_version': 'cp_common_services',
-        'ibm_zen_version': 'zen',
+        # CP4D Platform / Dependencies
+        'tsm_version':           'tsm',
+        'dd_version':            'data_dictionary',
+        'sls_version':           'sls',
+        'db2u_version':          'db2u',
+        'common_svcs_version':   'cp_common_services',
+        'ibm_zen_version':       'zen',
         'cp4d_platform_version': 'cp_datacore',
         'ibm_licensing_version': 'licensing',
-        'ccs_build': 'ccs',
-        'postgress_version': 'cloud_native_postgresql',
-        'wsl_version': 'wsl',
-        'wsl_runtimes_version': 'wsl_runtimes',
+        'ccs_build':             'ccs',
+        'postgress_version':     'cloud_native_postgresql',
+        'datarefinery_version':  'datarefinery',
+        'wsl_version':           'wsl',
+        'wsl_runtimes_version':  'wsl_runtimes',
         'elasticsearch_version': 'elasticsearch_operator',
-        'opensearch_version': 'opensearch_operator',
-        'wml_version': 'wml_cpd',
-        'spark_version': 'analyticsengine',
-        'cognos_version': 'cognos_analytics_prod',
+        'opensearch_version':    'opensearch_operator',
+        'redis_version':         'redis',               # ibm-redis-cp (WML dependency)
+        'wml_version':           'wml_cpd',
+        'spark_version':         'analyticsengine',
+        'cognos_version':        'cognos_analytics_prod',
         # MAS Applications
-        'mas_core_version': 'mas',
-        'mas_assist_version': 'assist',
-        'mas_iot_version': 'iot',
-        'mas_manage_version': 'manage',
-        'mas_monitor_version': 'monitor',
-        'mas_optimizer_version': 'optimizer',
-        'mas_predict_version': 'predict',
+        'mas_core_version':             'mas',
+        'mas_assist_version':           'assist',
+        'mas_iot_version':              'iot',
+        'mas_manage_version':           'manage',
+        'mas_monitor_version':          'monitor',
+        'mas_optimizer_version':        'optimizer',
+        'mas_predict_version':          'predict',
         'mas_visualinspection_version': 'mvi',
-        'mas_facilities_version': 'facilities',
-        'aiservice_version': 'aiservice',
-        'aiservice_tenant_version': 'aiservice_tenant',
-        'odh_version':'odh',
+        'mas_facilities_version':       'facilities',
+        'aiservice_version':            'aiservice',
+        'aiservice_tenant_version':     'aiservice_tenant',
+        'odh_version':                  'odh',
     }
 
     for catalog_key, arg_name in catalog_mappings.items():
@@ -303,6 +394,73 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
         versions_map['amlen_extras'] = [catalog_data['amlen_extras_version']]
 
     return versions_map
+
+
+def extract_opensearch_operator_image(bundle_digest: str) -> Optional[str]:
+    """Extract the bare operator image reference from the opensearch bundle's CSV manifest.
+
+    The operator image (icr.io/cpopen/opencontent-ibm-opensearch-operator@sha256:...)
+    is referenced inside the ClusterServiceVersion embedded in the OLM bundle image
+    but is NOT listed in the ibm-pak images.csv — hence it must be extracted here.
+
+    Uses the OCI registry HTTP API with anonymous access (no docker required) so this
+    works inside containers and CI environments without a docker socket.
+
+    Returns the fully-qualified image name string, or None on failure.
+    """
+    import re as _re
+    import io
+    import tarfile
+    import urllib.request
+    import urllib.error
+
+    registry = "icr.io"
+    repo = "cpopen/opencontent-ibm-opensearch-operator-bundle"
+
+    try:
+        # 1. Fetch the image manifest to get the layer digests
+        manifest_url = f"https://{registry}/v2/{repo}/manifests/{bundle_digest}"
+        req = urllib.request.Request(
+            manifest_url,
+            headers={"Accept": "application/vnd.docker.distribution.manifest.v2+json"}
+        )
+        with urllib.request.urlopen(req) as resp:
+            manifest = yaml.safe_load(resp.read())
+
+        layers = manifest.get("layers", [])
+        if not layers:
+            print("Warning: no layers found in opensearch bundle manifest", file=sys.stderr)
+            return None
+
+        # 2. Fetch each layer (smallest-first to minimise data transfer) looking for the CSV
+        layers_by_size = sorted(layers, key=lambda l: l.get("size", 0))
+        for layer in layers_by_size:
+            layer_digest = layer["digest"]
+            blob_url = f"https://{registry}/v2/{repo}/blobs/{layer_digest}"
+            try:
+                with urllib.request.urlopen(blob_url) as resp:
+                    layer_bytes = resp.read()
+            except urllib.error.HTTPError:
+                continue
+
+            try:
+                with tarfile.open(fileobj=io.BytesIO(layer_bytes), mode="r:gz") as tar:
+                    for member in tar.getmembers():
+                        if member.name.endswith(".clusterserviceversion.yaml"):
+                            csv_content = tar.extractfile(member).read().decode("utf-8")  # type: ignore
+                            match = _re.search(
+                                r'^\s*image:\s*(icr\.io/cpopen/opencontent-ibm-opensearch-operator@sha256:[a-f0-9]+)',
+                                csv_content, _re.MULTILINE
+                            )
+                            if match:
+                                return match.group(1)
+            except tarfile.TarError:
+                continue
+
+        print("Warning: could not find operator image in opensearch bundle CSV", file=sys.stderr)
+    except Exception as e:
+        print(f"Warning: failed to extract opensearch operator image from bundle: {e}", file=sys.stderr)
+    return None
 
 
 def generate_isc(case_name, case_version, arch="amd64", include_group=None, exclude_group=None, child_name=None, db2_variant=None) -> None:
@@ -347,6 +505,20 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
         if result != 0:
             sys.exit(1)
 
+        # ibm-pak may download the CASE under a full version directory that includes
+        # build metadata (e.g. "12.1.0+20260220.163654.253") even when only the base
+        # version was passed to the command.  Resolve the actual path by scanning the
+        # cases directory for a matching version prefix.
+        if not os.path.exists(images_csv_path):
+            cases_dir = os.path.expanduser(f"~/.ibm-pak/data/cases/{case_name}")
+            if os.path.isdir(cases_dir):
+                for entry in os.listdir(cases_dir):
+                    if entry.startswith(case_version_for_pak):
+                        candidate = os.path.join(cases_dir, entry, f"{case_name}-{entry}-images.csv")
+                        if os.path.exists(candidate):
+                            images_csv_path = candidate
+                            break
+
     isc = deepcopy(ISC_TEMPLATE)
 
     # Get list of images from images.csv
@@ -381,6 +553,20 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
             # Note: not all IBM products properly define the architecture field so we need to also match "" as amd64
             if (architecture == arch or (arch == "amd64" and architecture == "")) and groups != exclude_group and (include_group is None or groups == include_group):
                 isc["mirror"]["additionalImages"].append(image_fqn)  # pyright: ignore
+
+    # The opensearch operator image is embedded in the bundle CSV but absent from the
+    # ibm-pak images.csv. Fetch it via the OCI registry API and add it explicitly.
+    if case_name == "ibm-opensearch-operator":
+        bundle_digest = None
+        with open(images_csv_path, 'r') as f:
+            for row in csv.reader(f):
+                if len(row) > 3 and row[1] == "cpopen/opencontent-ibm-opensearch-operator-bundle":
+                    bundle_digest = row[3]  # digest column
+                    break
+        if bundle_digest:
+            operator_image = extract_opensearch_operator_image(bundle_digest)
+            if operator_image:
+                isc["mirror"]["additionalImages"].append({"name": operator_image})  # pyright: ignore
 
     if len(isc["mirror"]["additionalImages"]) > 0:  # pyright: ignore
         # Sort additionalImages by the name field
@@ -444,6 +630,20 @@ def process_single_catalog(catalog_path: str) -> bool:
         generate_catalog_isc(catalog_name, catalog_digest)
     else:
         print("Warning: No catalog_digest found in catalog data file")
+
+    # Determine whether Helm chart metadata should be generated.
+    # Charts are only applicable for CPD 5.2.0+ (helm-based install path).
+    cpd_version_raw = catalog_data.get('cpd_product_version_default', '')
+    try:
+        cpd_major, cpd_minor = str(cpd_version_raw).split('.')[:2]
+        cpd_helm_eligible = (int(cpd_major), int(cpd_minor)) >= (5, 2)
+    except (ValueError, AttributeError):
+        cpd_helm_eligible = False
+
+    if cpd_helm_eligible:
+        print(f"CPD version {cpd_version_raw} >= 5.2.0 — chart metadata generation enabled")
+    else:
+        print(f"CPD version {cpd_version_raw!r} < 5.2.0 or not set — skipping chart metadata generation")
 
     # Track if any CASE was processed
     processed = False
@@ -647,6 +847,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-cp-datacore", v)
         processed = True
 
     # Process ibm-licensing
@@ -669,6 +872,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-ccs", v)
         processed = True
 
     # Process ibm-cloud-native-postgresql
@@ -691,6 +897,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-datarefinery", v)
         processed = True
 
     # Process ibm-wsl
@@ -702,6 +911,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-wsl", v)
         processed = True
 
     # Process ibm-wsl-runtimes
@@ -713,6 +925,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-wsl-runtimes", v)
         processed = True
 
     # Process ibm-elasticsearch-operator
@@ -735,6 +950,23 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-opencontent-opensearch", v)
+        processed = True
+
+    # Process ibm-redis-cp (WML dependency, mirrored as standalone CASE bundle)
+    if 'redis' in catalog_versions:
+        versions = catalog_versions['redis']
+        print(f"Generating ISCs for ibm-redis-cp versions: {', '.join(versions)}")
+        generate_iscs(
+            case_name="ibm-redis-cp",
+            case_versions=versions,
+            architectures=["amd64", "ppc64le", "s390x"],
+        )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-redis-cp", v)
         processed = True
 
     # Process ibm-wml-cpd
@@ -746,6 +978,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-wml-cpd", v)
         processed = True
 
     # Process ibm-analyticsengine
@@ -757,6 +992,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-analyticsengine", v)
         processed = True
 
     # Process ibm-cognos-analytics-prod
@@ -768,6 +1006,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-cognos-analytics-prod", v)
         processed = True
 
     # Process ibm-db2uoperator (generates both s11 and s12 variants)
