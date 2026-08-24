@@ -21,4 +21,4 @@ mirror:
   - name: cp.icr.io/cp/visualinspection/vision-usage-reporter:1.5.87@sha256:ac0ff990ee98c97d31bfad6d5be196be1416d00d04d2b993f53cf829fcc1bc51
   - name: cp.icr.io/cp/visualinspection/vision-video-microservice:9.1.107@sha256:7e58023d267c0a493c667057d1e3a47454dbeda9cccadea944fc54fbfc9fd5cc
   - name: cp.icr.io/cp/visualinspection/vision-auth:1.0.111@sha256:820afa002adcdd674fcd1eecc04d8ecb68a80e6986662ac126167a8ceedfca06
-  - name: cp.icr.io/cp/visualinspection/vision-valkey:8.1.6@sha256:1f84517eca8e0dd9585ed57c572796f32839e1b0e7ce07ad28e6bce098468371
+  - name: cp.icr.io/cp/visualinspection/vision-valkey:8.1.9@sha256:acf8e9a0225938661e0dd26efa47269914f7fc9aaf64a9c2b6bf26a772b5ed46
