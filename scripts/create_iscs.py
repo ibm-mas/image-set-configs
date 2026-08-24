@@ -585,8 +585,11 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s --catalog ../python-devops/src/mas/devops/data/catalogs/v9-260326-amd64.yaml
+  %(prog)s --catalog v9-260326-amd64
+  %(prog)s --catalog v9-260326-amd64 --package ibm-analyticsengine
+  %(prog)s --catalog v9-260326-amd64 --package ibm-mas ibm-sls ibm-truststore-mgr
   %(prog)s --all-catalogs
+  %(prog)s --all-catalogs --package ibm-mas
         """
     )
 
@@ -597,16 +600,71 @@ Examples:
     group.add_argument('--all-catalogs', action='store_true',
                        help='Process all catalogs in ../python-devops/src/mas/devops/data/catalogs/ newer than v9-260129')
 
+    parser.add_argument('--package', type=str, nargs='+', metavar='PACKAGE',
+                        help='Only generate ISCs for the specified package(s). '
+                             'Use the CASE package name, e.g. ibm-analyticsengine, ibm-mas, ibm-sls. '
+                             'Multiple names may be provided separated by spaces. '
+                             'Omit to process all packages (default behaviour).')
+
     return parser.parse_args()
 
 
-def process_single_catalog(catalog_path: str) -> bool:
+# Maps CASE package names (as used in --package) to their internal catalog_versions key(s).
+# A package may map to multiple keys (e.g. manage also drives manage_icd).
+_PACKAGE_KEY_MAP: Dict[str, List[str]] = {
+    "ibm-sls":                     ["sls"],
+    "ibm-mas":                     ["mas"],
+    "ibm-truststore-mgr":          ["tsm"],
+    "ibm-mas-manage":              ["manage", "manage_icd"],
+    "ibm-mas-manage-icd":          ["manage_icd"],
+    "ibm-mas-monitor":             ["monitor"],
+    "ibm-mas-optimizer":           ["optimizer"],
+    "ibm-mas-visualinspection":    ["mvi"],
+    "ibm-mas-predict":             ["predict"],
+    "ibm-mas-assist":              ["assist"],
+    "ibm-mas-iot":                 ["iot"],
+    "ibm-mas-facilities":          ["facilities"],
+    "ibm-data-dictionary":         ["data_dictionary"],
+    "ibm-aiservice":               ["aiservice"],
+    "ibm-aiservice-tenant":        ["aiservice_tenant"],
+    "ibm-cp-common-services":      ["cp_common_services"],
+    "ibm-zen":                     ["zen"],
+    "ibm-cp-datacore":             ["cp_datacore"],
+    "ibm-licensing":               ["licensing"],
+    "ibm-ccs":                     ["ccs"],
+    "ibm-cloud-native-postgresql": ["cloud_native_postgresql"],
+    "ibm-datarefinery":            ["datarefinery"],
+    "ibm-wsl":                     ["wsl"],
+    "ibm-wsl-runtimes":            ["wsl_runtimes"],
+    "ibm-elasticsearch-operator":  ["elasticsearch_operator"],
+    "ibm-opensearch-operator":     ["opensearch_operator"],
+    "ibm-redis-cp":                ["redis"],
+    "ibm-wml-cpd":                 ["wml_cpd"],
+    "ibm-analyticsengine":         ["analyticsengine"],
+    "ibm-cognos-analytics-prod":   ["cognos_analytics_prod"],
+    "ibm-db2uoperator":            ["db2u"],
+    "mongodb-ce":                  ["mongo_extras"],
+    "amlen":                       ["amlen_extras"],
+    "opendatahub":                 ["odh"],
+}
+
+
+def process_single_catalog(catalog_path: str, packages_filter: Optional[List[str]] = None) -> bool:
     """
     Process a single catalog file and generate all ISCs.
+
+    Args:
+        catalog_path: Path to the catalog YAML file.
+        packages_filter: If provided, only generate ISCs for packages whose CASE name
+                         is in this list (e.g. ['ibm-analyticsengine', 'ibm-sls']).
+                         Pass None (default) to process all packages.
+
     Returns True if any CASE packages were processed.
     """
     print(f"\n{'='*80}")
     print(f"Processing catalog: {catalog_path}")
+    if packages_filter:
+        print(f"Package filter:     {', '.join(packages_filter)}")
     print(f"{'='*80}")
 
     try:
@@ -644,6 +702,21 @@ def process_single_catalog(catalog_path: str) -> bool:
         print(f"CPD version {cpd_version_raw} >= 5.2.0 — chart metadata generation enabled")
     else:
         print(f"CPD version {cpd_version_raw!r} < 5.2.0 or not set — skipping chart metadata generation")
+
+    # Apply package filter: if --package was given, restrict catalog_versions to only
+    # the keys that correspond to the requested package names.
+    if packages_filter:
+        allowed_keys: set = set()
+        unknown = []
+        for pkg in packages_filter:
+            if pkg in _PACKAGE_KEY_MAP:
+                allowed_keys.update(_PACKAGE_KEY_MAP[pkg])
+            else:
+                unknown.append(pkg)
+        if unknown:
+            print(f"Warning: unknown package name(s) ignored: {', '.join(unknown)}", file=sys.stderr)
+            print(f"  Known packages: {', '.join(sorted(_PACKAGE_KEY_MAP))}", file=sys.stderr)
+        catalog_versions = {k: v for k, v in catalog_versions.items() if k in allowed_keys}
 
     # Track if any CASE was processed
     processed = False
@@ -1103,7 +1176,7 @@ def main():
 
         total_processed = 0
         for catalog_path in catalog_files:
-            if process_single_catalog(catalog_path):
+            if process_single_catalog(catalog_path, packages_filter=args.package):
                 total_processed += 1
 
         print(f"\n{'='*80}")
@@ -1113,7 +1186,7 @@ def main():
     else:
         # Process single catalog
         catalog_path = resolve_catalog_path(args.catalog)
-        if process_single_catalog(catalog_path):
+        if process_single_catalog(catalog_path, packages_filter=args.package):
             print("\nISC generation complete!")
         else:
             sys.exit(1)
