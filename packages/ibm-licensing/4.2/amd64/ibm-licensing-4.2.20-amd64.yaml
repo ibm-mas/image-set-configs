@@ -7,3 +7,9 @@ mirror:
   - name: icr.io/cpopen/ibm-licensing-catalog:cd-20260210-1118@sha256:734017cedb6605a4aba3a2de54c0ccb8e314e7b533ec0e30a362fa315ef8e1dd
   - name: icr.io/cpopen/ibm-licensing-operator-bundle:4.2.20@sha256:0f33d2b78cdbe76b824dc0c2e0cbbe00c794c4d3d2f26180db7f0eb3bdae7a1c
   - name: icr.io/cpopen/ibm-licensing-operator:4.2.20@sha256:d4811262f9a6121d120148bfc1f50e64092f9220e5dc4257a151d489347e3cc3
+  # 4.2.17 is the current channel head CSV resolved by OLM from ibm-operator-catalog
+  # Must be mirrored alongside 4.2.20 to ensure OLM bundle unpack succeeds
+  - name: icr.io/cpopen/cpfs/ibm-licensing:4.2.17@sha256:87acb02f60a8ea8d71e2126c36157d5504fcd4dc73e63268d6f58fbdaff74667
+  - name: icr.io/cpopen/ibm-licensing-catalog:4.2.17@sha256:f557775e3872dd3ced9a23e5bf0763b1effb9b0184ff966bd2e96ab075d63a0a
+  - name: icr.io/cpopen/ibm-licensing-operator-bundle:4.2.17@sha256:e35ba6303b56387da5009918ce70e26f445f5a2577e38da416c73da5d819ecd9
+  - name: icr.io/cpopen/ibm-licensing-operator:4.2.17@sha256:92c651a034c177432227d950f549f9299e92b3a0f825bd342c4acc37f76245e6
