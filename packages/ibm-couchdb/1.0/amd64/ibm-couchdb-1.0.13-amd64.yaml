@@ -8,5 +8,5 @@ mirror:
   - name: icr.io/cpopen/couchdb-operator-catalog:latest@sha256:c35df32a8de999a4bb76229fbe302b1107d9c6bd17d159ee30167016c51bc215
   - name: quay.io/opencloudio/couchdb3:3.2.1-1643018916@sha256:071c548bbb2888057537ca12c9cf8fccf3aab4e8de40e7dbad5b028c1291546d
   - name: quay.io/opencloudio/couchdb-operator-mgmt:1.6.25-1643121381@sha256:ee45180fbce0d1b78ed2e89d07e99b51dfa5e59d2e0e427e69fbdfe792616299
-
+  - name: quay.io/opencloudio/couchdb-operator-mgmt@sha256:b47c292b45277d3c2eedc24c41ea616ff7fd886194c182d033c97ac0e587905f
 # Made with Bob
