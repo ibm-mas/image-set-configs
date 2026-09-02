@@ -1,0 +1,8 @@
+case_name: ibm-cp-common-services
+case_version: 4.19.0
+charts:
+- name: ibm-common-service-operator
+  version: 4.19.0
+- name: ibm-common-service-operator-cluster-scoped
+  version: 4.19.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

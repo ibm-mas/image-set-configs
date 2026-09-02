@@ -1,0 +1,10 @@
+case_name: ibm-wsl
+case_version: 13.0.0
+charts:
+- name: ws
+  version: 13.0.0
+- name: ws-cluster-scoped
+  version: 13.0.0
+- name: ws-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

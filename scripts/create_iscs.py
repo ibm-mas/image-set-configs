@@ -26,13 +26,21 @@ import yaml
 # Each CASE bundle contains ONLY its own charts — dependencies are separate CASE bundles.
 CHART_CONFIGS: Dict[str, List[str]] = {
     # ibm-cp-datacore (CP4D Platform)
-    "ibm-cp-datacore": ["cpd-platform", "cpd-platform-cluster-scoped", "cpd-platform-migration", "platform-config"],
+    "ibm-cp-datacore": ["cpd-platform", "cpd-platform-cluster-scoped", "cpd-platform-migration", "platform-config",
+                        "ibm-swhcc", "ibm-swhcc-cluster-scoped", "ibm-swhcc-migration"],
+    # ibm-cp-common-services (Common Services)
+    "ibm-cp-common-services": ["ibm-common-service-operator", "ibm-common-service-operator-cluster-scoped"],
     # ibm-ccs (Common Core Services)
     "ibm-ccs": ["ccs", "ccs-cluster-scoped", "ccs-migration"],
     # ibm-cognos-analytics-prod (Cognos Analytics)
     "ibm-cognos-analytics-prod": ["cognos-analytics", "cognos-analytics-cluster-scoped", "cognos-analytics-migration"],
     # ibm-opencontent-opensearch (OpenSearch)
     "ibm-opencontent-opensearch": ["opencontent-opensearch", "opencontent-opensearch-cluster-scoped"],
+    # ibm-zen (Zen / CP4D UI)
+    "ibm-zen": ["zen", "zen-cluster-scoped", "zen-migration"],
+    # ibm-cloud-native-postgresql (PostgreSQL)
+    "ibm-cloud-native-postgresql": ["postgresql", "postgresql-cluster-scoped", "postgresql-migration",
+                                    "ibm-pg-operator", "ibm-pg-operator-cluster-scoped"],
     # ibm-wsl (Watson Studio)
     "ibm-wsl": ["ws", "ws-cluster-scoped", "ws-migration"],
     # ibm-wml-cpd (Watson Machine Learning)
@@ -45,6 +53,19 @@ CHART_CONFIGS: Dict[str, List[str]] = {
     "ibm-wsl-runtimes": ["ws-runtimes", "ws-runtimes-cluster-scoped", "ws-runtimes-migration"],
     # ibm-redis-cp (Redis — dependency of wml)
     "ibm-redis-cp": ["ibm-redis-cp", "ibm-redis-cp-cluster-scoped", "ibm-redis-cp-migration"],
+}
+
+# Some Helm charts have their own independent versioning that does not match the
+# CASE bundle version. This dict maps chart name -> version override.
+# Used by generate_chart_metadata() when building chart entries.
+# ibm-pg-operator and ibm-swhcc are embedded in other CASE bundles but published
+# to the IBM Helm repo under their own version strings.
+CHART_VERSION_OVERRIDES: Dict[str, str] = {
+    "ibm-pg-operator":                "0.0.0",   # version resolved at mirror-time from Helm repo
+    "ibm-pg-operator-cluster-scoped": "0.0.0",
+    "ibm-swhcc":                      "0.0.0",
+    "ibm-swhcc-cluster-scoped":       "0.0.0",
+    "ibm-swhcc-migration":            "0.0.0",
 }
 
 ISC_TEMPLATE = dict(
@@ -266,7 +287,9 @@ def generate_chart_metadata(case_name: str, case_version: str) -> None:
         return
 
     chart_entries = [
-        {"name": name, "version": "0.0.0" if name.endswith("-migration") else file_version}
+        {"name": name, "version": CHART_VERSION_OVERRIDES.get(
+            name, "0.0.0" if name.endswith("-migration") else file_version
+        )}
         for name in CHART_CONFIGS[case_name]
     ]
 
@@ -728,14 +751,14 @@ def process_single_catalog(catalog_path: str) -> bool:
         )
         processed = True
 
-    # Process ibm-mas-visualinspection
+    # Process ibm-mas-visualinspection (amd64 only)
     if 'mvi' in catalog_versions:
         versions = catalog_versions['mvi']
         print(f"Generating ISCs for ibm-mas-visualinspection versions: {', '.join(versions)}")
         generate_iscs(
             case_name="ibm-mas-visualinspection",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"],
+            architectures=["amd64"],
         )
         processed = True
 
@@ -825,6 +848,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-cp-common-services", v)
         processed = True
 
     # Process ibm-zen
@@ -836,6 +862,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-zen", v)
         processed = True
 
     # Process ibm-cp-datacore
@@ -886,6 +915,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-cloud-native-postgresql", v)
         processed = True
 
     # Process ibm-datarefinery

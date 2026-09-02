@@ -1,0 +1,10 @@
+case_name: ibm-cognos-analytics-prod
+case_version: 30.0.0
+charts:
+- name: cognos-analytics
+  version: 30.0.0
+- name: cognos-analytics-cluster-scoped
+  version: 30.0.0
+- name: cognos-analytics-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm
