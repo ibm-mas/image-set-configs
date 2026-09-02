@@ -10,9 +10,9 @@ charts:
 - name: platform-config
   version: 5.10.0
 - name: ibm-swhcc
-  version: 0.0.0
+  version: 5.10.0
 - name: ibm-swhcc-cluster-scoped
-  version: 0.0.0
+  version: 5.10.0
 - name: ibm-swhcc-migration
   version: 0.0.0
 helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

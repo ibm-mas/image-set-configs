@@ -7,8 +7,4 @@ charts:
   version: 5.40.0
 - name: postgresql-migration
   version: 0.0.0
-- name: ibm-pg-operator
-  version: 0.0.0
-- name: ibm-pg-operator-cluster-scoped
-  version: 0.0.0
 helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

@@ -25,7 +25,7 @@ import yaml
 # Source: ibm/mas_devops/roles/cp4d_service/defaults/main.yml (cpd_service_info + cpd_helm_common_dependencies)
 # Each CASE bundle contains ONLY its own charts — dependencies are separate CASE bundles.
 CHART_CONFIGS: Dict[str, List[str]] = {
-    # ibm-cp-datacore (CP4D Platform)
+    # ibm-cp-datacore (CP4D Platform) — ibm-swhcc version tracks cp4d_platform_version
     "ibm-cp-datacore": ["cpd-platform", "cpd-platform-cluster-scoped", "cpd-platform-migration", "platform-config",
                         "ibm-swhcc", "ibm-swhcc-cluster-scoped", "ibm-swhcc-migration"],
     # ibm-cp-common-services (Common Services)
@@ -38,9 +38,10 @@ CHART_CONFIGS: Dict[str, List[str]] = {
     "ibm-opencontent-opensearch": ["opencontent-opensearch", "opencontent-opensearch-cluster-scoped"],
     # ibm-zen (Zen / CP4D UI)
     "ibm-zen": ["zen", "zen-cluster-scoped", "zen-migration"],
-    # ibm-cloud-native-postgresql (PostgreSQL)
-    "ibm-cloud-native-postgresql": ["postgresql", "postgresql-cluster-scoped", "postgresql-migration",
-                                    "ibm-pg-operator", "ibm-pg-operator-cluster-scoped"],
+    # ibm-cloud-native-postgresql (PostgreSQL) — postgresql version tracks postgress_version
+    "ibm-cloud-native-postgresql": ["postgresql", "postgresql-cluster-scoped", "postgresql-migration"],
+    # ibm-pg-operator — independent versioning tracked by pg_operator_version in catalog
+    "ibm-pg-operator": ["ibm-pg-operator", "ibm-pg-operator-cluster-scoped"],
     # ibm-wsl (Watson Studio)
     "ibm-wsl": ["ws", "ws-cluster-scoped", "ws-migration"],
     # ibm-wml-cpd (Watson Machine Learning)
@@ -55,18 +56,6 @@ CHART_CONFIGS: Dict[str, List[str]] = {
     "ibm-redis-cp": ["ibm-redis-cp", "ibm-redis-cp-cluster-scoped", "ibm-redis-cp-migration"],
 }
 
-# Some Helm charts have their own independent versioning that does not match the
-# CASE bundle version. This dict maps chart name -> version override.
-# Used by generate_chart_metadata() when building chart entries.
-# ibm-pg-operator and ibm-swhcc are embedded in other CASE bundles but published
-# to the IBM Helm repo under their own version strings.
-CHART_VERSION_OVERRIDES: Dict[str, str] = {
-    "ibm-pg-operator":                "0.0.0",   # version resolved at mirror-time from Helm repo
-    "ibm-pg-operator-cluster-scoped": "0.0.0",
-    "ibm-swhcc":                      "0.0.0",
-    "ibm-swhcc-cluster-scoped":       "0.0.0",
-    "ibm-swhcc-migration":            "0.0.0",
-}
 
 ISC_TEMPLATE = dict(
     apiVersion="mirror.openshift.io/v1alpha2",
@@ -287,9 +276,7 @@ def generate_chart_metadata(case_name: str, case_version: str) -> None:
         return
 
     chart_entries = [
-        {"name": name, "version": CHART_VERSION_OVERRIDES.get(
-            name, "0.0.0" if name.endswith("-migration") else file_version
-        )}
+        {"name": name, "version": "0.0.0" if name.endswith("-migration") else file_version}
         for name in CHART_CONFIGS[case_name]
     ]
 
@@ -369,6 +356,7 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
         'ibm_licensing_version': 'licensing',
         'ccs_build':             'ccs',
         'postgress_version':     'cloud_native_postgresql',
+        'pg_operator_version':   'pg_operator',
         'datarefinery_version':  'datarefinery',
         'wsl_version':           'wsl',
         'wsl_runtimes_version':  'wsl_runtimes',
@@ -918,6 +906,15 @@ def process_single_catalog(catalog_path: str) -> bool:
         if cpd_helm_eligible:
             for v in versions:
                 generate_chart_metadata("ibm-cloud-native-postgresql", v)
+        processed = True
+
+    # Process ibm-pg-operator (chart-metadata only — no ISC, version from pg_operator_version)
+    if 'pg_operator' in catalog_versions:
+        versions = catalog_versions['pg_operator']
+        print(f"Generating chart metadata for ibm-pg-operator versions: {', '.join(versions)}")
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-pg-operator", v)
         processed = True
 
     # Process ibm-datarefinery
