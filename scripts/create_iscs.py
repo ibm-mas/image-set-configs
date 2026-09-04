@@ -518,15 +518,18 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
         if result != 0:
             sys.exit(1)
 
-        # ibm-pak may download the CASE under a full version directory that includes
-        # build metadata (e.g. "12.1.0+20260220.163654.253") even when only the base
-        # version was passed to the command.  Resolve the actual path by scanning the
-        # cases directory for a matching version prefix.
+        # ibm-pak may store the CASE under a version directory that differs from what
+        # was passed to the command in two ways:
+        #   1. Full version passed (e.g. "28.3.1+20260528.204410.526") but stored as
+        #      base version only (e.g. "28.3.1") — entry is a prefix of case_version_for_pak
+        #   2. Base version passed (e.g. "12.1.0") but stored with build metadata
+        #      (e.g. "12.1.0+20260220.163654.253") — case_version_for_pak is a prefix of entry
+        # Scan the cases directory and match on either prefix direction.
         if not os.path.exists(images_csv_path):
             cases_dir = os.path.expanduser(f"~/.ibm-pak/data/cases/{case_name}")
             if os.path.isdir(cases_dir):
                 for entry in os.listdir(cases_dir):
-                    if entry.startswith(case_version_for_pak):
+                    if entry.startswith(case_version_for_pak) or case_version_for_pak.startswith(entry):
                         candidate = os.path.join(cases_dir, entry, f"{case_name}-{entry}-images.csv")
                         if os.path.exists(candidate):
                             images_csv_path = candidate
@@ -913,10 +916,15 @@ def process_single_catalog(catalog_path: str) -> bool:
                 generate_chart_metadata("ibm-cloud-native-postgresql", v)
         processed = True
 
-    # Process ibm-pg-operator (chart-metadata only — no ISC, version from pg_operator_version)
+    # Process ibm-pg-operator (ISC + chart metadata, version from pg_operator_version)
     if 'pg_operator' in catalog_versions:
         versions = catalog_versions['pg_operator']
-        print(f"Generating chart metadata for ibm-pg-operator versions: {', '.join(versions)}")
+        print(f"Generating ISCs for ibm-pg-operator versions: {', '.join(versions)}")
+        generate_iscs(
+            case_name="ibm-pg-operator",
+            case_versions=versions,
+            architectures=["amd64", "ppc64le", "s390x"],
+        )
         if cpd_helm_eligible:
             for v in versions:
                 generate_chart_metadata("ibm-pg-operator", v)
