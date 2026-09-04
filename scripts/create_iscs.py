@@ -30,6 +30,8 @@ CHART_CONFIGS: Dict[str, List[str]] = {
                         "ibm-swhcc", "ibm-swhcc-cluster-scoped", "ibm-swhcc-migration"],
     # ibm-cp-common-services (Common Services)
     "ibm-cp-common-services": ["ibm-common-service-operator", "ibm-common-service-operator-cluster-scoped"],
+    # ibm-licensing
+    "ibm-licensing": ["ibm-licensing-cluster-scoped", "ibm-licensing-migration"],
     # ibm-ccs (Common Core Services)
     "ibm-ccs": ["ccs", "ccs-cluster-scoped", "ccs-migration"],
     # ibm-cognos-analytics-prod (Cognos Analytics)
@@ -878,6 +880,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-licensing", v)
         processed = True
 
     # Process ibm-ccs
