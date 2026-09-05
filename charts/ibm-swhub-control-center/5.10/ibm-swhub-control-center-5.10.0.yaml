@@ -1,12 +1,10 @@
-case_name: ibm-cp-datacore
+case_name: ibm-swhub-control-center
 case_version: 5.10.0
 charts:
-- name: cpd-platform
+- name: ibm-swhcc
   version: 5.10.0
-- name: cpd-platform-cluster-scoped
+- name: ibm-swhcc-cluster-scoped
   version: 5.10.0
-- name: cpd-platform-migration
+- name: ibm-swhcc-migration
   version: 0.0.0
-- name: platform-config
-  version: 5.10.0
 helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

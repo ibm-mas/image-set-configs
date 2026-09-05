@@ -25,9 +25,10 @@ import yaml
 # Source: ibm/mas_devops/roles/cp4d_service/defaults/main.yml (cpd_service_info + cpd_helm_common_dependencies)
 # Each CASE bundle contains ONLY its own charts — dependencies are separate CASE bundles.
 CHART_CONFIGS: Dict[str, List[str]] = {
-    # ibm-cp-datacore (CP4D Platform) — ibm-swhcc version tracks cp4d_platform_version
-    "ibm-cp-datacore": ["cpd-platform", "cpd-platform-cluster-scoped", "cpd-platform-migration", "platform-config",
-                        "ibm-swhcc", "ibm-swhcc-cluster-scoped", "ibm-swhcc-migration"],
+    # ibm-cp-datacore (CP4D Platform)
+    "ibm-cp-datacore": ["cpd-platform", "cpd-platform-cluster-scoped", "cpd-platform-migration", "platform-config"],
+    # ibm-swhub-control-center — independent CASE, version tracks swhub_version in catalog
+    "ibm-swhub-control-center": ["ibm-swhcc", "ibm-swhcc-cluster-scoped", "ibm-swhcc-migration"],
     # ibm-cp-common-services (Common Services)
     "ibm-cp-common-services": ["ibm-common-service-operator", "ibm-common-service-operator-cluster-scoped"],
     # ibm-licensing
@@ -355,6 +356,7 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
         'common_svcs_version':   'cp_common_services',
         'ibm_zen_version':       'zen',
         'cp4d_platform_version': 'cp_datacore',
+        'swhub_version':         'swhub',
         'ibm_licensing_version': 'licensing',
         'ccs_build':             'ccs',
         'postgress_version':     'cloud_native_postgresql',
@@ -872,6 +874,20 @@ def process_single_catalog(catalog_path: str) -> bool:
         if cpd_helm_eligible:
             for v in versions:
                 generate_chart_metadata("ibm-cp-datacore", v)
+        processed = True
+
+    # Process ibm-swhub-control-center (ISC + chart metadata, version from swhub_version)
+    if 'swhub' in catalog_versions:
+        versions = catalog_versions['swhub']
+        print(f"Generating ISCs for ibm-swhub-control-center versions: {', '.join(versions)}")
+        generate_iscs(
+            case_name="ibm-swhub-control-center",
+            case_versions=versions,
+            architectures=["amd64", "ppc64le", "s390x"],
+        )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-swhub-control-center", v)
         processed = True
 
     # Process ibm-licensing
