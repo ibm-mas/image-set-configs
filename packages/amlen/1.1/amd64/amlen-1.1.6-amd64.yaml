@@ -1,0 +1,7 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: quay.io/amlen/operator-bundle:1.1.6@sha256:4f805924232be056c60e00f1694786d355448390ed52dea6db0d30bab9294f19
+  - name: quay.io/amlen/operator:v1.1.6@sha256:72e16cf2c01f82d2094563b7e52c0995840106d560e28ea49d520836e19676da
