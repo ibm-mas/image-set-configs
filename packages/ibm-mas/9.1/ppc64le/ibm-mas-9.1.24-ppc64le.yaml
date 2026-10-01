@@ -1,0 +1,39 @@
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/ibm-mas-operator-bundle@sha256:1b4adffe59c48eb6a0a05e9b13a5f71c82672c96223ae6b6275ac90eb5211e95
+  - name: cp.icr.io/cp/mas/ibm-mas-suite:9.1.24-ppc64le@sha256:517496f7125de1e42e2cfc6bf703b33fdeac89dcdf1ab095b6b84f1bdacad5d3
+  - name: cp.icr.io/cp/mas/kubectl:5.0.41-ppc64le@sha256:18b635e0d6c040295665907833aa8a4e57c865764ee715e9541ed7d4ba7e335e
+  - name: cp.icr.io/cp/mas/ltpakeys-generator:3.3.39-ppc64le@sha256:934fa3712a843737d01492d26e49e8cf5fcdbc62bf8f8f9ac3e033884c4c341c
+  - name: cp.icr.io/cp/mas/coreapi:25.23.61-ppc64le@sha256:077c714b8e52199c7edcd8150462b4076062fabf3eb521b8f19a68bb82ca3109
+  - name: cp.icr.io/cp/mas/internalapi:10.3.52-ppc64le@sha256:d189b61dc2738632cd146c2f224e45671e6766c8bd39d37feb7d85fff7fb30e1
+  - name: cp.icr.io/cp/mas/admin-dashboard:12.14.104-ppc64le@sha256:a58e3658d649d61756d03394eb788d07b0b1e13816f782f150e501fbbe5d0b2e
+  - name: cp.icr.io/cp/mas/homepage:10.7.43-ppc64le@sha256:72436d37e6bca8d69c994fa6060237a5c4c754352604f05f46b8d8b1f374a736
+  - name: cp.icr.io/cp/mas/navigator:10.6.46-ppc64le@sha256:627b5088f422345968bfa7c64a3834c08dcc4dff3131794ddfc4bb35d814ebe6
+  - name: cp.icr.io/cp/mas/usersync-coordinator:4.0.70-ppc64le@sha256:2ed5b363bf7bec30e7f78d5c766d221bf0c07d322b48e8408358191fe9799622
+  - name: cp.icr.io/cp/mas/groupsync-coordinator:1.6.88-ppc64le@sha256:cef079bccbe8640daefcd75b1f538e9c1a133389459772754d5b0fec3b8603d0
+  - name: cp.icr.io/cp/mas/workspace-coordinator:2.7.93-ppc64le@sha256:2bb5f8273e2f0c6096efdb7e970416cf9ba8d4020fe118f44a12e64acf454d15
+  - name: cp.icr.io/cp/mas/catalogmgr:3.4.60-ppc64le@sha256:a82f214b0fbbce1fc56de7d61fa4bb39397f937ce5e72f389fcce5d54e4b5f0f
+  - name: cp.icr.io/cp/mas/catalogapi:2.7.74-ppc64le@sha256:7b5091709fe16d1d189c5b4a21d87fca1ecc0b1d7177bfc9d6646160408def55
+  - name: cp.icr.io/cp/mas/mobileapi:7.0.107-ppc64le@sha256:b7dfcd59af1ebdef375038aa732ba394daf418be447ebea295d1e586baf7cf1b
+  - name: cp.icr.io/cp/mas/monagent-mas:1.11.14-ppc64le@sha256:fb50cb9377f0c51a29d7fe643fdcbfda096bbeec10d24088974710052f777243
+  - name: cp.icr.io/cp/mas/importuser:4.3.91-ppc64le@sha256:e5a83bacc7caf25246a02366490c576ef085cf84a32405646b8eb69998eb5d81
+  - name: cp.icr.io/cp/mas/datamodel-migration:3.0.77-ppc64le@sha256:30fa19f9be50dc8d90625ca6c8a85bb1c53a8a53e5e1e3000ed4ed049c865ee8
+  - name: cp.icr.io/cp/mas/ibm-mas-entitymgr:9.1.24-ppc64le@sha256:8c0fbd6da1ba316544dd64c8f225ef0e2f00ecc1f701a62a013f98109be8226e
+  - name: cp.icr.io/cp/mas/oidcclient-reg:2.5.75-ppc64le@sha256:0d0cb49d69abc2d80eb9415e893a8f809e0b6371634810cdad2e01319c971038
+  - name: cp.icr.io/cp/mas/coreidp:12.2.33-ppc64le@sha256:31b0a9f0a57dea3e454caede275f3ac412f07c24a2c3a88858be011b557ea094
+  - name: cp.icr.io/cp/mas/coreidp-login:6.3.57-ppc64le@sha256:9a04a43bd48047c04b33119d38ee2c213b095e732097fe7a10993b28a4ccf062
+  - name: cp.icr.io/cp/mas/milestonesapi:2.8.103-ppc64le@sha256:fba94677304becbab0b6103bee34482f2ac231c00f33ecaf897a6321eb19fc1b
+  - name: cp.icr.io/cp/mas/adoptionusageapi:1.18.69-ppc64le@sha256:94dfc75a8b4f6891c71b244229e743ae066a5b356f9457a0ef4b3d7c862e9155
+  - name: cp.icr.io/cp/mas/adoptionusage-reporter:2.0.95-ppc64le@sha256:ea10f358ffa9859de5dbb7dc5cfafd52c9ef197f62023054a4ee6d227c27e012
+  - name: cp.icr.io/cp/mas/accapppoints:3.11.90-ppc64le@sha256:8a7ddf650d16b9a14e4737c9368018237df48749b0acbf4c82649002770149bc
+  - name: cp.icr.io/cp/mas/adoptionusage-metering:1.5.75-ppc64le@sha256:d199f4a84ae06b3e071f5e1fb215f11c43e79544897d4bbe0108ec7193af461c
+  - name: cp.icr.io/cp/mas/scimsync-agent:6.1.37-ppc64le@sha256:9c57d8bbc670b43ad33263ef7da7504c1884d3a3eeb875e3d4662f10396fbf24
+  - name: cp.icr.io/cp/mas/scimsync:3.2.56-ppc64le@sha256:f932cb849b9bbe7364c5568cc9c6dad33215d20a6109a00885bf27a0d9b6714b
+  - name: cp.icr.io/cp/mas/sendmailapi:1.17.93-ppc64le@sha256:c888bcbfdc93402183db2d126bc52751121c9e6e56bb1e946d6470ba176b70fd
+  - name: cp.icr.io/cp/mas/graphite-configuration:1.7.111-ppc64le@sha256:94847475a0e65a697127b74a166825c906be5dc9edd635b9266de64e5d50ce20
+  - name: cp.icr.io/cp/mas/push-notification-service:2.6.55-ppc64le@sha256:0286385cd21c61a9ea752ce5f70a2638f0c2eb829ba252810ad36256dd4c8062
+  - name: cp.icr.io/cp/mas/licensing-sync:1.3.56-ppc64le@sha256:c9141dade272cce1cec0695a35bb860dfc3e531c5e74db83ff5e8d1197356f16
+  - name: cp.icr.io/cp/mas/licensing-mediator:4.5.20-ppc64le@sha256:7a7c9550be0bf3e8ae2bd2831cd7ebc31f1cd74ef2151eeade83a136fdfe6c5a
+  - name: icr.io/cpopen/ibm-mas:9.1.24-ppc64le@sha256:f0df7a7b60ad36f947f472498643d4b25a8ff95851f1704e91a71fcdba885eaf
