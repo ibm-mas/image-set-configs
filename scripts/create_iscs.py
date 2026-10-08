@@ -27,12 +27,24 @@ import yaml
 CHART_CONFIGS: Dict[str, List[str]] = {
     # ibm-cp-datacore (CP4D Platform)
     "ibm-cp-datacore": ["cpd-platform", "cpd-platform-cluster-scoped", "cpd-platform-migration", "platform-config"],
+    # ibm-swhub-control-center — independent CASE, version tracks swhub_version in catalog
+    "ibm-swhub-control-center": ["ibm-swhcc", "ibm-swhcc-cluster-scoped", "ibm-swhcc-migration"],
+    # ibm-cp-common-services (Common Services)
+    "ibm-cp-common-services": ["ibm-common-service-operator", "ibm-common-service-operator-cluster-scoped"],
+    # ibm-licensing
+    "ibm-licensing": ["ibm-licensing-cluster-scoped", "ibm-licensing-migration"],
     # ibm-ccs (Common Core Services)
     "ibm-ccs": ["ccs", "ccs-cluster-scoped", "ccs-migration"],
     # ibm-cognos-analytics-prod (Cognos Analytics)
     "ibm-cognos-analytics-prod": ["cognos-analytics", "cognos-analytics-cluster-scoped", "cognos-analytics-migration"],
     # ibm-opencontent-opensearch (OpenSearch)
     "ibm-opencontent-opensearch": ["opencontent-opensearch", "opencontent-opensearch-cluster-scoped"],
+    # ibm-zen (Zen / CP4D UI)
+    "ibm-zen": ["zen", "zen-cluster-scoped", "zen-migration"],
+    # ibm-cloud-native-postgresql (PostgreSQL) — postgresql version tracks postgress_version
+    "ibm-cloud-native-postgresql": ["postgresql", "postgresql-cluster-scoped", "postgresql-migration"],
+    # ibm-pg-operator — independent versioning tracked by pg_operator_version in catalog
+    "ibm-pg-operator": ["ibm-pg-operator", "ibm-pg-operator-cluster-scoped"],
     # ibm-wsl (Watson Studio)
     "ibm-wsl": ["ws", "ws-cluster-scoped", "ws-migration"],
     # ibm-wml-cpd (Watson Machine Learning)
@@ -46,6 +58,7 @@ CHART_CONFIGS: Dict[str, List[str]] = {
     # ibm-redis-cp (Redis — dependency of wml)
     "ibm-redis-cp": ["ibm-redis-cp", "ibm-redis-cp-cluster-scoped", "ibm-redis-cp-migration"],
 }
+
 
 ISC_TEMPLATE = dict(
     apiVersion="mirror.openshift.io/v1alpha2",
@@ -343,9 +356,11 @@ def process_catalog(catalog_path: str) -> Dict[str, List[str]]:
         'common_svcs_version':   'cp_common_services',
         'ibm_zen_version':       'zen',
         'cp4d_platform_version': 'cp_datacore',
+        'swhub_version':         'swhub',
         'ibm_licensing_version': 'licensing',
         'ccs_build':             'ccs',
         'postgress_version':     'cloud_native_postgresql',
+        'pg_operator_version':   'pg_operator',
         'datarefinery_version':  'datarefinery',
         'wsl_version':           'wsl',
         'wsl_runtimes_version':  'wsl_runtimes',
@@ -505,15 +520,18 @@ def generate_isc(case_name, case_version, arch="amd64", include_group=None, excl
         if result != 0:
             sys.exit(1)
 
-        # ibm-pak may download the CASE under a full version directory that includes
-        # build metadata (e.g. "12.1.0+20260220.163654.253") even when only the base
-        # version was passed to the command.  Resolve the actual path by scanning the
-        # cases directory for a matching version prefix.
+        # ibm-pak may store the CASE under a version directory that differs from what
+        # was passed to the command in two ways:
+        #   1. Full version passed (e.g. "28.3.1+20260528.204410.526") but stored as
+        #      base version only (e.g. "28.3.1") — entry is a prefix of case_version_for_pak
+        #   2. Base version passed (e.g. "12.1.0") but stored with build metadata
+        #      (e.g. "12.1.0+20260220.163654.253") — case_version_for_pak is a prefix of entry
+        # Scan the cases directory and match on either prefix direction.
         if not os.path.exists(images_csv_path):
             cases_dir = os.path.expanduser(f"~/.ibm-pak/data/cases/{case_name}")
             if os.path.isdir(cases_dir):
                 for entry in os.listdir(cases_dir):
-                    if entry.startswith(case_version_for_pak):
+                    if entry.startswith(case_version_for_pak) or case_version_for_pak.startswith(entry):
                         candidate = os.path.join(cases_dir, entry, f"{case_name}-{entry}-images.csv")
                         if os.path.exists(candidate):
                             images_csv_path = candidate
@@ -728,14 +746,14 @@ def process_single_catalog(catalog_path: str) -> bool:
         )
         processed = True
 
-    # Process ibm-mas-visualinspection
+    # Process ibm-mas-visualinspection (amd64 only)
     if 'mvi' in catalog_versions:
         versions = catalog_versions['mvi']
         print(f"Generating ISCs for ibm-mas-visualinspection versions: {', '.join(versions)}")
         generate_iscs(
             case_name="ibm-mas-visualinspection",
             case_versions=versions,
-            architectures=["amd64", "ppc64le", "s390x"],
+            architectures=["amd64"],
         )
         processed = True
 
@@ -825,6 +843,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-cp-common-services", v)
         processed = True
 
     # Process ibm-zen
@@ -836,6 +857,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-zen", v)
         processed = True
 
     # Process ibm-cp-datacore
@@ -852,6 +876,20 @@ def process_single_catalog(catalog_path: str) -> bool:
                 generate_chart_metadata("ibm-cp-datacore", v)
         processed = True
 
+    # Process ibm-swhub-control-center (ISC + chart metadata, version from swhub_version)
+    if 'swhub' in catalog_versions:
+        versions = catalog_versions['swhub']
+        print(f"Generating ISCs for ibm-swhub-control-center versions: {', '.join(versions)}")
+        generate_iscs(
+            case_name="ibm-swhub-control-center",
+            case_versions=versions,
+            architectures=["amd64", "ppc64le", "s390x"],
+        )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-swhub-control-center", v)
+        processed = True
+
     # Process ibm-licensing
     if 'licensing' in catalog_versions:
         versions = catalog_versions['licensing']
@@ -861,6 +899,9 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-licensing", v)
         processed = True
 
     # Process ibm-ccs
@@ -886,6 +927,23 @@ def process_single_catalog(catalog_path: str) -> bool:
             case_versions=versions,
             architectures=["amd64", "ppc64le", "s390x"],
         )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-cloud-native-postgresql", v)
+        processed = True
+
+    # Process ibm-pg-operator (ISC + chart metadata, version from pg_operator_version)
+    if 'pg_operator' in catalog_versions:
+        versions = catalog_versions['pg_operator']
+        print(f"Generating ISCs for ibm-pg-operator versions: {', '.join(versions)}")
+        generate_iscs(
+            case_name="ibm-pg-operator",
+            case_versions=versions,
+            architectures=["amd64", "ppc64le", "s390x"],
+        )
+        if cpd_helm_eligible:
+            for v in versions:
+                generate_chart_metadata("ibm-pg-operator", v)
         processed = True
 
     # Process ibm-datarefinery

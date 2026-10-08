@@ -1,0 +1,8 @@
+case_name: ibm-licensing
+case_version: 4.2.23
+charts:
+- name: ibm-licensing-cluster-scoped
+  version: 4.2.23
+- name: ibm-licensing-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

@@ -1,0 +1,8 @@
+case_name: ibm-pg-operator
+case_version: 28.3.1
+charts:
+- name: ibm-pg-operator
+  version: 28.3.1
+- name: ibm-pg-operator-cluster-scoped
+  version: 28.3.1
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm
