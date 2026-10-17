@@ -1,0 +1,10 @@
+case_name: ibm-zen
+case_version: 6.10.0
+charts:
+- name: zen
+  version: 6.10.0
+- name: zen-cluster-scoped
+  version: 6.10.0
+- name: zen-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

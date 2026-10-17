@@ -1,0 +1,10 @@
+case_name: ibm-swhub-control-center
+case_version: 5.10.0
+charts:
+- name: ibm-swhcc
+  version: 5.10.0
+- name: ibm-swhcc-cluster-scoped
+  version: 5.10.0
+- name: ibm-swhcc-migration
+  version: 0.0.0
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm

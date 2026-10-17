@@ -1,0 +1,8 @@
+case_name: ibm-opencontent-opensearch
+case_version: 1.4.3
+charts:
+- name: opencontent-opensearch
+  version: 1.4.3
+- name: opencontent-opensearch-cluster-scoped
+  version: 1.4.3
+helm_repo: https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm
