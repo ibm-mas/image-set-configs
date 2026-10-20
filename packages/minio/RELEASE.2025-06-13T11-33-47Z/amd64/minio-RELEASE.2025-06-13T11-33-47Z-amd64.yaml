@@ -1,0 +1,6 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: quay.io/ibmmas/minio:RELEASE.2025-06-13T11-33-47Z@sha256:8816b1a6d9857bd1a99dc552aa5a4580c9748e21a4b95544691ae22931597a26
