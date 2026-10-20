@@ -3,4 +3,4 @@ archiveSize: 2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: quay.io/minio/minio:RELEASE.2025-06-13T11-33-47Z@sha256:064117214caceaa8d8a90ef7caa58f2b2aeb316b5156afe9ee8da5b4d83e12c8
+  - name: quay.io/ibmmas/minio@sha256:8816b1a6d9857bd1a99dc552aa5a4580c9748e21a4b95544691ae22931597a26
