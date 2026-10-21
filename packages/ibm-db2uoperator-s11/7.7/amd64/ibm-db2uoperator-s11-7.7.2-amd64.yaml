@@ -1,0 +1,9 @@
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 2
+kind: ImageSetConfiguration
+mirror:
+  additionalImages:
+  - name: icr.io/cpopen/db2u-day2-operator:7.7.2-21315-dev@sha256:2428ca8d5e1980c197e111cf21428ca3208b27d6e6244a920d4d0d58d1af3846
+  - name: icr.io/cpopen/db2u-operator:7.7.2-21315-dev@sha256:9dc14f27f1e4382f5369a7919549b2966dc336241da507b6ec58fbd35d244ada
+  - name: icr.io/cpopen/ibm-db2uoperator-bundle:7.7.2-21315-dev@sha256:d45e70cc9c76cd955ad61bb02d0bf1a5408e01f788ed7ac0d574cd3fc8eabb4d
+  - name: icr.io/cpopen/ibm-db2uoperator-catalog:21315-dev@sha256:87cd4a221938502581e576383ef30475db1ca3deb2278ea33162054732405b39
