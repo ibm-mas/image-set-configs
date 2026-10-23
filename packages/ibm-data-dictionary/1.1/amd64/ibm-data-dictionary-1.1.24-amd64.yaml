@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-data-dictionary-operator-bundle@sha256:dd26848fcd6e3fecbb90f34d8fe4ef95ba693389b8b2ef4d9f476898fa2009d4
+  - name: icr.io/cpopen/ibm-data-dictionary-operator-bundle@sha256:3e1d4cb595e18b63a51c730d5f8db9ae1f139e41549d35b2d758282f3caf340d
   - name: cp.icr.io/cp/datadictionary/kitt-v3-router:3.3.63@sha256:83fe7bf1376a72eb5df14188d6326b4392040fc6ef3e0770bbef2dec9ce6f709
   - name: cp.icr.io/cp/datadictionary/kitt-v3-user-store:3.3.63@sha256:c623dc0f2a22d204c8371284c21fe4f9936714e53ba26c88f99b6f977f8cc4e3
   - name: cp.icr.io/cp/datadictionary/kitt-v3-graph-service:3.3.63@sha256:05aa9769c36915c3717a90523ff0f56a084ea726bb1fa674b8128b2f0dd003fc
