@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-aiservice-operator-bundle@sha256:0a13020fcfa97ffdacd8a0c9a5a9d35724b526ac87ff83fe29fc684e898b999f
+  - name: icr.io/cpopen/ibm-aiservice-operator-bundle@sha256:e53e56a1cd6b07cda182a7e2ef6622a34843038316643d6bbf36db796c013ea9
   - name: cp.icr.io/cp/aibroker/s3:1.0.10@sha256:4362f1a6d227aaf5ed0bd76e9ec4ac45f21fa8c1684e64a3fc7cdc2636047f9a
   - name: cp.icr.io/cp/aibroker/maximo-mcc-train:1.2.11@sha256:485086ff4f56cb1ea5b9eba2db92dbc4bc8ce157b09c70849d26c1a1ec9d9ba7
   - name: cp.icr.io/cp/aibroker/maximo-fmea-predictor:1.2.11@sha256:0444468f72bf84fa770c564c2108a5d1cd07a1bd8fefbe9fa1b10d160d1801b9
@@ -23,8 +23,8 @@ mirror:
   - name: cp.icr.io/cp/aibroker/maximo-fmea-predictor:1.0.8@sha256:0444468f72bf84fa770c564c2108a5d1cd07a1bd8fefbe9fa1b10d160d1801b9
   - name: cp.icr.io/cp/aibroker/maximo-fmea-predictor:1.0.9@sha256:0444468f72bf84fa770c564c2108a5d1cd07a1bd8fefbe9fa1b10d160d1801b9
   - name: cp.icr.io/cp/aibroker/aibroker:1.2.20@sha256:353f6efca00f69abee3895ff672ca4735dd73ad17e590a1c94eb0ed40698676a
-  - name: cp.icr.io/cp/aiservice/ibm-aiservice-tenant:9.1.21@sha256:e0c0ae1538fd550be38fddd36849a0f23d775f0199eed36e3e3a788aaf1aae5e
+  - name: cp.icr.io/cp/aiservice/ibm-aiservice-tenant:9.1.21@sha256:fe720a11bb6808e7bd068f9a4e2f146326ca2d61f01d0bbe4b094c560b4d7432
   - name: cp.icr.io/cp/aibroker/controller:1.0.25@sha256:13ab155b3dd6917b77d3eff22e71c7238af2443d969a20dd8fc258c04209242b
   - name: cp.icr.io/cp/aibroker/store:1.0.28@sha256:23042e4134adf72102ebe0d457f38b58928f4d0bed559b1f1c3854ac7cc9f693
   - name: cp.icr.io/cp/aibroker/watcher:1.0.15@sha256:937f8b8428cc676388fe4615b80ee2f87ab94caf809415c0858116997635a95f
-  - name: icr.io/cpopen/ibm-aiservice:9.1.21@sha256:ebd3545e9bbf870f2de574d943427cb2a63b96413bf667bee0232b8a56ab6beb
+  - name: icr.io/cpopen/ibm-aiservice:9.1.21@sha256:3b0918117ecabe07102fd2977aba1e6c7f1c5a9b1b03315cdca01082598e2c0a
