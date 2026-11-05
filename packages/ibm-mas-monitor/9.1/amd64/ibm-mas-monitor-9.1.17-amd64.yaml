@@ -2,7 +2,7 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-monitor-operator-bundle@sha256:496121bbffd5be9a2c2d3d5443680b7cd14ebfae580406c01a706eff1acdfdb0
+  - name: icr.io/cpopen/ibm-mas-monitor-operator-bundle@sha256:4a637481846e1c01fb090a2ec582b15c1179bbd8c8c76da0b3d3a2b26c245da6
   - name: cp.icr.io/cp/monitor/hook-db-monitor:9.1.153@sha256:1f44dabe815c21627ee2cdc1342eb5b0cc8f06459a685f852e569331b547a1e3
   - name: cp.icr.io/cp/monitor/pipeline-engine:9.1.111@sha256:d5bb543aefed15330f613b30bfe40090f801c1cb112266906472b00c2f115084
   - name: cp.icr.io/cp/monitor/db2-dataingest-inputprocessor:9.1.108@sha256:d7a71770b824a335f4463ad010cc8f812181934ae65376ab61587691f47ca4d5
@@ -23,7 +23,7 @@ mirror:
   - name: cp.icr.io/cp/monitor/migration-manager:9.1.468@sha256:b82922f0dd5c5c627a71527fdc7f51575b9070dba36472bcc8dbdaf8e7978203
   - name: cp.icr.io/cp/monitor/as-library:9.1.108@sha256:0afb81b33cf08089dfdb4f3bc24d815ab83a1aae3e22f8dc8a4e60c6efd6f89a
   - name: cp.icr.io/cp/monitor/as-ui:9.1.237@sha256:f6d825a2457177b3a4110e31ecfd26a6f4e2df87497c2776701de7f9eee0b429
-  - name: cp.icr.io/cp/monitor/ibm-mas-monitor-ws:9.1.17@sha256:9fbccf4862e95d0a05fd9c44547c5ee364bdaeaf3617fb4b742f7c7b752ed603
+  - name: cp.icr.io/cp/monitor/ibm-mas-monitor-ws:9.1.17@sha256:975d11f662cc46afe785a398d709ce07ec67554dbef015d944aff4222209d56c
   - name: icr.io/cpopen/ibm-mas/edgedatacollector:2.5.24@sha256:cfdcf1d4ead21339687c1ea619bb6c957e584ee33990842a92e3038659f6345d
   - name: icr.io/cpopen/ibm-mas/scadaconnector:9.1.46@sha256:9f55582cc1864dd27913d29f6e6334f78d23105cbe8d8ed462d1286dab1c3555
-  - name: icr.io/cpopen/ibm-mas-monitor:9.1.17@sha256:f7af0d19c2ccf855f2a627414a493f0a9bcfa000ac870f75d96fc42360c21a8d
+  - name: icr.io/cpopen/ibm-mas-monitor:9.1.17@sha256:e07fd0364d45ec7ea91eb023fc90590aae9d5663a9cf1f697b68a24615935f41
