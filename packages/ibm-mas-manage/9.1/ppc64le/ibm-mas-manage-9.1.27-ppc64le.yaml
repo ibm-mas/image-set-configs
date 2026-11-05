@@ -2,22 +2,22 @@ apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 mirror:
   additionalImages:
-  - name: icr.io/cpopen/ibm-mas-manage-operator-bundle@sha256:45dff64cec722f9100240074d8a756ca5527917a32d92f2445664f32699fceed
+  - name: icr.io/cpopen/ibm-mas-manage-operator-bundle@sha256:27afc1f5103b0be29974d26edd6d8b89bfad7bd9b188d087111ed40593a08187
   - name: cp.icr.io/cp/manage/healthext-model-engine:2.1.22-ppc64le@sha256:47c96ebae7cf8b8e315636b73f803f1401c779a50333c74a0edf1bf90e55f322
   - name: cp.icr.io/cp/manage/image-stitching:1.1.111-ppc64le@sha256:4580c919dab23e63b9eb8d60a6ea41cad4d41be03dd28a66adbcc3ec0f020dbb
   - name: cp.icr.io/cp/manage/icdslack:9.1.43-ppc64le@sha256:ca789c52fd01ee94613de903958b4aea6af0bca000d7c8727bf51ff73b8cefe4
   - name: cp.icr.io/cp/manage/aip-optimizer:1.0.48-ppc64le@sha256:3a7b279705586b7d2c0c2bd4865d33c1bf2e7dfac3cdcf9dc0ceda590ed05704
-  - name: cp.icr.io/cp/manage/ibm-mas-manage-primary-entity:9.1.27-ppc64le@sha256:6e2b01807e1543225f024376c9a45648c7841aff29cfe104e1e6d4b3540d040e
-  - name: cp.icr.io/cp/manage/ibm-mas-manage-acc:9.1.27-ppc64le@sha256:17f225663f223229df084b5aebe0dbf03d76f51a705a2166e5ff960cbf67e4aa
-  - name: cp.icr.io/cp/manage/ibm-mas-manage-appstatus:9.1.27-ppc64le@sha256:9f4e1e0524e3a066b8ae56a97f92162991d1dcffd5987e9b4b9215dbf48ef805
-  - name: cp.icr.io/cp/manage/ibm-mas-manage-bdi:9.1.27-ppc64le@sha256:ac49a5fe9c71b9a975191d100d8d96716cf6c164eff5c41657d9e52814a55cbb
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-primary-entity:9.1.27-ppc64le@sha256:53930ee9a2278023c2aee9b4c8d9f0b62a46e334f0e55a58383a43d7fb57a65a
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-acc:9.1.27-ppc64le@sha256:26d18b49d4096050db4b6fcb1c72dfcacc44e1eb736f273df5820c6d2ee05b30
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-appstatus:9.1.27-ppc64le@sha256:b7b28c2eec799b26f519115ed8021d00a4f648c31b94196e7fc0fe311e3bb693
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-bdi:9.1.27-ppc64le@sha256:0ac2280dc26454879714ae651cdb181347e8c9940a1a3f6d2537af0c9949ecad
   - name: cp.icr.io/cp/manage/manage-groupsyncagent:1.2.93-ppc64le@sha256:1c7054cf0c62eaaf6d5f0a018205c53e345c65e85f0abec744e65afb1cc2d58e
   - name: cp.icr.io/cp/manage/manage-usersyncagent:3.0.89-ppc64le@sha256:32eb69ffec884d23971aa926d4f7d0e7bf647c36ef7ecba121311a27273eba96
   - name: cp.icr.io/cp/manage/ibm-mas-aipoptimizationext:1.0.18-ppc64le@sha256:f9a1f3e17ceffbe149a5fd21c0899c0de461503243afb2dbdeb75c63c3c7437e
   - name: cp.icr.io/cp/manage/ibm-mas-healthext-ws:2.1.42-ppc64le@sha256:9caff3ca07753dbb0b5b043b1e1934a9d38e104f322eaa084b0f688299c627ad
   - name: cp.icr.io/cp/manage/ibm-mas-imagestitching:1.1.48-ppc64le@sha256:a8a8964755f8b7d1effebdf60c35844ee8fbb3c4257cf52a0ce1d40cfe36e9a6
   - name: cp.icr.io/cp/manage/ibm-mas-slackproxy:9.1.43-ppc64le@sha256:adbd0df5d3f3c71a7b52f22dcabe140f7e303de77debf298ea082d92d3c77b9b
-  - name: cp.icr.io/cp/manage/ibm-mas-manage-ws:9.1.27-ppc64le@sha256:44c8e4c3a124b8587c02829e04e8748229f9d7d6a6acd4923e7025feacb06fd0
+  - name: cp.icr.io/cp/manage/ibm-mas-manage-ws:9.1.27-ppc64le@sha256:90241a7059c7199c994e20ecab8b92140be4accd196528203980240deb31830b
   - name: cp.icr.io/cp/manage/bdi:9.1.39-ppc64le@sha256:5a4bac7da4e12a60278d7cd06c3ed18a357ec0505eff5e18362bccfe391d249e
   - name: cp.icr.io/cp/mas/ltpakeys-generator:3.4.12-ppc64le@sha256:97808e23ea111ca5c64f0ef705d682290ebaea48066b689031f7b4a4154ee7cf
   - name: cp.icr.io/cp/manage/manageadminfoundation:9.1.505-ppc64le@sha256:2508214f8bd01cb195b0bfcecf7478a07dd52ac345dba6dc016cc38a806f74f4
@@ -46,5 +46,5 @@ mirror:
   - name: cp.icr.io/cp/manage/extension-workday:9.1.23-ppc64le@sha256:2636eb485546aee99439fc10cad74b5c386e56b58003b874893c7e07a385b464
   - name: cp.icr.io/cp/manage/monitoragent:5.0.49-ppc64le@sha256:edc57ddaa55604cece491ec2500957a4e4190c45ad90ac1ca29d78af682832c2
   - name: cp.icr.io/cp/manage/maxloader:9.0.41-ppc64le@sha256:8f70d712e6f0d970cc1ffe965f1deacf866e9a4e0a463ba763f293e08c563c3c
-  - name: icr.io/cpopen/ibm-mas-manage:9.1.27-ppc64le@sha256:8ef12552acb94e5f64d48c03cb7dbe7422b60c3764859e6b805de440d8fbff0f
-  - name: icr.io/cpopen/ibm-mas-manage-webhook:9.1.27-ppc64le@sha256:e8e3e48b6bb757026b8303c1e57b8bc2612fcf5ff73dcbdc86bdff8c912ef5ae
+  - name: icr.io/cpopen/ibm-mas-manage:9.1.27-ppc64le@sha256:565f42f353c8e046d3ceb5d19a1094227584df7ba830da07c9d56489db4ca441
+  - name: icr.io/cpopen/ibm-mas-manage-webhook:9.1.27-ppc64le@sha256:4ef9f6c42f1bacb7c8bfda812bfaf6820fb92a6ccde6abd9b6a8a53ee3bf0c14
